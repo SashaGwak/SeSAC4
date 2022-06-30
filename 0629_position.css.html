@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <style>
+            .div1 {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                position: relative;
+            }
+            .div2 {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                position: absolute;
+                bottom: 40px;
+                left: 30px;
+            }
+            .div3 {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                position: absolute;
+                bottom: 49px;
+                left: 30px;
+            }
+            #body2 {
+                position: absolute;
+                left: 70px;
+                top: 55px;
+            }
+            #body3 {
+                position: absolute;
+                left: 50px;
+                top: 45px;
+            }
+            #body4 {
+                position: absolutes;
+                left: 60px;
+                top: 1px;
+            }
+            #body5 {
+                position: fixed;
+                left: 250px;
+                top: 120spx;
+                z-index: 100;
+            }
+            img {
+                width: 200;
+                height: 100;
+            }
+            .grass {
+                position:relative;
+                z-index: 10;
+                top: 25px;
+                left: 50px;
+            }
+            .grass2 {
+                position:relative;
+                z-index: 10;
+                left: 200px;
+                bottom: 70px;
+            }
+            .grass3 {
+                position:relative;
+                z-index: 10;
+                left: 150px;
+                bottom: 150px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="div1" style="background-color:rgb(35, 153, 239);">
+            <div class="div2" style="background-color:white;"></div>
+            <div class="div3" style="background-color:black;"></div>
+            <div class="div1" id="body2" style="background-color:rgb(25, 111, 206);">
+                <div class="div1" id="body3" style="background-color:rgb(11, 74, 158);">
+                    <div class="div1" id="body4" style="background-color:rgb(178, 205, 253);">
+                        <div class="div1" id="body5" style="background-color:rgb(9, 131, 152);"></div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div>
+            <img class="grass" src="grass.png">
+        </div>
+        <div>
+            <img class="grass2" src="grass.png">
+        </div>
+        <div>
+            <img class="grass3" src="grass.png">
+        </div>
+        
+    </body>
+</html>
