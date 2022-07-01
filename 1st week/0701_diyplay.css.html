@@ -1,25 +1,42 @@
 <html>
     <head>
         <style>
-            div {
-                display:inline-block;
-            }
             .div1 {
+                display: inline;
                 background-color: tomato;
             }
             .div2 {
+                display: inline-block;
+                width: 600px;
                 background-color: aqua;
             }
             .div3 {
+                display: inline-block;
                 background-color: pink;
                 display: none;
             }
-            
+            .div-flex {
+                display: flex;
+                /* flex 안의 자식요소들은 자동으로 inline-block으로 설정된다 */
+                width: 100%;
+                height: 100%;
+                background-color: pink;
+                justify-content: center;
+                align-items: center;
+            }
         </style>
     </head>
 
     <body>
-        <div class="div1">div1</div>
+        <div class="div-flex">
+            <div style="background-color: yellow;">
+                <div>1</div>
+                <div>2</div>
+            </div>
+            <div style="background-color: blue; color: white;">3</div>
+            <div>4</div>
+        </div>
+        <div class="div1">일반 div입니다</div>
         <div class="div2">div2</div>
         <div class="div3">div3</div>
     </body>
