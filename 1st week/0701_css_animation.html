@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                position: relative;
+                animation-name: myanimation;
+                animation-duration: 2s;
+                /* 애니매이션이 몇초 동안 진행될지 정해줌, 기본값0으로 지정안하면 안움직임 */
+                animation-iteration-count: 1;
+                /*-> 이 동작을 몇번 반복할지 정해줌 */
+                animation-timing-function: ease-in-out;
+                /* 처음과 끝은 빠르게 움직이게 지정 in은 처음 out은 마지막 */
+
+            }
+            @keyframes myanimation {
+                /* <방법1> 0%부터 25단위로 100%까지 나타낼 수있음  */
+                0% {left: 0px;}
+                25% {left: 100px;}
+                50% {left: 200px;}
+                75% {left: 300px;}
+                100% {left: 400px;}
+                /* to from 으로 나타낼 수 있음  */
+            }
+            @keyframes ball {
+                to {top: 50px;}
+                from {top: 300px;}
+            }
+            .ball {
+                position: relative;
+                width: 50px;
+                height: 50px;
+                background-color: tomato;
+                border-radius: 70%;
+                animation-name: ball;
+                animation-iteration-count: infinite;
+                animation-duration: 5s;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div></div>
+        <div class="ball"></div>
+    </body>
+</html>
