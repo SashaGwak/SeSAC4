@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background-color: pink;
+                position: relative;
+                animation-name: myanimation;
+                animation-duration: 3s;
+                /* 애니매이션이 몇초 동안 진행될지 정해줌, 기본값0으로 지정안하면 안움직임 */
+                animation-iteration-count: 6;
+                /*-> 이 동작을 몇번 반복할지 정해줌 */
+
+            }
+            @keyframes myanimation {
+                /* <방법1> 0%부터 25단위로 100%까지 나타낼 수있음  */
+                0% {transform: translate(0px,0px);}
+                25% {transform: translate(200px,0px);}
+                50% {transform: translate(200px,200px);}
+                75% {transform: translate(0px,200px);}
+                100% {transform: translate(0px,0px);}
+                /* to from 으로 나타낼 수 있음  */
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="ball"></div>
+    </body>
+</html>
