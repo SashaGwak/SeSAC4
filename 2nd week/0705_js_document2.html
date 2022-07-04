@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <style>
+            div { background-color: palevioletred; }
+            p { background-color: skyblue ; }
+            .text { color: white; }
+        </style>
+        <script>
+            function addNode() {
+                var p1 = document.createElement("p");
+                var div1 = document.getElementById("div1");
+
+                // innerText 태그 안에 그 내용을 적어주는 것
+                p1.innerText = "p태그입니다.";
+                p1.className = "text"; // 클래스 네임만 이름으로 
+                p1.style = "text-alian:center;";
+                var img = document.createElement("img");
+                img.src = "../1st week/cat1.jpg";
+                img.width = 100;
+                div1.appendChild(p1);
+                div1.appendChild(img);
+            }
+
+            function change(){
+                document.write("<h1>안녕</h1>"); // 다 사라지고 write 내 내용만 남음, 잘 안씀 
+            }
+
+            function removeNode() {
+                var div1 = document.getElementById("div1");
+                var child = document.getElementsByClassName("text");
+                // 삭제 방법 1
+                console.log( child[0] );
+                div1.removeChild(child[0]);
+
+                // 삭제 방법 2
+                // child[0].remove();
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <div id="div1">div1</div>
+        <div id="div2">div2</div>
+        <button type="button" onclick="addNode();">삽입</button>
+        <button type="button" onclick="change();">변경</button>
+        <button type="button" onclick="removeNode();">삭제</button>
+
+    </body>
+</html>
