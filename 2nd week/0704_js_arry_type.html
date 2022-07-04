@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <script>
+            // 객체 생성 
+            var cat = {
+                name: "나비",
+                age: 1,
+                mew: function(){
+                    return "야옹";
+                }
+            };
+
+            // cat 실행해보기
+            console.log( cat ); // {name: '나비', age: 1, mew: "야옹" }
+            console.log( cat.name ); //나비
+            console.log( cat.mew() ); //야옹
+
+            // 하나의 배열에 숫자, 문자열 같이 쓸 수 있음(js)
+            var arr1 = [1, 2, 3, "안녕", "반가워"];
+
+            // 배열 활용 예시
+            console.log( arr1.length ); // 5
+            arr1.push("내이름");  // 배열 새 값 추가하기
+            console.log(arr1); // [1, 2, 3, '안녕', '반가워', '내이름']
+            arr1.pop(); // 배열 마지막 값 삭제
+            console.log(arr1); // [1, 2, 3, '안녕', '반가워']
+            // unshift : 배열 맨 앞에 값 넣기
+            // shift : 배열 맨 앞에 값 삭제
+            console.log(arr1.indexOf("안녕")); // 3
+            // indexOf : 파라미터로 넣은 값이 배열 내 몇번째 인덱스를 차지하는지 찾아줌 
+
+
+            // 딕셔너리 
+            var me = {
+                name: 'siha',
+                birth: '0711'
+            };
+            me['gender']='F'; //gender 키에 F 값 추가
+
+            console.log( me ); // {name: 'siha', birth: '0711', gender: 'F'}
+            console.log( me['gender']); // F
+
+            // 기본 자료형
+            var a = 1; 
+            var b = a;
+            console.log( "a : ", a ); // 객체일때는 , 로 표시 +로 나타내면 객체 형태 보여줌
+            console.log( "b : ", b );
+            a = 10;
+            console.log( "a : ", a );
+            console.log( "b : ", b );
+
+
+            // 객체 자료형 
+            var a1 = [1, 2, 3, 4, 5];
+            var a2 = a1;
+            console.log( 'a1 : ', a1 ); // [1, 2, 3, 4, 5]
+            console.log( 'a2 : ', a2 ); // [1, 2, 3, 4, 5]
+            a1.pop()
+            console.log( 'a1 : ', a1 ); // [1, 2, 3, 4]
+            console.log( 'a2 : ', a2 ); // [1, 2, 3, 4] 
+            // 객체 자료형은 주소값을 참조해서 쓰기 때문에 값이 같이 바뀜을 주의 !!! 
+
+            // 자료형 확인하기 
+            // typeof ()
+            console.log(typeof( '메롱' ));
+            
+
+            // 형변환 
+            // // -> 문자 
+            // String(123); //”123"
+            // var trans = 100;
+            // trans.toString(2); //”1100100"
+
+            // -> 숫자
+            // Number(“12345”); //12345
+            // parseInt(“27”) //27
+            // parseInt(“ 2”); //2
+
+            </script>
+    </head>>
+</html>
