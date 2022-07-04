@@ -6,36 +6,40 @@
             function add() {
                 var val1  = document.getElementById("value1").value;
                 var val2  = document.getElementById("value2").value;
-                var val3  = document.getElementById("operator").value;
-                var val4  = document.getElementById("result");
-
+                var val3  = document.getElementById("value3").value;
+                
                 if (val3 == "+") {
                     var result = parseInt(val1) + parseInt(val2) 
+                    var val4  = document.getElementById("value4");
+                    val4.value = result
                 }
                 if (val3 == "*") {
                     var result = parseInt(val1) * parseInt(val2) 
+                    var val4  = document.getElementById("value4");
+                    val4.value = result
                 }
                 if (val3 == "-") {
                     var result = parseInt(val1) - parseInt(val2) 
+                    var val4  = document.getElementById("value4");
+                    val4.value = result
                 }
                 if (val3 == "/") {
                     var result = parseInt(val1) / parseInt(val2) 
+                    var val4  = document.getElementById("value4");
+                    val4.value = result
                 }
-                
-                val4.value = result
             }
 
             function remove() {
-                // document.getElementById("value1").value = ""
-                // document.getElementById("value2").value = ""
-                // document.getElementById("operator").value = ""
-                // document.getElementById("result").value = ""
-                var inputs = document.querySelectorAll("input");
-                // querySelecort : 선택된 선택자 또는 선택자 그룹과 일치하는 문서 내 첫번째 Element를 반환 
-                // querySeletorAll : 선택된 선택자 그룹에 일치하는 Element list를 반환
-                for ( var i=0; i <inputs.length; i++ ){
-                    inputs[i].value = "";
-                }
+                var val1  = document.getElementById("value1");
+                var val2  = document.getElementById("value2");
+                var val3  = document.getElementById("value3");
+                var val4  = document.getElementById("value4");
+
+                val1.value = ""
+                val2.value = ""
+                val3.value = ""
+                val4.value = ""
             }
 
         </script>
@@ -45,8 +49,8 @@
         <div>
             <p>값1:<input type="text" id="value1"></p>
             <p>값2:<input type="text" id="value2"></p>
-            <p>연산자:<input type="text" id="operator"></p>
-            <p>결과:<input type="text" id="result"></p>
+            <p>연산자:<input type="text" id="value3"></p>
+            <p>결과:<input type="text" id="value4"></p>
         </div>
         <button type="button" onclick="add()">계산하기</button>
         <button type="button" onclick="remove()">초기화</button>
