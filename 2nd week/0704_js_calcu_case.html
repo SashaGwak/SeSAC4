@@ -6,40 +6,30 @@
             function add() {
                 var val1  = document.getElementById("value1").value;
                 var val2  = document.getElementById("value2").value;
-                var val3  = document.getElementById("value3").value;
-                
+                var val3  = document.getElementById("operator").value;
+                var val4  = document.getElementById("result");
+
                 if (val3 == "+") {
                     var result = parseInt(val1) + parseInt(val2) 
-                    var val4  = document.getElementById("value4");
-                    val4.value = result
                 }
                 if (val3 == "*") {
                     var result = parseInt(val1) * parseInt(val2) 
-                    var val4  = document.getElementById("value4");
-                    val4.value = result
                 }
                 if (val3 == "-") {
                     var result = parseInt(val1) - parseInt(val2) 
-                    var val4  = document.getElementById("value4");
-                    val4.value = result
                 }
                 if (val3 == "/") {
                     var result = parseInt(val1) / parseInt(val2) 
-                    var val4  = document.getElementById("value4");
-                    val4.value = result
                 }
+                
+                val4.value = result
             }
 
             function remove() {
-                var val1  = document.getElementById("value1");
-                var val2  = document.getElementById("value2");
-                var val3  = document.getElementById("value3");
-                var val4  = document.getElementById("value4");
-
-                val1.value = ""
-                val2.value = ""
-                val3.value = ""
-                val4.value = ""
+                document.getElementById("value1").value = ""
+                document.getElementById("value2").value = ""
+                document.getElementById("operator").value = ""
+                document.getElementById("result").value = ""
             }
 
         </script>
@@ -49,8 +39,8 @@
         <div>
             <p>값1:<input type="text" id="value1"></p>
             <p>값2:<input type="text" id="value2"></p>
-            <p>연산자:<input type="text" id="value3"></p>
-            <p>결과:<input type="text" id="value4"></p>
+            <p>연산자:<input type="text" id="operator"></p>
+            <p>결과:<input type="text" id="result"></p>
         </div>
         <button type="button" onclick="add()">계산하기</button>
         <button type="button" onclick="remove()">초기화</button>
