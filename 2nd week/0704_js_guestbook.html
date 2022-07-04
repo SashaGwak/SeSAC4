@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <style>
+            table {
+                width: 50%;
+                border: 1px solid black;
+                text-align: center;
+            }
+            tr, td {
+                border: 1px solid black;
+            }
+            button {
+                width: 50px;
+            }
+        </style>
+
+        <script>
+            var count = 1
+            function add() {
+                var table = document.getElementById("guest_table");
+                var user = document.getElementById("user").value;
+                var contents = document.getElementById("contents").value;
+                var date = timestamp()
+                // 새 행 추가 
+                var newRow = table.insertRow();
+
+                // 새 행에 셀 추가 
+                var newCell1 = newRow.insertCell(0);
+                var newCell2 = newRow.insertCell(1);
+                var newCell3 = newRow.insertCell(2);
+                var newCell4 = newRow.insertCell(3);
+
+                // 셀에 텍스트 추가 
+                newCell1.innerText = count++;
+                newCell2.innerText = user;
+                newCell3.innerText = contents;
+                newCell4.innerText = date;
+            }
+            function timestamp() {
+                var today = new Date();
+                today.setHours(today.getHours() + 9);
+                return today.toISOString().replace('T', ' ').substring(0, 19);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>새싹 방명록</h1>
+        <p>작성자 <input type="text" id="user"></p>
+        <p>내용 <input type="text" id="contents"></p>
+        <button type="button" onclick="add();">작성</button>
+        <hr>
+
+        <table id="guest_table">
+            <tr>
+                <td>번호</td>
+                <td>작성자</td>
+                <td>내용</td>
+                <td>작성일</td>
+            </tr>
+        </table>
+    </body> 
+</html>
