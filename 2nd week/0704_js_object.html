@@ -1,0 +1,33 @@
+<html>
+    <script>
+        // date 객체
+        var date = new Date();
+        console.log( date );
+
+        console.log(date.getFullYear());
+        console.log(date.getMonth());
+        console.log(date.getDate());
+        console.log(date.getDay());
+        console.log(date.getHours());
+        //직접 값을 내놓는 것과 인덱스 내놓는 것 있어서 주의
+
+        // math 객체 
+        // 수학에서 자주 사용하는 상수와 함수들을 미리 구현해 놓은 표준 내장 객체 
+        // 웹 브라우저마다 다른 결과를 얻을 가능성이 있어서 정확한 결과를 얻어야 할 경우에는 사용하지 않는 것 추천
+        console.log( Math.min() ); // Infinity
+        console.log( Math.min( 1, 2) ); // 1
+        console.log( Math.min( -10, 2, "문자") ); // NaN : 숫자가 아닌 게 포함되어 있다! 
+        // Math.max() : 최댓값
+        // Math.random() : 0보다 크고 1보다 작은 수 중에 랜덤
+        // random 0-1 이외 값 하고 싶을 때 
+        var max = 20;
+        var min = 10;
+        N = Math.random() * ( max - min ) + min;
+        console.log( N )
+        // Math.round() : 반올림
+        // Math.floor() : 버림 
+        // Math.ceil() : 올림
+
+
+    </script>
+</html>
