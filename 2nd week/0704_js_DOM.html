@@ -1,6 +1,24 @@
 <html>
-    <script>
-        // Document Object Model(문서 객체 모델)
-        
-    </script>
+    <head>
+        <title>타이틀</title>
+        <meta charset="UTF-8">
+
+        <script>
+            console.log( document.documentElement );
+            console.log( document.head );
+            console.log( document.title );
+            console.log( document.body ); // head 안에서는 안나옴 Null
+            console.log( document.URL );
+            console.log( document.domain );
+        </script>
+
+    </head>
+    <body>
+        <div>
+            <p>안녕</p>
+        </div>
+        <script>
+            console.log( document.body ); // body 에서는 내용 출력됨
+        </script>
+    </body>
 </html>
