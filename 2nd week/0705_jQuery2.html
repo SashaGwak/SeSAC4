@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <style > 
+        span {
+            background-color: skyblue;
+            color: white;
+            }
+        p {
+            background-color: rosybrown;
+            color: white;
+            }
+        </style>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script>
+            // 여러가지 메소드
+            // remove() : 지정영역을 제거하는 함수
+            // prepend() : 선택된 요소의 첫번째에 새로운 요소나 컨텐츠를 추가 
+            // before() : 선택한 요소의 바로 앞쪽에 새로운 요소나 컨텐츠 추가
+            // append() <-> prepend()
+            // after() <-> before()
+            // html() : 해당 요소의 html 컨텐츠를 반환하거나 설정
+            // text() : 선택한 요소의 내용을 단순 text로 변경
+            function a() {
+                $(".a").prepend("Hello ");
+            }
+            function d() {
+                $(".b").remove()
+            }
+            function b() {
+                $(".c").before("OK ")
+            }
+            function d() {
+                $(".d").prepend("<p> Hello </p>");
+            }
+            function e() {
+                $(".e").html("<p> Hello </p>");
+            }
+            function f() {
+                $(".f").text("<p> Hello </p>");
+            }
+        </script>
+    </head>
+
+        <body>
+            <span class="a">안</span>
+            <button type="button" onclick="a();">prepend</button>
+
+            <span class="b">녕</span>
+            <button type="button" onclick="d();">remove</button>
+
+            <span class="c">하</span>
+            <button type="button" onclick="b();">before</button>
+
+            <span class="d">세</span>
+            <button type="button" onclick="d();">p 추가</button>
+
+            <span class="e">요</span>
+            <button type="button" onclick="e();">html p</button>
+            <!-- prepend와의 차이점 : html은 원래있던 글자 사라짐 -->
+            <span class="f">text</span>
+            <button type="button" onclick="f();">text</button>
+        </body>
+</html>
