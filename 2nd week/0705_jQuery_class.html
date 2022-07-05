@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jquery - class 다루기</title>
+        <script
+            type="text/javascript"
+            src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <link rel="stylesheet" href="jquery-ui.css">
+        <script src="jquery-ui.min.js"></script>
+        <script src="jquery-ui.js"></script>
+        <script type="text/javascript">
+            // addClass : 선택한 문서 객체에 클래스 속성을 추가
+            function bigger() {
+                $(".first").addClass("sizeup");
+            }
+            // removeClass : 선택한 태그에서 어떤 클래스를 제거
+            function white() {
+                $(".second").removeClass("second");
+            }
+            // switchClass : 어떤 클래스를 다른 클레스로 바꾸는 함수
+            // $(선택자).switchClass("바꿀 클래스명","바뀔 클래스명",작동시간)
+            function pink() {
+                $(".third").switchClass("sizeup", "pink", 1);
+            }
+            // hasClass : 선택한 태그에서 어떤 클래스의 존재 여부에 따라 True 혹은 False를 return
+            function getfirst() {
+                if ($("div").hasClass("first")) {
+                        $(".first").remove();
+                    }
+            }          
+
+        </script>
+        <style>
+
+            div {
+                width: 100px;
+                height: 100px;
+            }
+
+            .first {
+                background-color: red;
+            }
+
+            .second {
+                background-color: yellow;
+            }
+
+            .third {
+                background-color: blue;
+            }
+
+            .pink {
+                background-color: pink;
+            }
+
+            .sizeup {
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" onclick="bigger();">커져라</button>
+        <button type="button" onclick="white();">하얘져라</button>
+        <button type="button" onclick="pink();">분홍분홍해져라</button>
+        <button type="button" onclick="getfirst();">첫 번째 div만 없어져라 </button>
+        <div class="first">가나다</div>
+        <div class="second">라마바</div>
+        <div class="third sizeup">사아자</div>
+
+    </body>
+</html>
