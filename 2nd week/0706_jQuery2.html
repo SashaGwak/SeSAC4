@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            function append() {
+                // jQuery에 creatElemt 없음
+                var li = document.createElement("li");
+                li.innerText="append";
+                // document.querySelector("ul").appendChild("li");
+                $( "ul" ).append(li);
+            }
+            function prepend() {
+                var li = document.createElement("li");
+                li.innerText="prepend";
+                $( "ul" ).prepend(li);
+            }
+            function before() {
+                // 중간에 값 넣고 싶은 경우
+                var li = document.createElement("li");
+                li.innerText="before";
+                $( "#li2" ).before(li);
+            }
+            function after() {
+                // 중간에 값 넣고 싶은 경우
+                var li = document.createElement("li");
+                li.innerText="after";
+                $( "#li2" ).after(li);
+            }
+            function search() {
+                // ** 한번 선택할 건데 계속 id 만드는 거는 좋지 않아서!! 
+                console.log($("#li2").parent());
+                // parent : 특정한 요소의 부모를 가져올 수 있음
+                console.log($("#li2").next());
+                // next : 특정한 요소의 바로 다음 형제를 가져올 수 있음
+                console.log($("#ul").children());
+                // children : 특정한 요소의 자식요소들 모두 가져옴
+            }
+            function removeElement() {
+                // remove : 특정한 요소 하나만 삭제
+                $("#li2").remove();
+            }
+            function emptyElemnt() {
+                // empty : 태그 내 모든 요소들을 삭제
+                $("ul").empty();
+            }
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li>1</li>
+            <li id="li2">2</li>
+            <li id="li3">3</li>
+        </ul>
+        <button type="button" onclick="append();">append</button>
+        <button type="button" onclick="prepend();">prepend</button>
+        <button type="button" onclick="before();">before</button>
+        <button type="button" onclick="after();">after</button>
+        <button type="button" onclick="search();">search</button>
+        <button type="button" onclick="removeElement();">remove</button>
+        <button type="button" onclick="emptyElemnt();">empty</button>
+    </body>
+</html>
