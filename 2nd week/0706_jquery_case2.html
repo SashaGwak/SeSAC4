@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="../jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+        <link rel="stylesheet" href="../jquery-ui-1.13.1.custom/jquery-ui.css">
+        <style>
+            .step1 {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+            }
+            .step2 {
+                width: 200px;
+                height: 200px;
+                background-color: orange;
+            }
+            .step3 {
+                width: 200px;
+                height: 200px;
+                background-color: yellow;
+            }
+            .step4 {
+                width: 200px;
+                height: 200px;
+                background-color: green;
+            }
+            .step5 {
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+            }
+            .step6 {
+                width: 200px;
+                height: 200px;
+                background-color: blueviolet;
+            }
+        </style>
+        <script>
+            // var count = 1;
+            // function changeColor() {
+            //     switch ( count ) {
+            //         case 1:
+            //             $("div").switchClass("step1","step2");
+            //             count++
+            //         break;
+            //         case 2:
+            //             $("div").switchClass("step2","step3");
+            //             count++
+            //         break;
+            //         case 3:
+            //             $("div").switchClass("step3","step4");
+            //             count++
+            //         break;
+            //         case 4:
+            //             $("div").switchClass("step4","step5");
+            //             count++
+            //         break;
+            //         case 5:
+            //             $("div").switchClass("step5","step6");
+            //             count++
+            //         break;
+            //     }
+            // }
+            var colors = ["step1", "step2", "step3", "step4", "step5", "step6"]
+            function changeColor() {
+                var now = $("div").attr("class");
+                var i = colors.indexOf(now);
+
+                if ( i == colors.length - 1) {
+                    $("div").switchClass("step6","step1");
+                }
+                $("div").switchClass(now, colors[i + 1]);
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="step1" onclick="changeColor()"></div>
+    </body>
+</html>
