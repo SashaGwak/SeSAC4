@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <style>
+            table {
+                width: 100%;
+                border: 1px solid black;
+                text-align: center;
+            }
+            tr, td {
+                border: 1px solid black;
+            }
+            button {
+                width: 50px;
+            }
+        </style>
+
+        <script>
+            var cnt = 1;
+            function writeNote() {
+                var name = document.getElementById("name").value;
+                var content = document.getElementById("content").value;
+                
+                var table = document.getElementById("guest_table");
+
+                // creatElement로 코드 생성
+                var garo = document.createElement("tr");
+                // creatElement("tr") -> <tr></tr> 생성
+
+                var kan1 = document.createElement("td");
+                kan1.innerText = cnt++;
+                // 만약 <div style='color:red'>A<div> 를 넣어준다면
+                // innerText : <div style='color:red'>A<div> 그대로 입력  
+                // innerHTML : 빨간 텍스트인 A가 나옴
+
+                var kan2 = document.createElement("td");
+                kan2.innerText = name;
+
+                var kan3 = document.createElement("td");
+                kan3.innerText = content;
+                
+                var kan4 = document.createElement("td");
+                kan4.innerText = timestamp();
+
+                // appendChlid로 자식요소로 추가 
+                garo.appendChild(kan1);
+                // kan1가 garo 태그 내부에 생성된다. 
+                garo.appendChild(kan2);
+                garo.appendChild(kan3);
+                garo.appendChild(kan4);
+                table.appendChild(garo);
+
+            }
+            function timestamp() {
+                var today = new Date();
+                today.setHours(today.getHours() + 9);
+                return today.toISOString().replace('T', ' ').substring(0, 19);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>새싹 방명록</h1>
+        <p>작성자 <input type="text" id="name"></p>
+        <p>내용 <input type="text" id="content"></p>
+        <button type="button" onclick="writeNote();">작성</button>
+        <hr>
+
+        <table id="guest_table">
+            <tr>
+                <td>번호</td>
+                <td>작성자</td>
+                <td>내용</td>
+                <td>작성일</td>
+            </tr>
+        </table>
+    </body> 
+</html>
