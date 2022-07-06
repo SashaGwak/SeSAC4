@@ -14,12 +14,16 @@
             }
             table {
                 cursor: pointer;
+                position: relative;
+                left: 30%;
+                bottom: 50px;
             }
             span {
                 color: green;
                 font-size: 40px;
                 position: relative;
-                left: 140px;
+                left: 47%;
+                bottom: 50px;
             }
             td:first-child {
                 color: red;
@@ -28,31 +32,32 @@
                 color:blue;
             }
         </style>
-        <script>
-            // $(".mini").click(function(){
-            //     alert($(this).text());
-            // })
+        <script>                
             window.onload = function onclick() {
                 $("table tr td").attr("onclick", "val()");
             }
             function val() {
-                alert($('this').text());
+                $("#table1 tr td").click(function() {
+                    var day = $(this).text();
+                    $("#day").val(day);
+                })
             }
-            // function val() {
-            //     // var value1 = $("table tr td").val()
-            //     var value1 = document.querySelector("table tr td").innerText
-            //     console.log(value1)
-            //     var value2 = $("#day").val(value1)
-            //     var input = $("#day")
-            //     input.value = value2
-            // }
-            // 작성 누르면 내용 추가 되는 함수
             function add() {
                 var day = $("#day").val();
                 var content = $("#content").val();
-                alert("메롱")
-            }
+                var cals = document.querySelectorAll("#table1 tr td");
 
+                for ( i = 12; i <= 42; i++) {
+                    var text = String(cals[i]);
+                    var check = text.includes(day);
+                    if ( check == True) {
+                        alert("대박")
+                    }
+                    // if (day == cals[i]) {
+                    //     alert("제발");
+                    // }
+                }
+            }
         </script>
     </head>
 
@@ -62,9 +67,9 @@
         <button type="button" onclick="add()">작성</button><br>
         <br>
         <span>2022년 7월</span>
-        <table>
+        <table id="table1">
             <tr>
-                <td class="mini">日</td>
+                <td>日</td>
                 <td>月</td>
                 <td>火</td>
                 <td>水</td>
@@ -82,7 +87,7 @@
                 <td>2</td>
                 
             </tr>
-            <tr class="cal">
+            <tr>
                 <td>3</td>
                 <td>4</td>
                 <td>5</td>
