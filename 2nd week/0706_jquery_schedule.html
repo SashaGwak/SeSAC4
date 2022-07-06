@@ -1,12 +1,19 @@
 <html>
     <head>
-        <script>
-
-        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="../jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+        <link rel="stylesheet" href="../jquery-ui-1.13.1.custom/jquery-ui.css">
         <style>
             td {
                 width: 70px;
                 height: 70px;
+                text-align: center;
+            }
+            td:hover {
+                font-size: 25px;
+            }
+            table {
+                cursor: pointer;
             }
             span {
                 color: green;
@@ -14,13 +21,50 @@
                 position: relative;
                 left: 140px;
             }
+            td:first-child {
+                color: red;
+            }
+            td:nth-child(7) {
+                color:blue;
+            }
         </style>
+        <script>
+            // $(".mini").click(function(){
+            //     alert($(this).text());
+            // })
+            window.onload = function onclick() {
+                $("table tr td").attr("onclick", "val()");
+            }
+            function val() {
+                alert($('this').text());
+            }
+            // function val() {
+            //     // var value1 = $("table tr td").val()
+            //     var value1 = document.querySelector("table tr td").innerText
+            //     console.log(value1)
+            //     var value2 = $("#day").val(value1)
+            //     var input = $("#day")
+            //     input.value = value2
+            // }
+            // 작성 누르면 내용 추가 되는 함수
+            function add() {
+                var day = $("#day").val();
+                var content = $("#content").val();
+                alert("메롱")
+            }
+
+        </script>
     </head>
+
     <body>
+        날짜 : <input type="text" id="day"><br>
+        내용 : <input type="text" id="content"><br>
+        <button type="button" onclick="add()">작성</button><br>
+        <br>
         <span>2022년 7월</span>
         <table>
             <tr>
-                <td>日</td>
+                <td class="mini">日</td>
                 <td>月</td>
                 <td>火</td>
                 <td>水</td>
@@ -38,7 +82,7 @@
                 <td>2</td>
                 
             </tr>
-            <tr>
+            <tr class="cal">
                 <td>3</td>
                 <td>4</td>
                 <td>5</td>
