@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+        <script>
+            function setValue() {
+                $( "#input1" ).val( "setting ");
+                // val() : 값 가져오기
+                // val("변경값") : 값 변경값으로 변경하기
+
+            }
+            function getValue() {
+                alert($( "#input1" ).val());
+            }
+            function changeStyle() {
+                // style 변경하기 --> .css("속성", "속성값"); 
+                $ ( "span" ).css("font-size", "25px");
+                $ ( "span" ).css("color", "orange");
+            }
+            function changeText() {
+                // text() : innerText와 같음
+                $ ( "span" ).text("안녕하세요")
+            }
+            function changeHTML() {
+                // html() : innerHTML과 같음 
+                $ ( "p" ).html("<h3>~~</h3>")
+            }
+            function changeAttri() {
+                // attr("속성", "속성값") : 속성 변경
+                $ ( "img" ).attr("width","500")
+            }
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="input1">
+        <button type="button" onclick="setValue();">setValue</button>
+        <button type="button" onclick="getValue();">getValue</button>
+        <br>
+        <span>안녕</span>
+        <img width="10" src="../1st week/cat4.jpg">
+        <button type="button" onclick="changeStyle();">changeStyle</button>
+        <button type="button" onclick="changeText();">changeText</button>
+        <button type="button" onclick="changeAttri();">changeAttri</button>
+        <p style="background-color: orange;">p 태그</p>
+        <button type="button" onclick="changeHTML();">changeHTML</button>
+    </body>
+</html>
