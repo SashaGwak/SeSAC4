@@ -32,39 +32,24 @@
                 color:blue;
             }
         </style>
-        <script>                
-            window.onload = function onclick() {
-                $("table tr td").attr("onclick", "val()");
-            }
-            function val() {
-                $("#table1 tr td").click(function() {
-                    var day = $(this).text();
-                    $("#day").val(day);
-                })
-            }
-            function add() {
-                var day = $("#day").val();
-                var content = $("#content").val();
-                var cals = document.querySelectorAll("#table1 tr td");
-
-                for ( i = 12; i <= 42; i++) {
-                    var text = String(cals[i]);
-                    var check = text.includes(day);
-                    if ( check == True) {
-                        alert("대박")
-                    }
-                    // if (day == cals[i]) {
-                    //     alert("제발");
-                    // }
-                }
-            }
+        <script>
+            // 되긴 되는데 정확히 모르겠는 날짜 선택 -> input 넣기 함수              
+            // window.onload = function onclick() {
+            //     $("table tr td").attr("onclick", "val()");
+            // }
+            // function val() {
+            //     $("#table1 tr td").click(function() {
+            //         var day = $(this).text();
+            //         $("#day").val(day);
+            //     })
+            // }
         </script>
     </head>
 
     <body>
         날짜 : <input type="text" id="day"><br>
         내용 : <input type="text" id="content"><br>
-        <button type="button" onclick="add()">작성</button><br>
+        <button type="button" id="button" onclick="add()">작성</button><br>
         <br>
         <span>2022년 7월</span>
         <table id="table1">
@@ -127,5 +112,29 @@
                 <td>31</td>
             </tr>
         </table>
+        <script>
+            // 캘린더 날짜 누르면 날짜 input 칸에 숫자 들어가기
+            var target;
+            
+            $("td").on("click", function (obj) {
+                target = obj.currentTartet; // 현재 선택한 태그 변수에 담기
+                // 현재 선택한 태그 target 변수에 담기 지금, td 값 나옴
+                $("#day").val($(obj.currentTarget).text());
+            });
+
+            function add() {
+                var para = document.createElement("p");
+                var content = $("#content").val();
+                para.innerText = content; 
+                $(event.target).append(para);
+            }
+            // function add() {
+            //     // 새로운 p 만들어 내용 입력값 받아오기
+
+            //     // target으로 이벤트 발생한 cell 지정해주기
+            //     $("td").on(day, function (obj) {
+            //         $(obj.currentTarget).append(para);
+            //     })
+        </script>
     </body>
 </html>
