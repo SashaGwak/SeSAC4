@@ -55,6 +55,7 @@
             }
             p {
                 text-align: center;
+                font-size: 5px;
             }
             td:hover {
                 font-size: 25px;
@@ -81,7 +82,7 @@
     <body>
         <div class="div1">
             날짜 :
-            <input type="text" id="day"/><br/>
+            <input type="text" id="day" readonly/><br/>
             내용 :
             <input type="text" id="content"/><br/>
             <button type="button" id="button" class="btn btn-primary" onclick="add()">작성</button><br/>
@@ -157,9 +158,11 @@
             </table>
         </div>
         <script>
-            // 캘린더 날짜 누르면 날짜 input 칸에 숫자 들어가기
             var target;
+            // 전역변수가 있기 때문에 target 값 저장
 
+
+            // obj는 클릭한 객체가 선택된다
             $("td").on("click", function (obj) {
                 target = obj.currentTarget; // 현재 선택한 태그 변수에 담기
                 // 현재 선택한 태그 target 변수에 담기 지금, td 값 나옴
@@ -167,10 +170,27 @@
             });
 
             function add() {
-                var para = document.createElement("p");
+                // 내 코드
+                // var para = document.createElement("p");
+                // var content = $("#content").val();
+                // para.innerText = content;
+                // $(target).append(para);
+
+                // 답안 코드 
                 var content = $("#content").val();
-                para.innerText = content;
-                $(target).append(para);
+                $(target).append("<p>" + content + "</p>")
+                // 굳이 createElement, innnerText 안쓰고 append만으로 가능
+
+                // 다른 방법 
+                // var ps = document.querySelectorAll("p");
+                // for (var i=0; i < ps.length; i++) {
+                //     console.log(ps[i]);
+                //     if ($(ps[i].text() == $("#day").val())) {
+                //         $(ps[i]).after(
+                //             "<h1>afr<h1>"
+                //         );
+                //     }
+                // }
             }
         </script>
         <script
