@@ -45,7 +45,12 @@
       .card-img {
         height: 350px;
       }
-      
+      .card {
+        background-color: rgb(81, 84, 87);
+      }
+      .card-text {
+        height: 45px;
+      }
     </style>
     <script>
     </script>
@@ -94,19 +99,19 @@
         <div class="col-1 text-light"></div>
         <div class="col-5 text-light" style="height: 500px;">
           <!-- 카드 1 -->
-          <div class="card bg-dark text-white">
-            <img style="margin-top: 100px;" src="./image/shark.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
+          <div class="card mb-3">
+            <img src="./image/shark.jpg" class="card-img" alt="...">
+            <div class="card-body text-light">
               <h5 class="card-title">SHARKFEST</h5>
               <p class="card-text fw-lighter">A great white shark swims in the Isla Guadalupe Biosphere Reserve off Baja California.</p>
             </div>
           </div>
         </div>
+        <!-- 카드 2 -->
         <div class="col-5 text-light">
-          <!-- 카드 2 -->
-          <div class="card bg-dark text-white">
-            <img style="margin-top: 100px;" src="./image/shark2.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
+          <div class="card mb-3">
+            <img src="./image/shark2.jpg" class="card-img" alt="...">
+            <div class="card-body text-light">
               <h5 class="card-title">Quiz</h5>
               <p class="card-text fw-lighter">How well do you actually know sharks?</p>
             </div>
@@ -116,7 +121,6 @@
       </div>
     <div class="row bg-black">
         <div class="col text-light"></div>
-    </div>
 
   </body>
 </html>
