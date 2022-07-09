@@ -7,15 +7,17 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.js"></script>
     <style>
       #logo {
-        position: absolute;
+        position: fixed;
         top: 5px;
         left: 5px;
       }
       ul {
-        position:relative;
+        position:fixed;
         z-index: 10;
+        right: 0%;
       }
       #bear {
+        /* display: inline-block; */
         position:relative;
         z-index: 0;
         top: -60px;
@@ -48,9 +50,22 @@
         <a class="nav-link text-white">login</a>
       </li>
     </ul>
-    <!-- 메인 페이지  -->
+    <!-- 메인 페이지(곰)  -->
     <div>
       <img id="bear" src="./image/bear.jpg" width=100%>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+      </div>
+      <div class="row">
+        <div class="col-8">col-8</div>
+        <div class="col-4">col-4</div>
+      </div>
     </div>
 
 
