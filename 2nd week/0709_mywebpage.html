@@ -5,19 +5,35 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.js"></script>
+    <script src="https://kit.fontawesome.com/72011d1401.js" crossorigin="anonymous"></script>
     <style>
       #national {
         width: 100%;
+        height: 100%;
         overflow: hidden;
       }
       #logo {
         position: fixed;
+        width: 10%;
         top: 5px;
         left: 5px;
       }
+      .nav {
+        top: 5px;
+        font-size: 1.2vw;
+      }
       #img_text_box {
         text-align: right;
-        padding-top: 15%;
+        padding-top: 10%;
+      }
+      #arrow{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 3vw;
+        color: white;
+        opacity: 0.5;
       }
       #img_text {
         color: white;
@@ -29,6 +45,10 @@
         /* width: 50%;
         height: 100%; */
         opacity: 0.6;
+      }
+      .text-blur-out {
+        -webkit-animation: text-blur-out 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        animation: text-blur-out 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
       }
       ul {
         position:fixed;
@@ -70,14 +90,38 @@
       .card-text {
         height: 45px;
       }
+      @-webkit-keyframes text-blur-out {
+        0% {
+          -webkit-filter: blur(0.01);
+                  filter: blur(0.01);
+        }
+        100% {
+          -webkit-filter: blur(12px) opacity(0%);
+                  filter: blur(12px) opacity(0%);
+        }
+      }
+      @keyframes text-blur-out {
+        0% {
+          -webkit-filter: blur(0.01);
+                  filter: blur(0.01);
+        }
+        100% {
+          -webkit-filter: blur(12px) opacity(0%);
+                  filter: blur(12px) opacity(0%);
+        }
+      }
     </style>
     <script>
+      function clickme() {
+        var location = document.querySelector("#national").offsetTop;
+        window.scrollTo({top:location, behavior:"smooth"});
+      }
     </script>
   </head>
   <body>
     <!-- 내비바 -->
     <ul class="nav nav-pills justify-content-end ">
-      <img id="logo" src="./image/logo_white.png" width=110px;>
+      <img id="logo" src="./image/logo_white.png">
       <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Topic</a>
         <ul class="dropdown-menu dropdown-menu-dark">
@@ -101,11 +145,14 @@
     <!-- 메인 페이지(곰)  -->
     <div class="img_item bg-black">
       <div id="img_text_box">
-        <span id="img_text">NATIONAL<br>GEOGRAPH</span>
+        <span id="img_text" class="text-blur-out">NATIONAL<br>GEOGRAPH<hr style="border: 0px;"></span>
+      </div>
+      <div id="arrow">
+      <i type="button" onclick="clickme()"class="fa-solid fa-angle-down"></i>
       </div>
     </div>
     <!-- 첫 col -->
-    <div id="national">
+    <div id="national" class="bg-black">
       <div class="row bg-black">
         <div class="col text-light">
           <!-- Laest stories -->
