@@ -6,12 +6,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.js"></script>
     <script src="https://kit.fontawesome.com/72011d1401.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&display=swap" rel="stylesheet">
     <style>
-      #national {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
       #logo {
         position: fixed;
         width: 10%;
@@ -22,18 +20,23 @@
         top: 5px;
         font-size: 1.2vw;
       }
+      .nav-link {
+        color: rgb(249, 217, 73);
+      }
+      .img_item {
+        width: 100%;
+        height: 60vw;
+        margin: 0 0;
+        
+        background-image: url('./image/bear.jpg');
+        background-repeat: no-repeat;
+        background-position: center 5px;
+        background-size: 100% auto;
+        background-size: cover;
+      }
       #img_text_box {
         text-align: right;
         padding-top: 10%;
-      }
-      #arrow{
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        font-size: 3vw;
-        color: white;
-        opacity: 0.5;
       }
       #img_text {
         color: white;
@@ -44,11 +47,25 @@
         font-size: 17vw;
         /* width: 50%;
         height: 100%; */
-        opacity: 0.6;
+        opacity: 0.9;
       }
       .text-blur-out {
         -webkit-animation: text-blur-out 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
         animation: text-blur-out 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+      }
+      #arrow{
+        display: inline-block;
+        width: 100%;
+        height: 2vw;
+        text-align: center;
+        font-size: 3vw;
+        color: white;
+        opacity: 0.5;
+      }
+      #national {
+        width: 100%;
+        height: 60vw;
+        overflow: hidden;
       }
       ul {
         position:fixed;
@@ -56,39 +73,38 @@
         font-family: Arial, Helvetica, sans-serif;
       }
       h1 {
-        width: auto;
-        height: auto;
+        margin: 0vw;
         display: inline-block;
+      }
+      #story {
+        text-align: center;
+        padding-bottom: 3vw;
       }
       #title {
         display: inline-block;
+        padding-top: 6vw;
       }
       .yellow_line {
         width: 100%;
         height: 5px;
         margin-bottom: 30px;
-      }
-      .img_item {
-        width: 100%;
-        height: 100%;
-        margin: 0 auto;
-
-        background-image: url('./image/bear.jpg');
-        background-repeat: no-repeat;
-        background-position: center 5px;
-        background-size: 100% auto;
-      }
-      #story {
-        text-align: center;
+        background-color: rgb(249, 217, 73);
       }
       .card-img {
-        height: 350px;
+        width: 100%;
+        height: 20vw;
+        max-height: fit-content;
       }
       .card {
         background-color: rgb(81, 84, 87);
+        height: auto;
+      }
+      .card-title {
+        font-size: 1.4vw;
       }
       .card-text {
-        height: 45px;
+        height: auto;
+        font-size: small;
       }
       @-webkit-keyframes text-blur-out {
         0% {
@@ -110,10 +126,103 @@
                   filter: blur(12px) opacity(0%);
         }
       }
+      #envir {
+        width: 100%;
+        height: 60vw;
+        display: block;
+
+      }
+      #envir_img_box {
+        margin: 0;
+        background: lightgray;
+        /* text-align: center; */
+        font-family: 'Cormorant SC', serif;
+        color: #fefefe;
+      }
+      .container {
+          position: relative;
+          width: 320px;
+          margin: 20px auto 0;
+          perspective: 1000px;
+      }
+      .carousel {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          animation: rotate360 30s infinite forwards linear;
+      }
+      .carousel__face {
+          position: absolute;
+          width: 300px;
+          height: 187px;
+          top: 40px;
+          left: 10px;
+          right: 10px;
+          background-size: cover;
+          box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.1);
+          display: flex;
+      }
+      span {
+          margin: auto;
+          font-size: 1rem;
+          color: white;
+          font-family: 'Cormorant SC', serif;
+      }
+      .carousel__face:nth-child(1) {
+          background-image: url("./image/envir1.jpg");
+          transform: rotateY(0deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(2) {
+          background-image: url();
+          transform: rotateY(40deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(3) {
+          background-image: url("./image/envir2.jpg");
+          transform: rotateY(80deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(4) {
+          background-image: url();
+          transform: rotateY(120deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(5) {
+          background-image: url("./image/envir3.jpg");
+          transform: rotateY(160deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(6) {
+          background-image: url();
+          transform: rotateY(200deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(7) {
+          background-image: url("./image/envir4.jpg");
+          transform: rotateY(240deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(8) {
+          background-image: url();
+          transform: rotateY(280deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(9) {
+          background-image: url("https://images.pexels.com/photos/1175135/pexels-photo-1175135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          transform: rotateY(320deg) translateZ(430px);
+      }
+
+      @keyframes rotate360 {
+          from {
+              transform: rotateY(0deg);
+          }
+          to {
+              transform: rotateY(-360deg);
+          }
+      }
+
     </style>
     <script>
-      function clickme() {
+      function clickdown() {
         var location = document.querySelector("#national").offsetTop;
+        window.scrollTo({top:location, behavior:"smooth"});
+      }
+      function clickEnvir() {
+        var location = document.querySelector("#envir").offsetTop;
         window.scrollTo({top:location, behavior:"smooth"});
       }
     </script>
@@ -123,17 +232,17 @@
     <ul class="nav nav-pills justify-content-end ">
       <img id="logo" src="./image/logo_white.png">
       <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Topic</a>
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Topic</a>
         <ul class="dropdown-menu dropdown-menu-dark">
           <li><a class="dropdown-item" href="#">ANIMALS</a></li>
-          <li><a class="dropdown-item" href="#">ENVIRONMENT</a></li>
+          <li><a class="dropdown-item" type="button" onclick="clickEnvir()" href="#">ENVIRONMENT</a></li>
           <li><a class="dropdown-item" href="#">HISTORY & CULTURE</a></li>
           <li><a class="dropdown-item" href="#">SCIENCE</a></li>
           <li><a class="dropdown-item" href="#">TRAVEL</a></li>
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Newsletters</a>
+        <a class="nav-link text-white" type="button" onclick="clickdown()" href="#">Stories</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="#">Shop</a>
@@ -148,7 +257,7 @@
         <span id="img_text" class="text-blur-out">NATIONAL<br>GEOGRAPH<hr style="border: 0px;"></span>
       </div>
       <div id="arrow">
-      <i type="button" onclick="clickme()"class="fa-solid fa-angle-down"></i>
+      <i type="button" onclick="clickdown()"class="fa-solid fa-angle-down"></i>
       </div>
     </div>
     <!-- 첫 col -->
@@ -158,39 +267,69 @@
           <!-- Laest stories -->
           <div id="story">
             <div id="title">
-            <h1><br><br>LATEST STORIES</h1><br>
-            <div class="yellow_line bg-warning"></div></div>
-            <p class="fw-lighter">Subscribe for full access to read stories from National Geographic.</p><br><br>
+            <h1>LATEST STORIES</h1>
+            <div class="yellow_line"></div></div>
+            <p class="fw-lighter">Subscribe for full access to read stories from National Geographic.</p>
           </div>
         </div>
     </div>
     <!-- 두번째 col(카드) -->
     <div class="row row-cols-4 bg-black">
-        <div class="col-1 text-light"></div>
-        <div class="col-5 text-light" style="height: 500px;">
+        <div class="col-1 col-xxl-2 text-light"></div>
+        <div class="col-5 col-xxl-4 text-light">
           <!-- 카드 1 -->
           <div class="card mb-3">
             <img src="./image/shark.jpg" class="card-img" alt="...">
-            <div class="card-body text-light">
+            <div class="card-body text-light ">
               <h5 class="card-title">SHARKFEST</h5>
-              <p class="card-text fw-lighter">A great white shark swims in the Isla Guadalupe Biosphere Reserve off Baja California.</p>
+              <p class="card-text fw-lighter d-none d-md-inline-block">A great white shark swims in the Isla Guadalupe Biosphere Reserve off Baja California.</p>
             </div>
           </div>
         </div>
         <!-- 카드 2 -->
-        <div class="col-5 text-light">
+        <div class="col-5 col-xxl-4 text-light">
           <div class="card mb-3">
             <img src="./image/shark2.jpg" class="card-img" alt="...">
             <div class="card-body text-light">
               <h5 class="card-title">Quiz</h5>
-              <p class="card-text fw-lighter">How well do you actually know sharks?</p>
+              <p class="card-text fw-lighter d-none d-md-inline-block">How well do you actually know sharks?</p>
             </div>
           </div>
         </div>
-        <div class="col-1 text-light"></div>
+        <div class="col-1 col-xxl-2 text-light"></div>
       </div>
     <div class="row bg-black">
         <div class="col text-light"></div>
     </div>
+  </div>
+    <!-- 세번째 col(shop) -->
+    <div id="envir" class="bg-black text-light">
+      <div class="row">
+        <div class="col">
+          <div id="story">
+            <div id="title" class="text-light">
+            <h1>ENVIRONMENT</h1>
+            <div class="yellow_line"></div></div>
+          </div>
+          <div id="evir_img_box">
+            <div class="container">
+              <div class="carousel">
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>What is a carbon footprint<br>—and how to measure yours</span></div>
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>California’s sweeping <br> new plastics law could be <br>a game changer</span></div>
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>Why seashells are getting harder<br> to find on the seashore
+                </span></div>
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>Five ways big brands can source materials more sustainably</span></div>
+                <div class="carousel__face"><span>ENVIRONMENT</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
