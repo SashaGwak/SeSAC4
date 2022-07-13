@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="49.50.164.134" id="6f60b212-0b63-48de-9d29-417cd8958fe3" port="22" customName="sesac4" nameFormat="CUSTOM" username="root" useOpenSSHConfig="true">
+        <option name="customName" value="sesac4" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>
