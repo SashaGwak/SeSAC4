@@ -1,5 +1,3 @@
-// Promise 
-// callback Hell로 인한 복잡도 증가와 예외처리의 어려움을 해결하기 위하여 사용 
 function promise1(flag){
     return new Promise( function(resolve, reject) {
         if(flag) {
