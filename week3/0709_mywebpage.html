@@ -136,7 +136,7 @@
       }
       #envir {
         width: 100%;
-        height: 60vw;
+        height: 70vw;
         display: block;
 
       }
@@ -149,9 +149,9 @@
       }
       .container {
           position: relative;
-          width: 20vw;
-          margin: auto auto auto;
-          perspective: 1500px;
+          width: 320px;
+          margin: 20px auto 0;
+          perspective: 1300px;
       }
       .carousel {
           position: absolute;
@@ -171,12 +171,25 @@
           box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.1);
           display: flex;
       }
+      /* 작은 애니메이션 보수 예정!!!  */
+      .carousel__face2 {
+          position: absolute;
+          width: 200px;
+          height: 150px;
+          top: 40px;
+          left: 10px;
+          right: 10px;
+          background-size: cover;
+          box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.1);
+          display: flex;
+      }
       span {
           margin: auto;
           font-size: 1rem;
           color: white;
           font-family: 'Cormorant SC', serif;
       }
+      /* lg 이상 애니메이션  */
       .carousel__face:nth-child(1) {
           background-image: url("./image/envir1.jpg");
           transform: rotateY(0deg) translateZ(430px);
@@ -213,7 +226,43 @@
           background-image: url("https://images.pexels.com/photos/1175135/pexels-photo-1175135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
           transform: rotateY(320deg) translateZ(430px);
       }
-
+      /* 0이상 lg 이하 애니메이션 */
+      .carousel__face2:nth-child(1) {
+          background-image: url("./image/envir1.jpg");
+          transform: rotateY(0deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(2) {
+          background-image: url();
+          transform: rotateY(40deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(3) {
+          background-image: url("./image/envir2.jpg");
+          transform: rotateY(80deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(4) {
+          background-image: url();
+          transform: rotateY(120deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(5) {
+          background-image: url("./image/envir3.jpg");
+          transform: rotateY(160deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(6) {
+          background-image: url();
+          transform: rotateY(200deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(7) {
+          background-image: url("./image/envir4.jpg");
+          transform: rotateY(240deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(8) {
+          background-image: url();
+          transform: rotateY(280deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(9) {
+          background-image: url("https://images.pexels.com/photos/1175135/pexels-photo-1175135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          transform: rotateY(320deg) translateZ(430px);
+      }
       @keyframes rotate360 {
           from {
               transform: rotateY(0deg);
@@ -331,7 +380,8 @@
             <div class="yellow_line"></div></div>
           </div>
           <div id="evir_img_box">
-            <div class="container">
+            <!-- size lg 이상일때 보여주는 돌려돌려 애니메이션 -->
+            <div class="container d-none d-lg-block">
               <div class="carousel">
                 <div class="carousel__face"><span></span></div>
                 <div class="carousel__face"><span>What is a carbon footprint<br>—and how to measure yours</span></div>
@@ -345,6 +395,20 @@
                 <div class="carousel__face"><span>ENVIRONMENT</span></div>
               </div>
             </div>
+            <!-- size 0 이상 lg 이하일때 보여주는 돌려돌려 애니메이션 -->
+            <div class="container d-none d-lg-none">
+                <div class="carousel">
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>What is a carbon footprint<br>—and how to measure yours</span></div>
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>California’s sweeping<br>new plastics law could be<br>a game changer</span></div>
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>Why seashells are getting harder<br>to find on the seashore</span></div>
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>Five ways big brands can source materials more sustainably</span></div>
+                    <div class="carousel__face2"><span>ENVIRONMENT</span></div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
