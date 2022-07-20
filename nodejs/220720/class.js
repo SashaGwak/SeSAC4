@@ -9,8 +9,27 @@ class Cat {
     }
 }
 
-var cat1 = new Cat('나비');
-var cat2 = new Cat('냥이');
-console.log(cat1); // Cat{}
-cat1.mew();
-cat2.mew();
+// var cat1 = new Cat('나비');
+// var cat2 = new Cat('냥이');
+// console.log(cat1);  // Cat{}
+// cat1.mew();
+// cat2.mew();
+
+class Car {
+    constructor( color ) {
+        this.color = color;
+        this.iswheel = true;
+        this.isDoor = true;
+    }
+    go(){
+        console.log('전진');
+    }
+    back(){
+        console.log('후진');
+    }
+    returnColor(){
+        console.log(this.color);
+    } 
+}
+
+module.exports = { Car }
