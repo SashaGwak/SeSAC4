@@ -24,5 +24,6 @@ async function exec(){
     await fs.writeFile("./write.txt", "안녕");
     await fs.copyFile("./write.txt", "./new2.txt");
 }
+// 생성 하는 중간에 복사되는 것을 방지하기 위하여 async await사용
 
 exec();
