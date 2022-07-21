@@ -54,7 +54,7 @@ function exec() {
         })
 }
 
-// async는 항상 function 만들어질때 앞에 붙음
+// async는 항상 function 만들어질때 앞에 붙으면서 프로미스를 반환한다 
 // 함수 안에서 비동기 함수를 실행할 때 await를 써줌
 // 비동기 함수를 동기식으로 작성할 수 있다
 async function exec(){
