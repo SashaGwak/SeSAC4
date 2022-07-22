@@ -5,7 +5,7 @@
       <paths name="sesac4">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/nodejs/" local="$PROJECT_DIR$/nodejs" web="/" />
           </mappings>
         </serverdata>
       </paths>
