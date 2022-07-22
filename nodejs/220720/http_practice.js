@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 
 const server = http.createServer( async function(req, res){
     try {
-        const data = await fs.readFile('/var/www/html/larva.html');
+        const data = await fs.readFile('./larva.html');
         res.writeHead(200);
         res.end(data);
     } catch(err) {
