@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="32c7e647-64d4-4ff9-8f70-3b8e903ccc98" name="sesac4" url="http://49.50.164.134">
-        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="49.50.164.134" port="22" sshConfigId="6f60b212-0b63-48de-9d29-417cd8958fe3" sshConfig="sesac4">
+        <fileTransfer accessType="SFTP" host="49.50.164.134" port="22" sshConfigId="6f60b212-0b63-48de-9d29-417cd8958fe3" sshConfig="sesac4">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
