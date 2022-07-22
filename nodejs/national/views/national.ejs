@@ -285,18 +285,7 @@
         opacity: 0.5;
       }
     </style>
-    <script>
-      function clickdown() {
-        var location = document.querySelector("#national").offsetTop;
-        window.scrollTo({top:location, behavior:"smooth"});
-      }
-      function clickEnvir() {
-        var location = document.querySelector("#envir").offsetTop;
-        window.scrollTo({top:location, behavior:"smooth"});
-      }
-    </script>
   </head>
-    <body>
     <!-- 내비바 -->
     <ul class="nav nav-pills justify-content-end ">
       <img id="logo" src="logo_white.png">
@@ -326,7 +315,7 @@
         <span id="img_text" class="text-blur-out">NATIONAL<br>GEOGRAPH<hr style="border: 0px;"></span>
       </div>
       <div id="arrow">
-      <i type="button" onclick="clickdown()" class="fa-solid fa-angle-down"></i>
+      <i type="button" onclick="clickdown()"class="fa-solid fa-angle-down"></i>
       </div>
     </div>
     <!-- 첫 col -->
@@ -423,5 +412,13 @@
         </div>
       </div>
       </footer>
+      <% function clickdown() { %>
+        <% var location = document.querySelector("#national").offsetTop; %>
+        <% window.scrollTo({top:location, behavior:"smooth"}); %>
+      <% } %> 
+      <% function clickEnvir() { %>
+        <% var location = document.querySelector("#envir").offsetTop; %>
+        <% window.scrollTo({top:location, behavior:"smooth"}); %>
+      <% } %>
   </body>
 </html>
