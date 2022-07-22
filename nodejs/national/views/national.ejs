@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATIONAL GEOGRAPHIC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.js"></script>
+    <script src="https://kit.fontawesome.com/72011d1401.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&display=swap" rel="stylesheet">
+    <style>
+      #logo {
+        position: fixed;
+        width: 10%;
+        top: 5px;
+        left: 5px;
+      }
+      .nav {
+        top: 5px;
+        font-size: 1.2vw;
+      }
+      .nav-link {
+        color: rgb(249, 217, 73);
+        position: relative;
+        z-index: 1000;
+      }
+      .img_item {
+        width: 100%;
+        height: 60vw;
+        margin: 0 0;
+        
+        background-image: url('bear.jpg');
+        background-repeat: no-repeat;
+        background-position: center 5px;
+        background-size: 100% auto;
+        background-size: cover;
+      }
+      #img_text_box {
+        text-align: right;
+        padding-top: 10%;
+      }
+      #img_text {
+        color: white;
+        font-weight: 530;
+        line-height: 16vw;
+        text-align: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 17vw;
+        /* width: 50%;
+        height: 100%; */
+        opacity: 0.9;
+      }
+      .text-blur-out {
+        -webkit-animation: text-blur-out 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        animation: text-blur-out 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+      }
+      #arrow{
+        display: inline-block;
+        width: 100%;
+        height: 2vw;
+        text-align: center;
+        font-size: 3vw;
+        color: white;
+        opacity: 0.5;
+      }
+      #national {
+        width: 100%;
+        height: 60vw;
+        overflow: hidden;
+        position: relative;
+        z-index: -100;
+      }
+      ul {
+        position:fixed;
+        right: 0%;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        margin: 0vw;
+        display: inline-block;
+      }
+      #story {
+        text-align: center;
+        padding-bottom: 3vw;
+      }
+      #title {
+        display: inline-block;
+        padding-top: 6vw;
+      }
+      .yellow_line {
+        width: 100%;
+        height: 5px;
+        margin-bottom: 30px;
+        background-color: rgb(249, 217, 73);
+      }
+      .card-img {
+        width: 100%;
+        height: 20vw;
+        max-height: fit-content;
+      }
+      .card {
+        background-color: rgb(81, 84, 87);
+        height: auto;
+      }
+      .card-title {
+        font-size: 1.4vw;
+      }
+      .card-text {
+        height: auto;
+        font-size: small;
+      }
+      @-webkit-keyframes text-blur-out {
+        0% {
+          -webkit-filter: blur(0.01);
+                  filter: blur(0.01);
+        }
+        100% {
+          -webkit-filter: blur(12px) opacity(0%);
+                  filter: blur(12px) opacity(0%);
+        }
+      }
+      @keyframes text-blur-out {
+        0% {
+          -webkit-filter: blur(0.01);
+                  filter: blur(0.01);
+        }
+        100% {
+          -webkit-filter: blur(12px) opacity(0%);
+                  filter: blur(12px) opacity(0%);
+        }
+      }
+      #envir {
+        width: 100%;
+        height: 70vw;
+        display: block;
+
+      }
+      #envir_img_box {
+        margin: 0;
+        background: lightgray;
+        /* text-align: center; */
+        font-family: 'Cormorant SC', serif;
+        color: #fefefe;
+      }
+      .container {
+          position: relative;
+          width: 320px;
+          margin: 20px auto 0;
+          perspective: 1300px;
+      }
+      .carousel {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          animation: rotate360 30s infinite forwards linear;
+      }
+      .carousel__face {
+          position: absolute;
+          width: 300px;
+          height: 187px;
+          top: 40px;
+          left: 10px;
+          right: 10px;
+          background-size: cover;
+          box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.1);
+          display: flex;
+      }
+      /* 작은 애니메이션 보수 예정!!!  */
+      .carousel__face2 {
+          position: absolute;
+          width: 200px;
+          height: 150px;
+          top: 40px;
+          left: 10px;
+          right: 10px;
+          background-size: cover;
+          box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.1);
+          display: flex;
+      }
+      span {
+          margin: auto;
+          font-size: 1rem;
+          color: white;
+          font-family: 'Cormorant SC', serif;
+      }
+      /* lg 이상 애니메이션  */
+      .carousel__face:nth-child(1) {
+          background-image: url("envir1.jpg");
+          transform: rotateY(0deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(2) {
+          background-image: url();
+          transform: rotateY(40deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(3) {
+          background-image: url("envir2.jpg");
+          transform: rotateY(80deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(4) {
+          background-image: url();
+          transform: rotateY(120deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(5) {
+          background-image: url("envir3.jpg");
+          transform: rotateY(160deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(6) {
+          background-image: url();
+          transform: rotateY(200deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(7) {
+          background-image: url("envir4.jpg");
+          transform: rotateY(240deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(8) {
+          background-image: url();
+          transform: rotateY(280deg) translateZ(430px);
+      }
+      .carousel__face:nth-child(9) {
+          background-image: url("https://images.pexels.com/photos/1175135/pexels-photo-1175135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          transform: rotateY(320deg) translateZ(430px);
+      }
+      /* 0이상 lg 이하 애니메이션 */
+      .carousel__face2:nth-child(1) {
+          background-image: url("envir1.jpg");
+          transform: rotateY(0deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(2) {
+          background-image: url();
+          transform: rotateY(40deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(3) {
+          background-image: url("envir2.jpg");
+          transform: rotateY(80deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(4) {
+          background-image: url();
+          transform: rotateY(120deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(5) {
+          background-image: url("./image/envir3.jpg");
+          transform: rotateY(160deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(6) {
+          background-image: url();
+          transform: rotateY(200deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(7) {
+          background-image: url("./image/envir4.jpg");
+          transform: rotateY(240deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(8) {
+          background-image: url();
+          transform: rotateY(280deg) translateZ(430px);
+      }
+      .carousel__face2:nth-child(9) {
+          background-image: url("https://images.pexels.com/photos/1175135/pexels-photo-1175135.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+          transform: rotateY(320deg) translateZ(430px);
+      }
+      @keyframes rotate360 {
+          from {
+              transform: rotateY(0deg);
+          }
+          to {
+              transform: rotateY(-360deg);
+          }
+      }
+      footer {
+        width: 100%;
+        height: 2vw;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+      }
+      #footer_text {
+        display: inline-block;
+        font-size: 1vw;
+        color: white;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+    <!-- 내비바 -->
+    <ul class="nav nav-pills justify-content-end ">
+      <img id="logo" src="logo_white.png">
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Topic</a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li><a class="dropdown-item" href="#">ANIMALS</a></li>
+          <li><a class="dropdown-item" type="button" onclick="clickEnvir()" href="#">ENVIRONMENT</a></li>
+          <li><a class="dropdown-item" href="#">HISTORY & CULTURE</a></li>
+          <li><a class="dropdown-item" href="#">SCIENCE</a></li>
+          <li><a class="dropdown-item" href="#">TRAVEL</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" type="button" onclick="clickdown()" href="#">Stories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white">login</a>
+      </li>
+    </ul>
+    <!-- 메인 페이지(곰)  -->
+    <div class="img_item bg-black">
+      <div id="img_text_box">
+        <span id="img_text" class="text-blur-out">NATIONAL<br>GEOGRAPH<hr style="border: 0px;"></span>
+      </div>
+      <div id="arrow">
+      <i type="button" onclick="clickdown()"class="fa-solid fa-angle-down"></i>
+      </div>
+    </div>
+    <!-- 첫 col -->
+    <div id="national" class="bg-black">
+      <div class="row bg-black">
+        <div class="col text-light">
+          <!-- Laest stories -->
+          <div id="story">
+            <div id="title">
+            <h1>LATEST STORIES</h1>
+            <div class="yellow_line"></div></div>
+            <p class="fw-lighter">Subscribe for full access to read stories from National Geographic.</p>
+          </div>
+        </div>
+    </div>
+    <!-- 두번째 col(카드) -->
+    <div class="row row-cols-4 bg-black">
+        <div class="col-1 col-xxl-2 text-light"></div>
+        <div class="col-5 col-xxl-4 text-light">
+          <!-- 카드 1 -->
+          <div class="card mb-3">
+            <img src="shark.jpg" class="card-img" alt="...">
+            <div class="card-body text-light ">
+              <h5 class="card-title">SHARKFEST</h5>
+              <p class="card-text fw-lighter d-none d-md-inline-block">A great white shark swims in the Isla Guadalupe Biosphere Reserve off Baja California.</p>
+            </div>
+          </div>
+        </div>
+        <!-- 카드 2 -->
+        <div class="col-5 col-xxl-4 text-light">
+          <div class="card mb-3">
+            <img src="shark2.jpg" class="card-img" alt="...">
+            <div class="card-body text-light">
+              <h5 class="card-title">Quiz</h5>
+              <p class="card-text fw-lighter d-none d-md-inline-block">How well do you actually know sharks?</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-1 col-xxl-2 text-light"></div>
+      </div>
+    <div class="row bg-black">
+        <div class="col text-light"></div>
+    </div>
+  </div>
+    <!-- 세번째 col(envir) -->
+    <div id="envir" class="bg-black text-light">
+      <div class="row">
+        <div class="col">
+          <div id="story">
+            <div id="title" class="text-light">
+            <h1>ENVIRONMENT</h1>
+            <div class="yellow_line"></div></div>
+          </div>
+          <div id="evir_img_box">
+            <!-- size lg 이상일때 보여주는 돌려돌려 애니메이션 -->
+            <div class="container d-none d-lg-block">
+              <div class="carousel">
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>What is a carbon footprint<br>—and how to measure yours</span></div>
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>California’s sweeping <br> new plastics law could be <br>a game changer</span></div>
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>Why seashells are getting harder<br> to find on the seashore
+                </span></div>
+                <div class="carousel__face"><span></span></div>
+                <div class="carousel__face"><span>Five ways big brands can source materials more sustainably</span></div>
+                <div class="carousel__face"><span>ENVIRONMENT</span></div>
+              </div>
+            </div>
+            <!-- size 0 이상 lg 이하일때 보여주는 돌려돌려 애니메이션 -->
+            <div class="container d-none d-lg-none">
+                <div class="carousel">
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>What is a carbon footprint<br>—and how to measure yours</span></div>
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>California’s sweeping<br>new plastics law could be<br>a game changer</span></div>
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>Why seashells are getting harder<br>to find on the seashore</span></div>
+                    <div class="carousel__face2"><span></span></div>
+                    <div class="carousel__face2"><span>Five ways big brands can source materials more sustainably</span></div>
+                    <div class="carousel__face2"><span>ENVIRONMENT</span></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <footer class="footer text-white">
+        <div id="footer_box" class="bg-black text-light">
+          <div class="row">
+          <div id="footer_text">
+          <p>Copyright © 1996-2015 National Geographic Society | © 2015-2022 National Geographic Partners, LLC. All rights reserved</p>
+        </div>
+        </div>
+      </div>
+      </footer>
+      <% function clickdown() { %>
+        <% var location = document.querySelector("#national").offsetTop; %>
+        <% window.scrollTo({top:location, behavior:"smooth"}); %>
+      <% } %> 
+      <% function clickEnvir() { %>
+        <% var location = document.querySelector("#envir").offsetTop; %>
+        <% window.scrollTo({top:location, behavior:"smooth"}); %>
+      <% } %>
+  </body>
+</html>
