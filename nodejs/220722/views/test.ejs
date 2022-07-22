@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS</title>
+</head>
+<body>
+    <!-- js도 써줄 수 있음 대신 줄마다 <% %> 로 감싸줘야함-->
+    <% for (var i = 0; i < 5; i++) { %> 
+            <% if (i == 3 ) { %>
+                <h3>hi..</h3>
+            <%} else {%>
+                <h1>Hi!</h1>
+            <% } %>
+    <% } %> 
+
+    <% var a = '환영합니다!'; %> 
+    <p><%=a%></p> 
+    <!-- =변수 : 변수의 값을 보여주는 것 -->
+
+    <%- include('test2.ejs') %> 
+    <!-- - include 다른 ejs 파일을 불러와서 보여줄 수 있음 -->
+    <!-- header나 footer 같은 재사용이 많이 되는 파일들을 호출해서 여러번 사용할 때 쓸 수 있음 -->
+</body>
+</html>
