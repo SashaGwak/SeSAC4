@@ -35,3 +35,8 @@ Node Package Manager
 ### static
 * 이미지, css 파일 및 javascript 파일과 같은 정적 파일 제공
 * Express에 있는 static 메소드를 이용해 미들웨어로 로드
+
+## 템플릿 엔진
+문법과 설정에 따라 파일을 html 형식으로 변환시키는 모듈 
+### ejs 
+Embedded javascript의 약자로, 자바스크립트 
