@@ -15,8 +15,13 @@ app.use('/abc', express.static('public'));
 
 // express 사용법
 app.get('/', (req,res) => {
+    var list = ['apple', 'peach']; // DB에서 정보를 가져온다면
+    res.render('test', {list: list});
+
     // render 사용할 때는 확장자 안적어도 된다
-    res.render("test");
+    // res.render("test", {a: 'aaa', b:'bbb'});
+    // back 정보 받는 법
+    // 1. 딕셔너리로 보낸다! -> front에서 변수로 사용할 수 있음
 })
 
 app.listen(port, () => {
