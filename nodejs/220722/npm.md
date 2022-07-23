@@ -2,9 +2,11 @@
 Node Package Manager
 노드 패키지를 관리해주는 틀
 
+
 ## 패키지
 * NPM에 업로드 된 노드 모듈
 * 패키지 간의 의존 관계가 존재
+
 
 ## NPM 사용하기 
 * npm init
@@ -16,10 +18,12 @@ Node Package Manager
     * 프로젝트에서 사용할 패키지를 설치하는 명령어
     * 설치된 패키지의 이름과 정보는 pakage.json의 dependencies에 입력된다
 
+
 ## package.json
 - 패키지들이 서로 의존되어 있어 문제가 발생할 수 있는데 이를 관리하기 위한 것 
 - 프로젝트에 대한 정보와 사용 중인 패키지 이름 및 버전 정보가 담겨있는 파일
 - dependencies에 모듈 설치 정보 기재되어 있어서 다른 컴퓨터로 옮기면 npm install 해주면 설치 가능! 
+
 
 ## Express 
 웹 서버를 생성하는 것과 관련된 기능을 담당하는 프레임워크 
@@ -36,6 +40,7 @@ Node Package Manager
         + delete : 보내는 객체를 삭제 
         + patch : 수정할 때 쓴다. put은 모두 덮어쓰며 수정되는 반면 patch는 내가 수정할 값(일부)만 바꿀 수 있음 
 
+
 ## 미들웨어
 * 요청이 들어옴에 따라 응답까지의 중간과정을 함수로 분리한 것 
 * 서버와 클라이언트를 이어주는 중간 작업 
@@ -45,8 +50,11 @@ Node Package Manager
         * Express에 있는 static 메소드를 이용해 미들웨어로 로드
         ```javascript
         app.use( express.static('public'));
+        <!-- 기본형 -->
         app.use('/static', express.static('public'));
+        <!-- 가상 경로 지정해주는 것 -->
         ```
+
 
 ## 템플릿 엔진
 문법과 설정에 따라 파일을 html 형식으로 변환시키는 모듈 
@@ -54,7 +62,8 @@ Node Package Manager
 * Embedded javascript의 약자로, 자바스크립트가 내장되어있는 html 파일
 * 확장자는 .ejs
 ```js
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); 
+// views 폴더에 ejs확장자 파일 사용! 
 ```
 ```ejs
 <% %> 
