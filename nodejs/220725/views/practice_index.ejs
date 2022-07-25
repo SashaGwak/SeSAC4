@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 실습</title>
+    <style>
+        label {
+            font-size: 1rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            margin: .4rem;
+        }
+        select {
+            margin: .4rem;
+        }
+    </style>
+</head>
+<body>
+    <form action="receive" method="POST">
+        <fieldset>
+            <legend>기본 정보</legend>
+            <label>
+                이름 : 
+                <input type="text" name="name" placeholder="이름" required> 
+            </label><br>
+
+            <label>
+                성별 
+                <input type='radio' name="gender" value="남" required>남
+                <input type='radio' name="gender" value="여" required>여
+            </label><br>
+
+            <label>
+                생년월일 
+                <select name="year">
+                    <%for (i = 1950; i<= 2022; i ++) {%>
+                        <option value=<%=i%>><%=i%></option>
+                    <%}%>
+                </select>년 
+                <select name="month">
+                    <%for (i = 1; i<= 12; i ++) {%>
+                        <option value=<%=i%>><%=i%></option>
+                    <%}%>
+                </select>월
+                <select name="day">
+                    <%for (i = 1; i<= 31; i ++) {%>
+                        <option value=<%=i%>><%=i%></option>
+                    <%}%>
+                </select>일
+
+                
+            </label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>좋아하는 것</legend>
+            <label>
+                관심사
+                <input type='checkbox' name="joy" value="여행">여행
+                <input type='checkbox' name="joy" value="패션">패션 
+                <input type='checkbox' name="joy" value="반려동물">반려동물 
+                <input type='checkbox' name="joy" value="음식">음식<br> 
+            </label>
+
+            <label>
+                지금 기분은 몇점?
+                <input type="range" name="happy">
+            </label><br>
+
+            <label>
+                좋아하는 색
+                <input type="color" name="color">
+            </label><br>
+        </fieldset>
+
+        <button>회원가입</button>
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>

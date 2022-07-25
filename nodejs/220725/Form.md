@@ -10,13 +10,13 @@
 {
     "employees": [
         {
-            'name' : 'Surim',
-            'lastName' : 'Son'
+            name : 'Surim',
+            lastName : 'Son'
         },
         {
-            'name': 'Someone',
-            'lastName' : 'Huh'
-            // 키 내용은 무조건 '' 안에 넣기 
+            name : 'Someone',
+            lastName : 'Huh'
+            // 키 내용은 그냥 쓰기
             // 값 내용은 문자만 '' 안에 넣기
         }
     ]
@@ -38,7 +38,28 @@
             res.render('index');
         });
         ```
-    * name 
-    * target
-    * method
-- 구성요소 : input, select, textare
+    * name -> 이름 정하는 건데, form에는 거의 이름을 안정함(여러개 있다면 식별 위하여)
+    * target -> 새창 열지, 지금 창에서 할지 정해줌
+    * method -> get, post 정해줌
+        - URL 치고 들어가면 자동으로 get으로 받아줌
+        - 하지만 새로고침은 매번 get으로 받는 것은 아님 
+        ```html
+        <form action="/receive" method="POST">
+            <button>전송</button>
+            <!-- 전송 눌러주면 post로 받아줌  -->
+        </form>
+        ```
+        ```js
+        app.post('/receive', function(req,res) {
+            console.log('receive-post')
+            // 전송 눌러주면 receive-post 출력됨 
+            res.render('index');
+        });
+        ```
+        * app.get으로 데이터 보내주기
+        ```js
+        ```
+        * app.post으로 데이터 보내주기
+        ```js 
+        ```
+- 구성요소 : input, select, textarea, button 등등 
