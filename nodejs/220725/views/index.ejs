@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index.ejs</title>
+    <title>input 정리</title>
 </head>
 <body>
-    <form action="/receive">
-        <!-- receive라는 경로에서 데이터를 받겠다는 의미 -->
+    <form action="receive" method="GET">
+        <fieldset>
+            <legend>이름/성별</legend>
+            <!-- fieldset 이름 지정해줄 수 있음 -->
+            <label>
+                이름 : 
+                <input type="text" name="name" placeholder="이름" required> 
+            </label><br>
+            <!-- 글자만 클릭해도 체크 할 수 있도록 만들어주는 방법 1 label으로 묶어서 사용할 수 있다 -->
+            <input type='radio' name="gender" id="gender_1" value="남">
+            <label for="gender_1">남</label>
+            <!-- 글자만 클릭해도 체크 할 수 있도록 만들어주는 방법 2 for 속성으로 연결 -->
+            <input type='radio' name="gender" id="gender_1" value="여">여<br> 
+        </fieldset>
+        <!-- fieldset은 form 태그 안에 잇는 애들을 그룹화 하고자 할 때 사용 -->
+        <fieldset>
+            <legend>스포츠, 연도</legend>
+            <input type='checkbox' name="sport" value="축구">축구
+            <input type='checkbox' name="sport" value="야구">야구 
+            <input type='checkbox' name="sport" value="농구">농구<br> 
+
+            <select name="year">
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+            </select>
+            <!-- select는 목록지가 너무 많을때 쓰면 좋음 -->
+            <!-- 그대신 option사이에만 값을 적어서는 데이터로 인식이 안되므로 value 값 적어줘야함 -->
+        </fieldset>
         <button>전송</button>
     </form>
 </body>
