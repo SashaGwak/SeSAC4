@@ -70,9 +70,15 @@
             id : form.id.value,
             pw : form.pw.value,
           }),
-        }).then((a) => {
-          console.log(a.json)
-        }); 
+        }).then(function(response) {
+          return response.json();
+        }).then(function(data) {
+          if (data.id === form.id.value && data.pw === form.pw.value) {
+            changeSuccess();
+          } else {
+            changefail();
+          }
+        });
       }
 
       function login_ajax() {
