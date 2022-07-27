@@ -49,11 +49,51 @@
             pw : form.pw.value
           }
         }).then((a) => {return a.data})
+        // a.data의 data가 res.send에서 정보 받아오는 포인트!!!
         .then((d) => {
           if (d.id === form.id.value && d.pw === form.pw.value) {
             changeSuccess();
           } else {
             changefail();
+          }
+        })
+      }
+      function login_fetch() {
+        var form = document.getElementById('form_info');
+        fetch('/test', {
+          method: 'POST',
+          headers: {
+            'Content-Type' : 'application/json',
+          },
+          body: JSON.stringify({
+            id : form.id.value,
+            pw : form.pw.value,
+          }),
+        }).then((a) => {return a.data})
+        .then((d) => {
+          if (d.id === form.id.value && d.pw === form.pw.value) {
+            changeSuccess();
+          } else {
+            changefail();
+          }
+        }); 
+      }
+      function login_ajax() {
+        const serverAddress = 'http://localhost:8080/login';
+        var form = $('#form_info').serialize();
+
+        $.ajax({
+          url:serverAddress,
+          type: 'POST',
+          dataType: 'json',
+          data: form,
+          success: function onData (data) {
+            // data 그 자체의 상태로는 Object값을 가짐
+            let datas = JSON.stringify(data);
+            console.log(datas);
+          },
+          error: function onError (error) {
+            alert('실패'+ error);
           }
         })
       }
@@ -76,7 +116,9 @@
           </div>
           <div id="login_process_box"> 
           </div>
-          <button type='button' onclick='login()' class="btn btn-primary">로그인</button>
+          <button type='button' onclick='login()' class="btn btn-primary">로그인(axios)</button>
+          <button type='button' onclick='login_fetch()' class="btn btn-primary">로그인(fetch)</button>
+          <button type='button' onclick='login_ajax()' class="btn btn-primary">로그인(ajax)</button>
     </form>
 </body>
 </html>
