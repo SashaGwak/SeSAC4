@@ -32,10 +32,6 @@ app.post('/login', function(req,res) {
         }
     })
 });
-app.post('/test', function(req,res){
-    console.log( req.body );
-    res.send("test");
-})
 
 app.listen(port, function() {
     console.log('Server port : ', port); 
