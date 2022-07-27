@@ -21,6 +21,7 @@
         }
         button {
             width: 500px;
+            margin: 2px;
         }
         #login_process_box {
           width: 500px;
@@ -91,6 +92,7 @@
             // data 그 자체의 상태로는 Object값을 가짐
             let datas = JSON.stringify(data);
             console.log(datas);
+            console.log(datas.id);
           },
           error: function onError (error) {
             alert('실패'+ error);
