@@ -56,12 +56,12 @@
             changeSuccess();
           } else {
             changefail();
-          }
-        })
+          };
+        });
       }
       function login_fetch() {
         var form = document.getElementById('form_info');
-        fetch('/test', {
+        fetch('/login', {
           method: 'POST',
           headers: {
             'Content-Type' : 'application/json',
@@ -70,34 +70,33 @@
             id : form.id.value,
             pw : form.pw.value,
           }),
-        }).then((a) => {return a.data})
-        .then((d) => {
-          if (d.id === form.id.value && d.pw === form.pw.value) {
-            changeSuccess();
-          } else {
-            changefail();
-          }
+        }).then((a) => {
+          console.log(a.json)
         }); 
       }
+
       function login_ajax() {
         const serverAddress = 'http://localhost:8080/login';
         var form = $('#form_info').serialize();
+        var inputID = $('#id_input').val();
+        var inputPW = $('#pw_input').val();
 
         $.ajax({
           url:serverAddress,
+          data:JSON.stringify(form),
+          // data 그 자체의 상태로는 Object값을 가짐
           type: 'POST',
-          dataType: 'json',
-          data: form,
           success: function onData (data) {
-            // data 그 자체의 상태로는 Object값을 가짐
-            let datas = JSON.stringify(data);
-            console.log(datas);
-            console.log(datas.id);
+            if (data.id === inputID && data.pw === inputPW){
+              changeSuccess();
+            } else {
+              changefail();
+            };
           },
           error: function onError (error) {
             alert('실패'+ error);
           }
-        })
+        });
       }
     </script>
 </head>
@@ -107,13 +106,13 @@
           <div class="mb-3 row">
             <label for="inputID" class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-10">
-              <input type="text" name="id" class="form-control" required>
+              <input type="text" name="id" class="form-control" id='id_input' required>
             </div>
           </div>
           <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" name='pw'class="form-control" id="inputPassword" required>
+              <input type="password" name='pw'class="form-control" id="pw_input" required>
             </div>
           </div>
           <div id="login_process_box"> 
