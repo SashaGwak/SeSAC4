@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>login</title>
     <style>
         form {
@@ -20,10 +22,45 @@
         button {
             width: 500px;
         }
+        #login_process_box {
+          width: 500px;
+          height: 30px;
+        }
+        p {
+          color: red;
+          text-align: center;
+        }
     </style>
+    <script>
+      function changeSuccess(){
+        $('#login_process_box').html("<p>로그인 성공</p>")
+      }
+      function changefail(){
+        $('#login_process_box').html("<p>아이디와 비밀번호를 확인해주세요</p>")
+      }
+      function login() {
+        var form = document.getElementById('form_info');
+        var space = document.getElementById('login_process_box');
+        axios({
+          method:'post',
+          url:'http://localhost:8080/login',
+          data: {
+            id : form.id.value,
+            pw : form.pw.value
+          }
+        }).then((a) => {return a.data})
+        .then((d) => {
+          if (d.id === form.id.value && d.pw === form.pw.value) {
+            changeSuccess();
+          } else {
+            changefail();
+          }
+        })
+      }
+    </script>
 </head>
 <body>
-    <form action="/" method="POST">
+    <form id="form_info">
         <h2>Login</h2>
           <div class="mb-3 row">
             <label for="inputID" class="col-sm-2 col-form-label">ID</label>
@@ -37,7 +74,9 @@
               <input type="password" name='pw'class="form-control" id="inputPassword" required>
             </div>
           </div>
-          <button class="btn btn-primary">로그인</button>
+          <div id="login_process_box"> 
+          </div>
+          <button type='button' onclick='login()' class="btn btn-primary">로그인</button>
     </form>
 </body>
 </html>
