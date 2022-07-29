@@ -19,29 +19,81 @@ function test2(req, res, next) {
 ## multer 
 * 파일 업로드를 위해 사용되는 미들웨어 
 * express로 서버를 구축할 때 가장 많이 사용되는 미들웨어
-```html
+    ### 1.하나의 파일 업로드 하는 방법(upload.single)
+    ```html
+        <!-- index.ejs -->
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <!-- 파일을 업로드하려면 무조건 enctype="multipart/form-data" 속성은 필수!!  -->
+            <input type="file" name="userfile">
+            <input type="text" name="name">
+            <button>업로드</button>
+        </form>
+    ```
+    ```js
+    // index.js 
+    const multer = require('multer');
+    const upload = multer({
+        dest: "uploads/"
+    });
+        // uploads/라는 경로에 파일을 올리겠다고 경로지정해주는 것
+        // uploads파일 만들어주기~~ 
+
+        // upload.single('userfile'): username으로 넘어온 파일 하나만 업로드하겠다! 
+        // userfile 은 file input의 name 값이어야해! 
+        app.post('/upload', upload.single('userfile'), function(req, res){
+        console.log(req.body);
+        console.log(req.file);
+        res.send('Upload');
+    }); 
+    ```
+
+
+    ### 2. 여러개 파일 한번에 업로드 하는 법(upload.array)
+    ```html
     <!-- index.ejs -->
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <!-- 파일을 업로드하려면 무조건 enctype="multipart/form-data" 속성은 필수!!  -->
-        <input type="file" name="userfile">
-        <input type="text" name="name">
+    <form action="/upload/array" method="POST" enctype="multipart/form-data">
+        <input type="file" name="userfile" multiple>
+        <!-- multiple은 다중파일 업로드를 할 수 있게 해준다 -->
         <button>업로드</button>
     </form>
-```
-```js
-// index.js 
-const multer = require('multer');
-const upload = multer({
-    dest: "uploads/"
-    // uploads/라는 경로에 파일을 올리겠다고 경로지정해주는 것
-    // uploads파일 만들어주기~~ 
+    ```
+    ```js
+    // index.js 
+    const multer = require('multer');
+    const upload = multer({
+        dest: "uploads/"
+    });
 
-    // upload.single('userfile'): username으로 넘어온 파일 하나만 업로드하겠다! 
-    // userfile 은 file input의 name 값이어야해! 
-    app.post('/upload', upload.single('userfile'), function(req, res){
-    console.log(req.body);
-    console.log(req.file);
-    res.send('Upload');
-})
-});
-```
+    // array를 이용하면 파일이 넘어오는 곳이 req.file이 아니라 **req.files**가 된다!! 
+    app.post('/upload/array', upload.array('userfile'), function(req, res){
+        console.log(req.body);
+        console.log(req.files);
+        res.send('Upload Array');
+    });
+    ```
+
+    ### 3. 여러개 파일 각자 올리는 방법(upload.fields)
+    ```html
+    <!-- index.ejs -->
+    <form action="/upload/fields" method="POST" enctype="multipart/form-data">
+        <input type="file" name="userfile">
+        <input type="file" name="userfile2">
+        <input type="file" name="userfile3">
+        <!-- 파일 name 공통되지 않도록 주의 !  -->
+        <button>업로드</button>
+    </form>
+    ```
+    ```js
+    // index.js 
+    const multer = require('multer');
+    const upload = multer({
+        dest: "uploads/"
+    });
+
+    // fields에서는 name값 지정해주는 게 달라서 주의 !! 여러개 올리는게 번거로워서 많이쓰진 않음 
+    app.post('/upload/fields', upload.fields([{name: 'userfile'}, {name: 'userfile2'}, {name: 'userfile3'}]), function(req, res){
+        console.log(req.body);
+        console.log(req.files);
+        res.send('Upload Fields');
+    })
+    ```
