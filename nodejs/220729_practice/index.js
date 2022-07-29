@@ -17,7 +17,7 @@ const upload = multer({
             filename(req, file, done){
                 // filename 파일명
                 const ext = path.extname(file.originalname);
-                done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+                done(null, req.body.name + ext);
             },
         }),
         // limits 파일 제한 
@@ -26,11 +26,11 @@ const upload = multer({
 });
 
 app.set('view engine', 'ejs');
-app.use( express.static('public'));
+app.use( express.static('uploads'));
 app.use( express.urlencoded({extended: true}))
 app.use( bodyParser.json());
 
-app.get('/', test, test2, function(req,res) {
+app.get('/', function(req,res) {
     res.render('index');
 });
 
@@ -38,34 +38,10 @@ app.get('/', test, test2, function(req,res) {
 app.post('/upload', upload.single('userfile'), function(req, res){
     console.log(req.body);
     console.log(req.file);
-    res.send('Upload');
+    // file 정보 쓰기 위해서 꼭 req.file render해주기! 
+    res.render('upload', req.file);
 })
 
-// array를 이용하면 파일이 넘어오는 곳이 req.file이 아니라 req.files가 된다!! 
-app.post('/upload/array', upload.array('userfile'), function(req, res){
-    console.log(req.body);
-    console.log(req.files);
-    res.send('Upload Array');
-})
-
-// fields에서는 name값 지정해주는 게 달라서 주의 !! 여러개 올리는게 번거로워서 많이쓰진 않음 
-app.post('/upload/fields', upload.fields([{name: 'userfile'}, {name: 'userfile2'}, {name: 'userfile3'}]), function(req, res){
-    console.log(req.body);
-    console.log(req.files);
-    res.send('Upload Fields');
-})
-
-function test(req, res, next) {
-    console.log('test 함수');
-    console.log(req.path);
-    req.aaa = "....";
-    next();
-}
-function test2(req, res, next) {
-    console.log('test2 함수');
-    console.log( req.aaa);
-    next();
-}
 
 app.listen(port, () => {
     console.log('Server Port : ', port);
