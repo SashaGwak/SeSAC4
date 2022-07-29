@@ -10,7 +10,6 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드 예시 - 동일한 로직 여러가지 방법으로 다뤄보기 1. callback](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220718/3_callback_hell.js)
         * [코드 예시 - 동일한 로직 여러가지 방법으로 다뤄보기 2. promise](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220718/promise_hell.js)
         * [코드 예시 - 동일한 로직 여러가지 방법으로 다뤄보기 3. async_await ](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/async_await.js)
-
 * module
     * [fs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/fs.js)
         * [코드 예시 - fs 비동기 실행]()
