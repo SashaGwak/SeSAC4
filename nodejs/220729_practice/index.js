@@ -17,7 +17,9 @@ const upload = multer({
             filename(req, file, done){
                 // filename 파일명
                 const ext = path.extname(file.originalname);
+                // 확장자만 추출
                 done(null, req.body.name + ext);
+                // 파일 이름 정해주기
             },
         }),
         // limits 파일 제한 
@@ -27,6 +29,7 @@ const upload = multer({
 
 app.set('view engine', 'ejs');
 app.use( express.static('uploads'));
+// static 파일 위치를 정해줘야함!! 
 app.use( express.urlencoded({extended: true}))
 app.use( bodyParser.json());
 
@@ -40,6 +43,7 @@ app.post('/upload', upload.single('userfile'), function(req, res){
     console.log(req.file);
     // file 정보 쓰기 위해서 꼭 req.file render해주기! 
     res.render('upload', req.file);
+    // res.render('upload', {filename: req.file.filename}); 으로 써줘도 됩니다!! 
 })
 
 
