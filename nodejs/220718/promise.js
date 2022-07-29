@@ -23,6 +23,7 @@ const func2 = new Promise( function ( resolve, rejects) {
 })
 
 // chaining이 가능 then 안에 then.. 
+// return 해준 값이 다음 then으로 들어가는 것!! 
 func2.then( value => {
     return value + "1";
 }).then(result => {
