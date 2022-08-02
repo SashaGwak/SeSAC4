@@ -172,6 +172,7 @@ Create, read, update, delete
     DELETE FROM user where id='jungkrat';
     ```
 
+
 ### 4. 공통으로 자주쓰는 명령어들
 * show databases; 
 * use 데이터베이스명;
