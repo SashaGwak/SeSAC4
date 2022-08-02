@@ -85,11 +85,11 @@
         drop table 테이블명; 
         ```
     - **TRUNCATE**
-    ```sql 
+        ```sql 
         Truncate TABLE user;
         -- truncate와 drop의 차이점은 
         -- drop은 테이블 아예 삭제, truncate는 테이블 초기화 
-    ```
+        ```
 
 ### 2. DML(Data Mainpulation Language)
 데이터베이스의 내부 데이터를 관리하기 위한 언어 
