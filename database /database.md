@@ -149,25 +149,27 @@ Create, read, update, delete
     ```
 
 ### 3. 실습해보기
+
+
     ```sql
-        -- 1. 모든 회원목록을 가져오는데, 이때 birtday 컬럼의 값을 기준으로 오름차순 정렬하여 가져오시오.
-        SELECT * FROM user ORDER BY birthday ASC;
-        -- 2. 회원 목록 중 gender 컬럼의 값이 “M” 인 회원목록을 가져오는데, 이때 name 컬럼의 값을 기준으로 내림차순 정렬하여 가져오시오.
-        SELECT * FROM user where gender='M' ORDER BY name DESC;
-        -- 3. 1990 년대에 태어난 회원의 id, name 컬럼을 가져와 목록으로 보여주시오.
-        SELECT id, name FROM user where birthday LIKE '199%';
-        -- 4. 6월 생 회원의 목록을 birthday 기준으로 오름차순 정렬하여 가져오시오.
-        SELECT * FROM user where birthday LIKE '%06%';
-        -- 5. gender 컬럼의 값이 “M” 이고, 1970 년대에 태어난 회원의 목록을 가져오시오.
-        SELECT * FROM user where gender='M' and birthday LIKE '197%';
-        -- 6. 모든 회원목록 중 age를 기준으로 내림차순 정렬하여 가져오는데, 그때 처음 3개의 레코드만 가져오시오.
-        SELECT * FROM user ORDER BY age DESC limit 3;
-        -- 7. 모든 회원 목록 중 나이가 25이상 50이하인 회원의 목록을 출력하시오.
-        SELECT * FROM user WHERE age between 25 and 50;
-        -- 8. id 컬럼의 값이 hong1234 인 레코드의 pw 컬럼의 값을 12345678 로 변경하시오.
-        Update user set pw='12345678' where id='hong1234';
-        -- 9. id 컬럼의 값이 jungkrat 인 레코드를 삭제하시오.
-        DELETE FROM user where id='jungkrat';
+    -- 1. 모든 회원목록을 가져오는데, 이때 birtday 컬럼의 값을 기준으로 오름차순 정렬하여 가져오시오.
+    SELECT * FROM user ORDER BY birthday ASC;
+    -- 2. 회원 목록 중 gender 컬럼의 값이 “M” 인 회원목록을 가져오는데, 이때 name 컬럼의 값을 기준으로 내림차순 정렬하여 가져오시오.
+    SELECT * FROM user where gender='M' ORDER BY name DESC;
+    -- 3. 1990 년대에 태어난 회원의 id, name 컬럼을 가져와 목록으로 보여주시오.
+    SELECT id, name FROM user where birthday LIKE '199%';
+    -- 4. 6월 생 회원의 목록을 birthday 기준으로 오름차순 정렬하여 가져오시오.
+    SELECT * FROM user where birthday LIKE '%06%';
+    -- 5. gender 컬럼의 값이 “M” 이고, 1970 년대에 태어난 회원의 목록을 가져오시오.
+    SELECT * FROM user where gender='M' and birthday LIKE '197%';
+    -- 6. 모든 회원목록 중 age를 기준으로 내림차순 정렬하여 가져오는데, 그때 처음 3개의 레코드만 가져오시오.
+    SELECT * FROM user ORDER BY age DESC limit 3;
+    -- 7. 모든 회원 목록 중 나이가 25이상 50이하인 회원의 목록을 출력하시오.
+    SELECT * FROM user WHERE age between 25 and 50;
+    -- 8. id 컬럼의 값이 hong1234 인 레코드의 pw 컬럼의 값을 12345678 로 변경하시오.
+    Update user set pw='12345678' where id='hong1234';
+    -- 9. id 컬럼의 값이 jungkrat 인 레코드를 삭제하시오.
+    DELETE FROM user where id='jungkrat';
     ```
 
 ### 4. 공통으로 자주쓰는 명령어들
