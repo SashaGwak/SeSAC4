@@ -86,7 +86,7 @@
         ```
     - **TRUNCATE**
         ```sql 
-        Truncate TABLE user;
+        truncate TABLE user;
         -- truncate와 drop의 차이점은 
         -- drop은 테이블 아예 삭제, truncate는 테이블 초기화 
         ```
