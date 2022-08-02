@@ -35,4 +35,7 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드 예시 - 파일 올리고 이미지 파일 렌더링하기 upload.ejs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220729_practice/views/upload.ejs)
 
 ## Database
-* [Database](https://github.com/SashaGwak/SeSAC4/blob/main/database%20/database.md)
+* [Database](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/database.md)
+* MySQL
+    * [MySQL 설치](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/mysql_install.md)
+    * [SQL-DDL,DML](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sql.md)
