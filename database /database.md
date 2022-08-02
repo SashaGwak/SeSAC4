@@ -2,19 +2,19 @@
 * 데이터를 저장하는 구조/자료의 모음 
 * 데이터의 집합소
 
-## 파일 시스템(File System)
+# 파일 시스템(File System)
 * DBMS를 사용하기 전 데이터의 저장을 위해 이용했던 시스템 
 * 단점 
     * 데이터 중복
     * 데이터 불일치 
 
-## DBMS 
+# DBMS 
 * DataBase Management System 
 * 파일 시스템이 가진 문제를 해결하기 위해 만들어진 것 
 * 데이터베이스에 접근하고 이를 관리하기 위해 존재한다 
 
 ## 관계형 데이터베이스 RDBMS(Relational DBMS)
-* MySQL, SQL Server, Oracle.. 
+* MySQL, SQL Server, Oracle, MariaDB, SYBASE ... 
 
 ## 데이터 베이스 용어
 * 열(Column, Attrribute, 속성)
@@ -27,9 +27,10 @@
         - Null 값과 중복값 불가
     2. 외래키(Foreign key)
         - 어떤 테이블의 기본키를 참조하는 속성
+        - 속성 이름은 달라도 되지만 그 안의 값은 동일해야 한다
 
 ## MySQL 
-* 가장 널리 사용되고 있는 관계형 데이터베이스 관리시스템
+* 가장 널리 사용되고 있는 관계형 데이터베이스 관리시스템(RDBMS)
 * 오픈 소스 
 * 윈도우, mac, 리눅스 등 다양한 운영체제에서 사용 가능
 
@@ -41,9 +42,10 @@
 ### 1. DDL(Data Definition Language)
 * 데이터베이스를 정의하는 언어 
     - **CREATE**
+        데이터 베이스, 테이블 등을 생성하는 역할
         * create database 이름 
         * 이미 생성한 database 이름을 바꾸는 것은 불가능! 
-    ```sql
+        ```sql
         -- 실행하면 커서나 선택해두고 커맨드+엔터 누르면 실행 
         CREATE DATABASE sesac;
         -- 새싹 데이터 베이스 생성 
@@ -57,16 +59,17 @@
             -- birthday date 는 날짜 형태로 지정해준 것 
         );
         CREATE TABLE member (
-        id varchar(20) not null primary key, 
-        name varchar(5) not null,
-        age INT(2),
-        gender varchar(2) not null, 
-        email varchar(50),
-        promition varchar(2) default 'x'
-    );
-    ```
+            id varchar(20) not null primary key, 
+            name varchar(5) not null,
+            age INT(2),
+            gender varchar(2) not null, 
+            email varchar(50),
+            promition varchar(2) default 'x'
+        );
+        ```
     - **ALTER**
-    ```sql 
+        테이블을 수정하는 역할
+        ```sql 
         -- 삭제 예시
         ALTER TABLE user drop column birthday;
         -- 생성 예시
@@ -74,12 +77,16 @@
         ALTER TABLE member add column interest varchar(100);
         -- 변경 예시
         ALTER TABLE member MODIFY column id varchar(10);
-        ALTER TABLE member MODIFY column gender varchar(2) not null default '여';
-    ```
+        ALTER TABLE member MODIFY column gender varchar(2) no null default '여';
+        ```
     - **DROP**
+        데이터 베이스, 테이블을 삭제하는 역할
+        ```sql 
+        drop table 테이블명; 
+        ```
     - **TRUNCATE**
     ```sql 
-        DROP TABLE user;
+        Truncate TABLE user;
         -- truncate와 drop의 차이점은 
         -- drop은 테이블 아예 삭제, truncate는 테이블 초기화 
     ```
@@ -140,55 +147,61 @@ CRUD
     ```
 
 ### 3. 실습해보기
-```SQL
--- 1. 모든 회원목록을 가져오는데, 이때 birtday 컬럼의 값을 기준으로 오름차순 정렬하여 가져오시오.
-SELECT * FROM user ORDER BY birthday ASC;
--- 2. 회원 목록 중 gender 컬럼의 값이 “M” 인 회원목록을 가져오는데, 이때 name 컬럼의 값을 기준으로 내림차순 정렬하여 가져오시오.
-SELECT * FROM user where gender='M' ORDER BY name DESC;
--- 3. 1990 년대에 태어난 회원의 id, name 컬럼을 가져와 목록으로 보여주시오.
-SELECT id, name FROM user where birthday LIKE '199%';
--- 4. 6월 생 회원의 목록을 birthday 기준으로 오름차순 정렬하여 가져오시오.
-SELECT * FROM user where birthday LIKE '%06%';
--- 5. gender 컬럼의 값이 “M” 이고, 1970 년대에 태어난 회원의 목록을 가져오시오.
-SELECT * FROM user where gender='M' and birthday LIKE '197%';
--- 6. 모든 회원목록 중 age를 기준으로 내림차순 정렬하여 가져오는데, 그때 처음 3개의 레코드만 가져오시오.
-SELECT * FROM user ORDER BY age DESC limit 3;
--- 7. 모든 회원 목록 중 나이가 25이상 50이하인 회원의 목록을 출력하시오.
-SELECT * FROM user WHERE age between 25 and 50;
--- 8. id 컬럼의 값이 hong1234 인 레코드의 pw 컬럼의 값을 12345678 로 변경하시오.
-Update user set pw='12345678' where id='hong1234';
--- 9. id 컬럼의 값이 jungkrat 인 레코드를 삭제하시오.
-DELETE FROM user where id='jungkrat';
-```
+    ```SQL
+    -- 1. 모든 회원목록을 가져오는데, 이때 birtday 컬럼의 값을 기준으로 오름차순 정렬하여 가져오시오.
+    SELECT * FROM user ORDER BY birthday ASC;
+    -- 2. 회원 목록 중 gender 컬럼의 값이 “M” 인 회원목록을 가져오는데, 이때 name 컬럼의 값을 기준으로 내림차순 정렬하여 가져오시오.
+    SELECT * FROM user where gender='M' ORDER BY name DESC;
+    -- 3. 1990 년대에 태어난 회원의 id, name 컬럼을 가져와 목록으로 보여주시오.
+    SELECT id, name FROM user where birthday LIKE '199%';
+    -- 4. 6월 생 회원의 목록을 birthday 기준으로 오름차순 정렬하여 가져오시오.
+    SELECT * FROM user where birthday LIKE '%06%';
+    -- 5. gender 컬럼의 값이 “M” 이고, 1970 년대에 태어난 회원의 목록을 가져오시오.
+    SELECT * FROM user where gender='M' and birthday LIKE '197%';
+    -- 6. 모든 회원목록 중 age를 기준으로 내림차순 정렬하여 가져오는데, 그때 처음 3개의 레코드만 가져오시오.
+    SELECT * FROM user ORDER BY age DESC limit 3;
+    -- 7. 모든 회원 목록 중 나이가 25이상 50이하인 회원의 목록을 출력하시오.
+    SELECT * FROM user WHERE age between 25 and 50;
+    -- 8. id 컬럼의 값이 hong1234 인 레코드의 pw 컬럼의 값을 12345678 로 변경하시오.
+    Update user set pw='12345678' where id='hong1234';
+    -- 9. id 컬럼의 값이 jungkrat 인 레코드를 삭제하시오.
+    DELETE FROM user where id='jungkrat';
+    ```
 
 ### 4. 공통으로 자주쓰는 명령어들
 * show databases; 
 * use 데이터베이스명;
 * show tables;
 * DESC 테이블명; 
-* show warnings; 
 
+
+### SQL 데이터 형식
 #### 1. 문자형 데이터 형식 
-* CHAR(n) : 고정길이 데이터타입(최대 255byte)- 지정된 길이보다 짧은 데이터 입력될 시 나머지 공간 공백으로 체워진다 
-* VARCHAR(n)
-* TINYTEXT
-* TEXT -> 일반적인 댓글 등
-* MEDIUMTEXT -> 일반적인 블로그 포스트 글
-* LONGTEXT -> 너무 커서 거의 사용하지 않음 
+* CHAR(n) : 고정길이 데이터타입(최대 255byte)
+    * 지정된 길이보다 짧은 데이터 입력될 시 나머지 공간 공백으로 체워진다 
+* VARCHAR(n) : 가변길이 데이터 타입(최대 65535byte)
+    * 지정된 길이보다 짧은 데이터 입력될 시 나머지 공간은 채우지 않는다
+* TINYTEXT : 문자열 데이터 타입(최대 255byte)
+* TEXT : 문자열 데이터 타입(최대 65535byte)
+    * 일반적인 댓글 등
+* MEDIUMTEXT : 문자열 데이터 타입(최대 16777215byte)
+    * 일반적인 블로그 포스트 글
+* LONGTEXT : 문자열 데이터 타입 (최대 4294967295byte)
+    * 너무 커서 거의 사용하지 않음 
 
 #### 2. 숫자형 데이터 형식 
-TINYINT
-SMALLINT
-MEDIUMINT
-INT -> 숫자는 길이 거의 고만고만해서 가장 많이 씀 
-BIGINT
-FLOAT
-DECIMAL
-DOUBLE
+* TINYINT
+* SMALLINT
+* MEDIUMINT
+* INT -> 숫자는 길이 거의 고만고만해서 가장 많이 씀 
+* BIGINT
+* FLOAT
+* DECIMAL
+* DOUBLE
 
-#### 3. 날자형 데이터 형식 
-DATA : 날짜(년도, 월, 일)
-TIME : 시간(시, 분, 초)
-DATETIME : 날짜와 시간 형태의 기간 표현
-TIMESTAMP : 날짜와 시간 형태의 기간 표현 - 시스템 변경시 자동으로 그 날짜와 시간이 저장 
-YEAR : 년도 표현 데이터 타입 
+#### 3. 날짜형 데이터 형식 
+* DATA : 날짜(년도, 월, 일)
+* TIME : 시간(시, 분, 초)
+* DATETIME : 날짜와 시간 형태의 기간 표현
+* TIMESTAMP : 날짜와 시간 형태의 기간 표현 - 시스템 변경시 자동으로 그 날짜와 시간이 저장 
+* YEAR : 년도 표현 데이터 타입 
