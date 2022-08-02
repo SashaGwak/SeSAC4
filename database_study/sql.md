@@ -1,45 +1,9 @@
-# 데이터베이스 
-* 데이터를 저장하는 구조/자료의 모음 
-* 데이터의 집합소
-
-# 파일 시스템(File System)
-* DBMS를 사용하기 전 데이터의 저장을 위해 이용했던 시스템 
-* 단점 
-    * 데이터 중복
-    * 데이터 불일치 
-
-# DBMS 
-* DataBase Management System 
-* 파일 시스템이 가진 문제를 해결하기 위해 만들어진 것 
-* 데이터베이스에 접근하고 이를 관리하기 위해 존재한다 
-
-## 관계형 데이터베이스 RDBMS(Relational DBMS)
-* MySQL, SQL Server, Oracle, MariaDB, SYBASE ... 
-
-## 데이터 베이스 용어
-* 열(Column, Attrribute, 속성)
-* 행(Recode, Tuple, 튜플)
-* 테이블(Table, Relation)
-* Key
-    데이터베이스에서 튜플을 찾거나 순서대로 정렬할 때 구분하고 정렬의 기준이 되는 속성 
-    1. 기본키(Primary key)
-        - 메인 키로 한 테이블에서 특정 튜플을 유일하게 구별할 수 있는 속성 
-        - Null 값과 중복값 불가
-    2. 외래키(Foreign key)
-        - 어떤 테이블의 기본키를 참조하는 속성
-        - 속성 이름은 달라도 되지만 그 안의 값은 동일해야 한다
-
-## MySQL 
-* 가장 널리 사용되고 있는 관계형 데이터베이스 관리시스템(RDBMS)
-* 오픈 소스 
-* 윈도우, mac, 리눅스 등 다양한 운영체제에서 사용 가능
-
-## SQL문
+# SQL문
 * Structured Query Language
 * 구조적 질의 언어 
 * 데이터베이스를 제어하고 관리할 수 있는 언어 
 
-### 1. DDL(Data Definition Language)
+## 1. DDL(Data Definition Language)
 * 데이터베이스를 정의하는 언어 
     - **CREATE**
         데이터 베이스, 테이블 등을 생성하는 역할
@@ -91,7 +55,7 @@
         -- drop은 테이블 아예 삭제, truncate는 테이블 초기화 
         ```
 
-### 2. DML(Data Mainpulation Language)
+## 2. DML(Data Mainpulation Language)
 데이터베이스의 내부 데이터를 관리하기 위한 언어 
 **CRUD**
 대부분의 컴퓨터 소프트 웨어가 가지는 기본적인 처리기능
@@ -148,7 +112,7 @@ Create, read, update, delete
     DELETE FORM user WHERE id='id2';
     ```
 
-### 3. 실습해보기
+## 3. 실습해보기
     ```sql
     -- 1. 모든 회원목록을 가져오는데, 이때 birtday 컬럼의 값을 기준으로 오름차순 정렬하여 가져오시오.
     SELECT * FROM user ORDER BY birthday ASC;
@@ -170,15 +134,15 @@ Create, read, update, delete
     DELETE FROM user where id='jungkrat';
     ```
 
-### 4. 공통으로 자주쓰는 명령어들
+## 4. 공통으로 자주쓰는 명령어들
 * show databases; 
 * use 데이터베이스명;
 * show tables;
 * DESC 테이블명; 
 
 
-### SQL 데이터 형식
-#### 1. 문자형 데이터 형식 
+## SQL 데이터 형식
+### 1. 문자형 데이터 형식 
 * CHAR(n) : 고정길이 데이터타입(최대 255byte)
     * 지정된 길이보다 짧은 데이터 입력될 시 나머지 공간 공백으로 체워진다 
 * VARCHAR(n) : 가변길이 데이터 타입(최대 65535byte)
@@ -191,7 +155,7 @@ Create, read, update, delete
 * LONGTEXT : 문자열 데이터 타입 (최대 4294967295byte)
     * 너무 커서 거의 사용하지 않음 
 
-#### 2. 숫자형 데이터 형식 
+### 2. 숫자형 데이터 형식 
 * TINYINT
 * SMALLINT
 * MEDIUMINT
@@ -201,7 +165,7 @@ Create, read, update, delete
 * DECIMAL
 * DOUBLE
 
-#### 3. 날짜형 데이터 형식 
+### 3. 날짜형 데이터 형식 
 * DATA : 날짜(년도, 월, 일)
 * TIME : 시간(시, 분, 초)
 * DATETIME : 날짜와 시간 형태의 기간 표현
