@@ -149,8 +149,6 @@ Create, read, update, delete
     ```
 
 ### 3. 실습해보기
-
-
     ```sql
     -- 1. 모든 회원목록을 가져오는데, 이때 birtday 컬럼의 값을 기준으로 오름차순 정렬하여 가져오시오.
     SELECT * FROM user ORDER BY birthday ASC;
@@ -171,7 +169,6 @@ Create, read, update, delete
     -- 9. id 컬럼의 값이 jungkrat 인 레코드를 삭제하시오.
     DELETE FROM user where id='jungkrat';
     ```
-
 
 ### 4. 공통으로 자주쓰는 명령어들
 * show databases; 
