@@ -16,8 +16,8 @@
     ```
 
 ## MySQL 설치 - Linux(server)
-    ```bash
-    $ apt-get update
-    $ sudo apt-get install mysql-server
-    $ mysql -u root -p
-    ```
+```bash
+$ apt-get update
+$ sudo apt-get install mysql-server
+$ mysql -u root -p
+```
