@@ -2,10 +2,6 @@ const express = require('express');
 const app = express();
 const port = 8080;
 const bodyParser = require('body-parser');
-const multer = require('multer');
-const upload = multer({
-    dest: "pulic/"
-})
 
 app.set('view engine', 'ejs');
 app.use( express.static('public')); 
