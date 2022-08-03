@@ -11,6 +11,7 @@ app.use( bodyParser.json());
 const Router  = require('./routes');
 // router를 정의해주는 파일명을 index.js로 만들었기 때문에 파일명만 써도 router를 가져올 수 있음 
 app.use('/user', Router);
+// 경로의 시작이 /user와 동일하면 Router를 찾아감 
 // 만약 '/'경로 들어오면 router 정보 가져오세용
 
 /* 만약

@@ -4,6 +4,7 @@ const User = require('../model/User');
 exports.index = (req,res) => {
     res.render('index');
 }
+// 함수를 정의할 때부터 얘는 내보낼 애라고 지정해주는 것 
 exports.register = (req, res) => {
     res.render('register');
 }
@@ -28,7 +29,6 @@ exports.post_login = async (req, res) => {
     }
     console.log(data);
 }
-// 함수를 정의할 때부터 얘는 내보낼 애라고 지정해주는 것
 /*
 function get_user() {
     res.send('Get User');
