@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-    <form id="form_info" action="/user/register" method="POST">
+    <form id="form_info" action="/user/register" method="POST" enctype="multipart/form-data">
         <!-- 경로 주의!! -->
         <fieldset>
             <h2>회원가입</h2>
@@ -56,6 +56,8 @@
                 나이
                 <input type="text" name="age" placeholder="나이" required> 
             </label><br>
+
+            <input type="file" name="userfile">
         </fieldset>
         
         <button>회원가입</button>

@@ -13,6 +13,7 @@ userRouter.post('/register', user.post_register);
 userRouter.get('/login', user.login);
 userRouter.post('/login', user.post_login);
 
+userRouter.get('/profile', upload.single('userfile'), user.profile);
 
 module.exports = userRouter; 
 // index.js파일에서 router를 모르기때문에 내보내서 알려줘야함 
