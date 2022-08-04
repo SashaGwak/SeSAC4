@@ -1,3 +1,3 @@
-aa//aa//aa//aa
-bb//bb//bb//bb
-cc//cc//cc//cc
+aa//aa//aa//aa//aa.jpg
+bb//bb//bb//bb//bb.jpg
+cc//cc//cc//cc//cc.jpg

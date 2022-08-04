@@ -1,10 +1,12 @@
 const fs = require('fs').promises;
 
 
-exports.post_user = function(data){
+exports.post_user = function(data, file){
     console.log(data);
+    console.log(file);
     const {id, pw, name, age} = data; 
-    fs.appendFile('./info.txt', id + '//' + pw + '//' + name + '//' + age + '\n', function(err) {
+    const {filename} = file; 
+    fs.appendFile('./info.txt', id + '//' + pw + '//' + name + '//' + age + '//'+ filename + '\n', function(err) {
         if (err) throw err;
         console.log('회원가입 정보 추가 오류')
     })

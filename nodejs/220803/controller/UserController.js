@@ -10,7 +10,7 @@ exports.register = (req, res) => {
 }
 
 exports.post_register = async (req, res) => {
-    var data = await User.post_user(req.body);
+    var data = await User.post_user(req.body, req.file);
     console.log(req.file);
     res.send('회원가입이 완료되었습니다!')
 }
@@ -33,10 +33,11 @@ exports.post_login = async (req, res) => {
     for (i=0; i < info.length; i ++) {
         var data = info[i];
         var user = data.split('//');
-        console.log(user);
+        console.log(data);
 
         if (user[0] == req.body.id && user[1] == req.body.pw){
-            res.render('profile', {id: req.body.id});
+            console.log(user);
+            res.render('profile', {id: user[0], pw: user[1], name:user[2], age:user[3], filename:user[4]});
             break;
         };
         if (i == info.length -1) {
