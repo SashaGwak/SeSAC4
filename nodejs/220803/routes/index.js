@@ -6,6 +6,7 @@ const user = require('../controller/UserController');
 // 각각의 객체 가져와도 되지만 user.객체명으로 써서 여러 객체 사용할 수 있게 하기 위해
 const multer = require('multer');
 const path = require('path');
+const app = express();
 const storage = multer.diskStorage({
     destination(req, file, cb){
         cb(null, 'public/')
