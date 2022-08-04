@@ -9,6 +9,17 @@ app.set('view engine', 'ejs');
 // serve static files
 app.use(express.static('public'));
 app.use('/user', express.static(path.join(__dirname, '/public')));
+/* path.join([...paths])
+
+사용 예시
+path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
+Returns: '/foo/bar/baz/asdf' 
+
++ path를 쓰는 이유는 /에 상관없이 주소조합을 도와줌
+
+__filename : 현재 실행중인 파일 경로
+__dirname : 현재 실행중인 폴더 경로 
+*/
 
 app.use( express.urlencoded({extended: true}));
 app.use( bodyParser.json());
