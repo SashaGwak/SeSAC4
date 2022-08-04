@@ -33,6 +33,8 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드 예시 - 파일 올리고 이미지 파일 렌더링 하기 index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220729_practice/index.js)
         * [코드 예시 - 파일 올리고 이미지 파일 렌더링하기 index.ejs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220729_practice/views/index.ejs)
         * [코드 예시 - 파일 올리고 이미지 파일 렌더링하기 upload.ejs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220729_practice/views/upload.ejs)
+* MVC 구조 
+    * [MVC 구조](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/mvc.md)
 
 ## Database
 * [Database](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/database.md)
