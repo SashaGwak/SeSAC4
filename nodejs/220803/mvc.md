@@ -14,7 +14,7 @@
     * 설계 단계가 복잡하다 
     * 설계시간이 오래 걸린다 
     * 클래스가 많아진다
-* MVC 흐름 
+### MVC 흐름 
 ![image](https://user-images.githubusercontent.com/92668655/182850607-2ba3d4ec-73dd-45f7-bcec-8284cdaa6d41.png)
 ### Controller 
 view와 Model을 연결해주는 부분 
