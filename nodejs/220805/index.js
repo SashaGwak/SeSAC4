@@ -12,7 +12,7 @@ app.use( express.urlencoded({extended: true}));
 app.use( bodyParser.json());
 
 const router  = require('./routes');
-app.use('/', router);
+app.use('/visitor', router);
 
 app.listen(port, () => {
     console.log('Server Port : ', port);

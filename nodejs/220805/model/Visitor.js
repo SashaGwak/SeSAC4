@@ -8,11 +8,38 @@ const cnn = mysql.createConnection({
     // 하나의 DB만 연결가능하므로 DB명 명시해줘야함 
 })
 
-exports.get_visitors = () => {
+exports.get_visitors = (cb) => {
     // DB.query -> SQL문으로 DB 다뤄줌 
     cnn.query('SELECT * FROM visitor', (err, rows) => {
         if (err) throw err;
-        // 정상적으로 실행되면 rows
+        // 정상적으로 실행되면 rows에 데이터 모두 담긴다
         console.log(rows);
+        cb(rows);
     });
+}
+
+exports.insert = (name, comment, cb) => {
+    var sql = "INSERT INTO visitor(name, comment) values('"+ name + "', '" + comment + "')"
+    // '""'으로 두번 감싸줌 주의!!! 
+    cnn.query( sql, (err,rows) => {
+        if (err) throw err;
+
+        console.log(rows);
+        cb(rows.insertId);
+        /*
+        **console.log(rows) 출력값 
+
+        OkPacket {
+        fieldCount: 0,
+        affectedRows: 1,
+        insertId: 2,
+        serverStatus: 2,
+        warningCount: 0,
+        message: '',
+        protocol41: true,
+        changedRows: 0
+        } */
+        // 여기서 필요한 정보는 insertId -> primary key 값이 나옴
+        // DB에서 자동으로 생성되서 가져오는 정보기 때문에 inserId로 확인해줘야함
+    })
 }
