@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="/dist/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
         fieldset {
             width: 300px;
@@ -22,22 +25,44 @@
             text-align: center;
         }
         table, tr, td {
-            width: 300px;
-            height: 20px;
+            width: 500px;
             border: 1px solid black;
         }
     </style>
+    <script>
+        function writeComment(){
+            var form = document.getElementById('form_comment');
+            axios({
+                method: 'post',
+                url: 'http://localhost:8080/visitor/write',
+                data:{
+                    name: form.name.value,
+                    comment: form.comment.value
+                }
+            })
+            .then((rep) => {return rep.data})
+            .then((data) => {
+                // data = {id : 8} 형태 
+
+                let html = "<tr><td>" + data.id + "</td><td>" + form.name.value + "</td><td>" + form.comment.value + "</td><tr>";
+                
+                $('table').append(html);
+                // append는 text아니고 html로 넣어줌 
+            });
+        }
+    </script>
 </head>
 <body>
-    <form action="/login" method="post">
+    <form id="form_comment">
         <fieldset>
-            <legend>방명록 등록
-            </legend>
+            <legend>방명록 등록</legend>
                 <label>
                     <input type="text" name="name" placeholder="사용자 이름"><br>
-                    <input type="text" naem="message" placeholder="방명록"><br>
+                    <input type="text" name="comment" placeholder="방명록"><br>
 
-                    <button>등록</button>
+                <div id="button-group">
+                    <button type="button" onclick="writeComment();">등록</button>
+                </div>
                 </label>
         </fieldset>
     </form>
@@ -50,6 +75,18 @@
             <td>수정</td>
             <td>삭제</td>
         </tr>
+        <%
+            for (let i = 0; i < data.length; i++){
+        %> 
+            <tr>
+            <td><%=data[i].id%></td>
+            <td><%=data[i].name%></td>
+            <td><%=data[i].comment%></td>
+            </tr>
+            <%
+            } 
+            %> 
     </table>
+
 </body>
 </html>
