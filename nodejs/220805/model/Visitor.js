@@ -43,3 +43,30 @@ exports.insert = (name, comment, cb) => {
         // DB에서 자동으로 생성되서 가져오는 정보기 때문에 inserId로 확인해줘야함
     })
 }
+
+exports.get_visitor = (id, cb) => {
+    // id 컬럼의 값이 id 인 데이터를 1개만 검색한다
+    // SQL문 ``에 넣음에 주의!! 
+    cnn.query(`SELECT * from visitor where id = ${id} limit 1` , (err, rows) => {
+        if (err) throw err; 
+
+        cb(rows);
+    })
+}
+
+exports.update = (data, cb) => {
+    let sql = `update visitor set name='${data.name}', comment='${data.comment}' where id=${data.id}` ; 
+    cnn.query(sql, (err, rows) => {
+        if (err) throw err;
+
+        cb(rows); 
+    })
+}
+
+exports.delete = (id, cb) => {
+    cnn.query(`delete from visitor where id=${id}`, (err, rows) => {
+        if (err) throw err;
+
+        cb(rows); 
+    })
+}

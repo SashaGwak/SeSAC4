@@ -29,6 +29,7 @@
         }
     </style>
     <script>
+        // 방명록 작성하는 코드 
         function writeComment(){
             var form = document.getElementById('form_comment');
             axios({
@@ -43,12 +44,82 @@
             .then((data) => {
                 // data = {id : 8} 형태 
 
-                let html = "<tr><td>" + data.id + "</td><td>" + form.name.value + "</td><td>" + form.comment.value + "</td><tr>";
+                let html = "<tr id='tr_'" + data.id + "'><td>" + data.id + "</td><td>" + form.name.value + "</td><td>" + form.comment.value + "</td><td><button type='button' onclick='editComment(" +data.id + ");'>수정</button></td>" + "<td><button type='button' onclick='deleteComment('" + data.id + ');">삭제</buttton></td></tr>' ;
                 
                 $('table').append(html);
                 // append는 text아니고 html로 넣어줌 
             });
         }
+
+        function deleteComment(id) {
+            axios({
+                method:'delete',
+                url:'http://localhost:8080/visitor/delete',
+                data: {id: id},
+            }).then((rep) => {return rep.data;})
+            .then((data) => {
+                alert(data);
+                var tr = document.getElementById('tr_'+ id);
+                $(tr).remove();
+
+                // $('#tr_'+id).remove();
+                // 얘도 똑같은 의미
+            });
+        }
+
+        function editComment(id) {
+            axios({
+                method: 'get', 
+                url: 'http://localhost:8080/visitor/get?id=' + id
+            })
+            .then((rep) => { return rep.data })
+            .then((data) => {
+                console.log(data.result);
+
+                var form = document.getElementById('form_comment');
+                form.name.value = data.result.name; 
+                form.comment.value = data.result.comment; 
+
+                var html =
+                "<button type='button' onclick='editDo(" + id + "); '>수정</button>" + 
+                "<button type='button' onclick='editCancel();'>취소</button>";
+
+                document.getElementById("button-group").innerHTML = html;
+            });
+            }
+
+            function editCancel(){
+                var form = document.getElementById('form_comment');
+                form.reset(); 
+
+                var html = "<button type='button' onclick='writeCommentl();'>등록</button>";
+                document.getElementById('button-group').innerHTML = html;
+            }
+
+            function editDo(id) {
+                var form = document.getElementById('form_comment');
+                axios({
+                    method: 'patch', 
+                    url: 'http://localhost:8080/visitor/edit',
+                    data: {
+                        id: id,
+                        name: form.name.value,
+                        comment: form.comment.value
+                        // 어떤게 수정될지 모르니까 네임과 코멘트 다 보내기 
+                    }
+                }).then((rep) => {return rep.data ;})
+                .then((data) => {
+                    alert(data);
+
+                    var tr = document.getElementById('tr_'+ id);
+                    var children = tr.children;
+
+                    $(children[1]).text(form.name.value);
+                    $(children[2]).text(form.comment.value);
+
+                    console.log(children); 
+                });
+            }
     </script>
 </head>
 <body>
@@ -77,10 +148,12 @@
         <%
             for (let i = 0; i < data.length; i++){
         %> 
-            <tr>
+            <tr id="tr_<%=data[i].id%>">
             <td><%=data[i].id%></td>
             <td><%=data[i].name%></td>
             <td><%=data[i].comment%></td>
+            <td><button type="button" onclick="editComment('<%=data[i].id%>');">수정</button></td>
+            <td><button type="button" onclick="deleteComment('<%=data[i].id%>');">삭제</button></td>
             </tr>
             <%
             } 
