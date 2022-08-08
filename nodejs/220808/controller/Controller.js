@@ -33,3 +33,17 @@ exports.post_login = (req, res) => {
         // }
     }); 
     }
+
+exports.patch_info = (req, res) => {
+    User.update(req.body, function (result){
+        console.log(req.body);
+        res.send('수정 성공'); 
+    });
+}
+
+exports.delete_info = (req, res) => {
+    User.delete(req.body, function(result) {
+        console.log(req.body); 
+        res.send('OK bye!');
+    })
+}
