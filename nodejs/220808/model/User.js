@@ -27,3 +27,20 @@ exports.login = (id, pw, cb) => {
         cb(rows[0]); 
     }); 
 }
+
+exports.update = (data, cb) => {
+    let sql = `update user set password='${data.pw}' where id='${data.id}';`
+    cnn.query(sql, (err, rows) => {
+        if (err) throw err; 
+
+        cb(rows); 
+    })
+}
+
+exports.delete = (data, cb) => {
+    cnn.query(`delete from user where id='${data.id}';`, (err, rows) => {
+        if (err) throw err; 
+
+        cb(rows); 
+    })
+}

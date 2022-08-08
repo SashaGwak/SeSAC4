@@ -17,16 +17,51 @@
         }
     </style>
     <script>
-    var form = document.getElementById('user_info');
+        window.onload = function(){
+            var form = document.getElementById('user_info');
+            form.id.value = '<%=id%>';
+            form.pw.value = '<%=pw%>';
+        }
+
+        function editInfo() {
+            var form = document.getElementById('user_info');
+            axios({
+                method: 'patch', 
+                url: 'http://localhost:8080/user/edit',
+                data: {
+                    id: form.id.value, 
+                    pw: form.pw.value
+                }
+            }).then((req) => {return req.data})
+            .then((data) => {
+                alert(data); 
+            })
+        }
+
+        function removeInfo() {
+            var form = document.getElementById('user_info');
+            axios({
+                method:'delete',
+                url:'http://localhost:8080/user/delete',
+                data: {
+                    id: form.id.value
+                }
+            }).then((req) => {return req.data;})
+            .then((data) => {
+                alert(data); 
+            })
+        }
     </script>
 </head>
 <body>
     <h1><%=id%>님 환영합니다!🥰</h1>
-    <form id="user_info">
-        아이디 : <input type="text" name="id"><br>
-        패스워드 : <input type="text" name="pw"><br>
-        <button type="button" onclick="editInfo();">수정</button>
-        <button type="button" onclick="removeInfo();">삭제</button>
-    </form>
+    <div id="info_group">
+    </div>
+        <form id="user_info">
+            아이디 : <input type="text" id="id" name="id"><br>
+            패스워드 : <input type="text" id='pw' name="pw"><br>
+            <button type="button" onclick="editInfo();">회원정보 수정</button>
+            <button type="button" onclick="removeInfo();">회원 탈퇴</button>
+        </form>
 </body>
 </html>
