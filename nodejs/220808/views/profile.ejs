@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>User profile</title>
+    <style>
+        input {
+            margin: 5px;
+        }
+        button {
+            margin-top: 5px;
+            width: 105px;
+        }
+    </style>
+    <script>
+    var form = document.getElementById('user_info');
+    </script>
+</head>
+<body>
+    <h1><%=id%>님 환영합니다!🥰</h1>
+    <form id="user_info">
+        아이디 : <input type="text" name="id"><br>
+        패스워드 : <input type="text" name="pw"><br>
+        <button type="button" onclick="editInfo();">수정</button>
+        <button type="button" onclick="removeInfo();">삭제</button>
+    </form>
+</body>
+</html>
