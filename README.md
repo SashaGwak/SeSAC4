@@ -35,13 +35,19 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드 예시 - 파일 올리고 이미지 파일 렌더링하기 upload.ejs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220729_practice/views/upload.ejs)
 * MVC 구조 
     * [MVC 구조](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/mvc.md)
-        * [코드 예시 - 회원가입->로그인->프로파일 구현 index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/index.js)
-        * [코드 예시 - 회원가입->로그인->프로파일 구현 routes/index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/routes/index.js)
-        * [코드 예시 - 회원가입->로그인->프로파일 구현 model/User.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/model/User.js)
-        * [코드 예시 - 회원가입->로그인->프로파일 구현 controller/UserController.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/controller/UserController.js)
+        * MVC 구조로 만들어보기(DB 제외)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/index.js)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 routes/index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/routes/index.js)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 model/User.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/model/User.js)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 controller/UserController.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220803/controller/UserController.js)
+        * MVC 구조로 만들어보기(DB 포함)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 routes/index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/routes/index.js)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 model/User.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/model/User.js)
+            * [코드 예시 - 회원가입->로그인->프로파일 구현 controller/Controller.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/controller/Controller.js)
 
 ## Database
 * [Database](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/database.md)
 * MySQL
     * [MySQL 설치](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/mysql_install.md)
+    * [DB 연결하기](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/database2.md)
     * [SQL-DDL,DML](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sql.md)
