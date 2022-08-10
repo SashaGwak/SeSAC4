@@ -1,0 +1,13 @@
+{
+    "development": {
+        "host": "localhost", 
+        "database": "sesac", 
+        "username": "user",
+        "password": "Mini1028!",
+        "dialect": "mysql" 
+    },
+    "production": {
+    }, 
+    "test": {
+    }
+}
