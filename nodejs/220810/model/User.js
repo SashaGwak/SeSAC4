@@ -1,26 +1,28 @@
-const Visitor = (Sequelize, DataTypes) => {
+const User = (Sequelize, DataTypes) => {
     //Sequelize는 model/index.js 에서의 sequlize
     //datatype는 model/index.js 에서의 Sequlize
     const model = Sequelize.define(
-        'visitor', 
+        'user', 
         {
-            // creat ~~ (id int not null auto_increment primary key)
             id: {
-                type: DataTypes.INTEGER, 
+                type: DataTypes.STRING(20), 
                 allownull: false,
                 primaryKey: true, 
-                autoIncrement: true,
             },
-            name: { // name varchar(10) not null
-                type: DataTypes.STRING(10), 
+            name: { 
+                type: DataTypes.STRING(20), 
                 allownull: false,
             }, 
-            comment: { // comment mediumtext
-                type: DataTypes.TEXT('medium'),
-            }
+            password: {
+                type: DataTypes.STRING(20), 
+                allownull: false,
+            }, 
+            email: { 
+                type: DataTypes.STRING(50), 
+            },
         }, 
         {
-            tableName: 'visitor', 
+            tableName: 'user', 
             freezeTableName: true, 
             // freezeTableName을 true로 설정하면 이름을 복수로 설정하지 않는다 
             timestamps: false,
@@ -35,4 +37,4 @@ const Visitor = (Sequelize, DataTypes) => {
      */
 }
 
-module.exports = Visitor;
+module.exports = User;
