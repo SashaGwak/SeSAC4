@@ -5,7 +5,7 @@
 npm install mysql2 sequelize sequelize-cli
 ```
 
-## 2. DB 연결해주기
+## 2. 모델 정의해주기
 ```js
 // config/config.json
 {
@@ -53,9 +53,51 @@ db.sequelize = sequelize;
 // db = {"sequelize": sequelize, "Sequelize":Sequelize}; 
 
 db.Visitor = require('./Visitor')(sequelize, Sequelize);
+// model/Visitor.js 파일 내 Visitor에서 model 가져옴!!!! 
 
 module.exports = db;
 // db를 controller에서 쓸수 있도록 공개 ! 
+```
+```js
+// model/Visitor.js
+const Visitor = (Sequelize, DataTypes) => {
+    //Sequelize는 model/index.js 에서의 sequlize
+    //datatype는 model/index.js 에서의 Sequlize
+    const model = Sequelize.define(
+        'visitor', 
+        {
+            // creat ~~ (id int not null auto_increment primary key)
+            id: {
+                type: DataTypes.INTEGER, 
+                allownull: false,
+                primaryKey: true, 
+                autoIncrement: true,
+            },
+            name: { // name varchar(10) not null
+                type: DataTypes.STRING(10), 
+                allownull: false,
+            }, 
+            comment: { // comment mediumtext
+                type: DataTypes.TEXT('medium'),
+            }
+        }, 
+        {
+            tableName: 'visitor', 
+            freezeTableName: true, 
+            // freezeTableName을 true로 설정하면 이름을 복수로 설정하지 않는다 
+            timestamps: false,
+            // true로 지정하게 되면 등록된 시간과 수정된 시간을 갖는 컬럼이 만들어진다
+        }
+    ); 
+    return model;
+    /* define함수 인자 3개 
+    1. 모델(테이블)이름 설정 -> Visitor 
+    2. 컬럼 정의 -> (id, name, comment)
+    3. 모델의 옵션 정의 
+     */
+}
+
+module.exports = Visitor;
 ```
 
 
@@ -117,7 +159,7 @@ exports.get_visitor = (req,res) => {
 
 
 
-## 3) 테이블명.create(객체정보({속성: 값})) = insert into(속성) 테이블명 values(값)
+## 3) 테이블명.create({속성: 값}) = insert into(속성) 테이블명 values(값)
 ```js
 // controller/VisitorController.js
 const models = require('../model'); 
@@ -141,4 +183,33 @@ exports.post_comment = (req,res) => {
 ```
 
 
-## 4) 
+## 4) 테이블명.update({속성:값}, where 조건) = update 테이블명 set 속성=값 where 조건 
+```js
+exports.patch_comment = (req,res) => {
+    let newObj = {
+        name: req.body.name,
+        comment: req.body.comment
+    }
+    models.Visitor.update( newObj, {where: {id: req.body.id}})
+    .then((result) => {
+        console.log(result); 
+        // result에 몇개가 update 된건지에 대한 정보를 받아옴 
+        // comment 하나 바꾸면 -> 1 출력
+        res.send('수정 성공');
+    })
+}
+```
+
+
+## 5) 테이블명.destory(where 조건) = delete from 테이블명 where  조건
+```js
+exports.delete_comment = (req,res) => {
+    models.Visitor.destroy({
+        where: {id: req.body.id}
+    }).then((result) => {
+        console.log(result);
+        // result => delete 된 데이터의 개수 
+        res.send('삭제 성공');
+    })
+}
+```
