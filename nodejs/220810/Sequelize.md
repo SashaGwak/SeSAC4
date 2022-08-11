@@ -60,7 +60,7 @@ module.exports = db;
 
 
 ## 3. sequelize 사용
-### 테이블명.findAll() = select * from 테이블명;
+## 1) 테이블명.findAll() = select * from 테이블명;
 ```js
 // controller/VisitorController.js
 const models = require('../model'); 
@@ -98,7 +98,7 @@ exports.get_visitor = (req, res) => {
 
 
 
-### 테이블명.findOnd(where:{조건}) = select * from 테이블명 where '조건' limit 1;
+## 2) 테이블명.findOnd(where:{조건}) = select * from 테이블명 where '조건' limit 1;
 ```js
 exports.get_visitor = (req,res) => {
     // findOne은 한개로만 와서 배열에 담기지 않음!! 
@@ -117,7 +117,7 @@ exports.get_visitor = (req,res) => {
 
 
 
-### 테이블명.create(객체정보({속성: 값})) = insert into(속성) 테이블명 values(값)
+## 3) 테이블명.create(객체정보({속성: 값})) = insert into(속성) 테이블명 values(값)
 ```js
 // controller/VisitorController.js
 const models = require('../model'); 
@@ -141,4 +141,4 @@ exports.post_comment = (req,res) => {
 ```
 
 
-### 
+## 4) 
