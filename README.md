@@ -51,3 +51,5 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
     * [MySQL 설치](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/mysql_install.md)
     * [DB 연결하기](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/database2.md)
     * [SQL-DDL,DML](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sql.md)
+* Sequelize
+    * [Sequlize란? 설치방법?](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/220810/Sequelize.md)
