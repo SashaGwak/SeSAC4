@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie 가져오기!</title>
+    <script>
+        console.log('쿠키 1 : ', document.cookie);
+        document.cookie = "user=sesac; expires=Sat, 13 Aug 2022 13:00:00 GMT; path=/"; 
+        console.log('쿠키 2 : ', document.cookie);
+        
+        var cookieArr = document.cookie.split(";");
+        for (var i in cookieArr){
+            console.log( cookieArr[i]);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
