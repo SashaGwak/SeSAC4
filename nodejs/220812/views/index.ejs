@@ -43,6 +43,7 @@
         var cookieArr = document.cookie.split("; ");
         console.log(cookieArr);
         var flag = true; 
+          // 쿠키에 hide=modal 유무 확인
           if ( cookieArr.includes('hide=modal')) {
             flag = false;
           };
@@ -51,19 +52,22 @@
           if (flag) {
             // hide=modal 쿠키 없으면 모달창 생성
             $('#myModal').modal('show');
-            console.log('켰지롱');
-            return
           } else {
             // hide=modal 쿠키 있으면 모달창 끄기
             $('#myModal').modal('hide'); 
-            console.log('껏지롱');
-            return 
           }
         }); 
 
       function hide() {
         $('#myModal').modal('hide');
-        document.cookie = "hide=modal; expires=Sat, 14 Aug 2022 13:00:00 GMT; path=/"; 
+        
+        // 모달 창 없애기 위한 쿠키 생성 및 날짜 지정 
+        var date = new Date(); 
+        date.setDate(date.getDate() + 1); 
+        var tomorrow = date.toGMTString();
+
+        document.cookie = `hide=modal; expires=${tomorrow}`; 
+        // document.cookie = "hide=modal; expires=Sat, 14 Aug 2022 13:00:00 GMT; path=/"; 
       }
     </script>
 </head>
