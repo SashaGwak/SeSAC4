@@ -38,7 +38,7 @@
 
     </style>
     <script>
-      // 모달 창 자동으로 열리기
+      // 모달 창 열리는 함수
       $(window).on('load', function() {
         var cookieArr = document.cookie.split("; ");
         console.log(cookieArr);
@@ -49,10 +49,12 @@
 
           console.log(flag);
           if (flag) {
+            // hide=modal 쿠키 없으면 모달창 생성
             $('#myModal').modal('show');
             console.log('켰지롱');
             return
           } else {
+            // hide=modal 쿠키 있으면 모달창 끄기
             $('#myModal').modal('hide'); 
             console.log('껏지롱');
             return 
