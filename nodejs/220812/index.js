@@ -29,7 +29,7 @@ const cookieConfig = {
     // 30초 
     path: '/', // /로 시작하는 모든 경로에서 볼 수 있음
     // path를 설정하지 않으면 기본 /으로 설정됨
-    httpOnly : true,
+    // httpOnly : true,
     // true로 지정하면 웹 서버만 접근할 수 있게 됨 -> document.cookie사용 불가
     // signed: true, 
     // true면 쿠키의 value를 암호화하는 것
