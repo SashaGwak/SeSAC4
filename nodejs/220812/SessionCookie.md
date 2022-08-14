@@ -59,25 +59,25 @@ app.get('/cookie', (req, res) => {
 })
 ```
 ```html
-    <!-- cookie.ejs -->
-    .
-    .
-    .
-    <script>
-        console.log('쿠키 : ', document.cookie);
-        // document.cookie 로 현재 쿠키들 불러올 수 있음
-        document.cookie = "user=sesac; expires=Sat, 13 Aug 2022 13:00:00 GMT; path=/"; 
-        // 쿠키 생성하기 key=value 값만 필수 
-        
-        // 쿠키 하나씩 출력해보기 
-        var cookieArr = document.cookie.split("; ");
-        for (var i in cookieArr){
-            console.log( cookieArr[i]);
-        }
-    </script>
-    .
-    .
-    .
+<!-- cookie.ejs -->
+.
+.
+.
+<script>
+    console.log('쿠키 : ', document.cookie);
+    // document.cookie 로 현재 쿠키들 불러올 수 있음
+    document.cookie = "user=sesac; expires=Sat, 13 Aug 2022 13:00:00 GMT; path=/"; 
+    // 쿠키 생성하기 key=value 값만 필수 
+    
+    // 쿠키 하나씩 출력해보기 
+    var cookieArr = document.cookie.split("; ");
+    for (var i in cookieArr){
+        console.log( cookieArr[i]);
+    }
+</script>
+.
+.
+.
 ``` 
 
 
