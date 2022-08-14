@@ -15,14 +15,6 @@ app.use(session({
     // 미리 세션을 만들어 놓도록 함
 }))
 
-// express는 쿠키가 res모듈에 있습니다!!
-// 1. 패키지 설치하기 
-// npm i cookie-parser
-// 2. 패키지 불러오기 
-// const cookieParser = require('cookie-parser');
-// 3. cookieParser 사용
-// app.use(cookieParser(secret)); 
-
 
 const cookieConfig = {
     maxAge : 30000, 
@@ -69,6 +61,8 @@ app.get('/destroy', (req, res) => {
     // 하나의 세션만 지워주려면 빈값으로 설정해주면 된다
 })
 
+
+// 로그인 시스템 index.js 만들어본 것
 app.get('/login', (req, res) => {
     res.render('login');
 })
@@ -76,6 +70,7 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     var flag = true;
     if (flag) {
+        // session id랑 body.id 와 같다면 -> profile로 가도록 
         req.session.id = req.body.id; 
         res.redirect('/profile');
     } else {
@@ -84,6 +79,7 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
+    // 프로파일로 들어갔더라도 id 지정되지 않았다면 다시 로그인 창으로 보내버리기! 
     if (req.session.id == undefined || req.session.id == '') {
         res.redirect('/login');
         return false; 
