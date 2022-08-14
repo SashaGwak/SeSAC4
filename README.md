@@ -56,4 +56,4 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드예시 - sesac DB의 user, visitor 테이블 사용하여 CRUD구현](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/220810/)
 * Cookie와 Session 
     * [Cookie와 Session 사용방법 및 설명](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220812/SessionCookie.md)
-        * [코드 예시 - cookie이용하여 모달창 하루동안 꺼지게 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220812/views/index.ejs)
+        * [코드 예시 - cookie이용하여 모달창 하루동안 꺼지게 만들기 index.ejg](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220812/views/index.ejs)
