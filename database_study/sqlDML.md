@@ -105,13 +105,39 @@ SELECT * FROM user
 -- 키 기준으로 ASC 오름차순으로 정렬(안써주면 기본적으로 오름차순으로 정렬)
 
 SELECT * FROM user
-    ORDER BY height DESC;
+    ORDER BY height DESC
+    LIMIT 10; 
 -- DESC 내림차순으로 정렬
+-- LIMIT 제한, 한도로 10개까지만 보여주기 
 
 SELECT * FROM user 
     ORDER BY YEAR(sign_up_day) DESC, email ASC; 
 -- 가입연도를 기준으로 내림차순 정렬을 하고, 가입연도가 같은 로우들은 다시 이메일 주소를 기준으로 오름차순 정렬 
 
+SELECT * FROM user
+    ORDER BY CAST(data AS signed) ASC;
+-- CAST(data AS signed) : data 컬럼에 존재하는 값들의 데이터 타입을 일시적으로 signed라는 데이터 타입으로 변환
+-- signed는 양수와 음수를 포함한 모든 정수를 나타낼 수 있는 데이터 타입
+-- 만약 소수점이 있다면 data AS decimal(소수점이 있는 수를 나타내는 타입)
+/* 정렬방식 
+1. INT 타입 (19, 27, 120, 230)
+2. TEXT 타입 (120, 19, 230, 27)
+*/
+
+/* LIMIT */
+LIMIT 8, 2, 
+-- 여덟 번쨰 로우(9번째 로우)부터 시작해서 총 두개의 로우만 추리라는 뜻 
+-- 로우는 0번째부터 시작한다 
+
+/* Pagination */
+-- 1페이지 : 
+SELECT * FROM user ORDER BY registration DESC LIMIT 0, 10
+-- 2페이지 : 
+SELECT * FROM user ORDER BY registration DESC LIMIT 10, 10
+-- 3페이지 : 
+SELECT * FROM user ORDER BY registration DESC LIMIT 20, 10
+-- 4페이지 : 
+SELECT * FROM user ORDER BY registration DESC LIMIT 30, 10
 ```
 
 ## **Update**
