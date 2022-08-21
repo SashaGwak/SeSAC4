@@ -1,3 +1,17 @@
+# Primary Key
+* 테이블에서 특정 row 하나를 식별하는 역할
+* 특정 컬럼을 Primary Key로 설정하면 Primary Key에 같은 값이 있는 row가 추가되는 것을 DBMS가 자동으로 막아주기 때문에 중복된 row가 생길 위험성이 사라짐
+* 종류 
+  * Natural Key
+    * 실제로 어떤 개체가 갖고 있는 속성을 나타내는 컬럼이 Primary Key가 됐을 때 
+    * 사람이라는 테이블이라면 주민번호라처럼 어떤 속성을 가지고 일반키가 되는 경우 
+  * Surrogate Key
+    * 기본키를 auto increment로 지정해주는 경우 
+    * 어떤 속성을 직접적으로 나타내는 컬럼이 아니고 인위적으로 생성한 컬럼
+  * 비교 
+    * 상황에 따라 적절한 키가 달라지므로 둘 다 쓸 수 있음 
+    * 하지만 Natural Key는 그 값이 나중에 변경되면 모든 row의 값을 다시 수정해줘야 한다는 문제 등이 있기 때문에 보통은 Surrogate key 선택하는 경우가 많음
+
 # Foreign Key
 * 한 테이블의 컬럼 중에서 다른 테이블의 특정 컬럼을 식별할 수 있게 해주는 컬럼
 * Foreign Key가 존재할 때 Foreign Key가 있는 테이블을 '자식 테이블(child table)'이나 '참조하는 테이블(referencing table)'이라고 함 
