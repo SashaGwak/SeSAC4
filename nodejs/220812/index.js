@@ -25,7 +25,7 @@ const cookieConfig = {
     // true로 지정하면 웹 서버만 접근할 수 있게 됨 -> document.cookie사용 불가
     // signed: true, 
     // true면 쿠키의 value를 암호화하는 것
-    // 쿠키 시크릿 키를 사용하여 암호화
+    // 쿠키 시크릿 키를 사용하여 암호화s
 }; 
 
 app.get("/", (req,res) => {
