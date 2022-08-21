@@ -83,23 +83,45 @@ Create, read, update, delete
     SELECT name, birthday FROM user;
     -- 내가 보고싶은 name, birthday 컬럼만 가져와서 보여줌
     ```
-    + where 절에 들어올 수 있는 연산자 
-        * 비교연산자(=, >, >=, <, <=), 논리연산자(AND, OR, NOT), 부정연산자(!=, ^=, <>, NOT 컬럼명 =)
-        * SQL연산자
-        ```sql
-        /* BETWEEN a AND b */
-        SELECT * FROM player WHERE height BETWEEN 160 AND 180;
-        -- 160이상 180이하를 찾음
-        /* IN */
-        SELECT * FROM player WHERE position IN ('striker', 'goalkeeper');
-        SELECT * FROM player WHERE position = 'striker' OR position= 'goalkeeper';
-        -- 두 줄이 동일한 의미
-        /* LIKE -> 대체할 수 없는 중요한 연산자! 뒤에 문자열을 적어서 그 문자열과 형태가 일치하는 것 찾음*/
-        SELECT * FROM user WHERE name LIKE '_싹';
-        -- _는 하나의 단일문자를 대체 ex. 새싹, 풀싹, 이싹 등 검색가능 
-        SELECT * FROM user WHERE name LIKE '%싹';
-        -- %는 0개이상의 어떤 문자를 대체 ex. 보리싹, 새싹, 싹 등 검색가능
-        ```
+    ### where 절에 들어올 수 있는 연산자 
+    * 비교연산자(=, >, >=, <, <=)
+    ``` sql 
+    /* DATE 비교도 가능  */ 
+    SELECT * FROM user WHERE sing_up_day > '2019-01-01'; 
+    -- 2019년 1월 1일 이후 가입자들을 보여줌
+    ```
+
+    * 논리연산자(AND, OR, NOT)
+    * 부정연산자
+        * 같지 않음을 표현하는 아래와 같은 연산자 모두 사용 가능
+            * !=
+            * ^=
+            * <>
+            * NOT 컬럼명 =  
+    * SQL연산자
+    ```sql
+    /* BETWEEN a AND b */
+    SELECT * FROM player WHERE height BETWEEN 160 AND 180;
+    -- 160이상 180이하를 찾음
+    SELECT * FROM player WHERE height NOT BETWEEN 160 AND 180;
+    -- 160미만 180초과를 찾음 
+
+
+    /* IN 
+    -> 여러 값들 중에서 해당하는 값이 있는 row만 추려야 할때 */
+    SELECT * FROM player WHERE position IN ('striker', 'goalkeeper');
+    SELECT * FROM player WHERE position = 'striker' OR position= 'goalkeeper';
+    -- 두 줄이 동일한 의미로 포지션이 스트라이커 거나 골키퍼인경우만 찾음
+
+
+    /* LIKE -> 대체할 수 없는 중요한 연산자! 뒤에 문자열을 적어서 그 문자열과 형태가 일치하는 것 찾음*/
+    SELECT * FROM user WHERE name LIKE '_싹';
+    -- _는 하나의 단일문자를 대체 ex. 새싹, 풀싹, 이싹 등 검색가능 
+    SELECT * FROM user WHERE name LIKE '%싹';
+    -- %는 0개이상의 어떤 문자를 대체 ex. 보리싹, 새싹, 싹 등 검색가능
+    ```
+
+
 - **Update**
     ```sql
     UPDATE user SET name='홍길동' WHERE ID != '';
@@ -163,7 +185,7 @@ Create, read, update, delete
 * BIGINT
 * FLOAT
 * DECIMAL
-* DOUBLE
+* DOUBLE -> 소수점 
 
 ### 3. 날짜형 데이터 형식 
 * DATA : 날짜(년도, 월, 일)
