@@ -47,10 +47,14 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
 
 ## Database
 * [Database](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/database.md)
+* SQL 
+    * [DDL, data](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sqlDDL_sqlDATA.md)
+    * [DML](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sqlDML.md)
+    * [Key](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sqlKey.md)
+    * [function](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sql_function.md)
 * MySQL
     * [MySQL 설치](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/mysql_install.md)
     * [DB 연결하기](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/database2.md)
-    * [SQL-DDL,DML](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sql.md)
 * Sequelize
     * [Sequlize 정리(설치~사용법)](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/220810/Sequelize.md)
         * [코드예시 - sesac DB의 user, visitor 테이블 사용하여 CRUD구현](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/220810/)
