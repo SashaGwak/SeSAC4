@@ -1,3 +1,54 @@
+# 집계 함수 (Aggregate Fucntion)
+- 어떤 컬럼의 값들을 대상으로 원하는 특징값을 구해주는 함수
+
+## COUNT
+```sql 
+/* user 테이블의 총 회원수를 구하고 싶을 때 ? */
+SELECT COUNT(email) FROM user; 
+-- 결과값 24
+SELECT COUNT(heighy) FROM user; 
+-- 결과값 22
+
+/*
+다른 값이 나오는 이유는 COUNT가 해당컬럼에서 Null의 개수는 제외하고 세기 때문 
+모든 로우수를 알고 싶은 경우 null 값이 없는 컬럼을 알아야하는데, 
+이럴 때 바로 count(*)를 쓰는 것!! 
+*/
+SELECT COUNT(*) FROM user; 
+-- SELECT문에 의해 리턴되는 전체 로우수를 알려줌 
+```
+
+## MAX, MIN, AVG, SUM, STD
+```sql
+SELECT MAX(height) FROM user; 
+-- height컬럼 값 중에서 가장 큰 값을 알려줌 
+
+SELECT MIN(weigth) FROM user; 
+-- weigth 컬럼 값 중에서 가장 작은 값을 알려줌 
+
+SELECT AVG(weigth) FROM user; 
+-- weigth 컬럼 값의 평균을 알려줌 
+-- AVG는 null값은 제외하고 평균값을 구해줌! 
+
+SELECT SUM(age) FROM user; 
+-- age 모든 값의 합을 구함 
+
+SELECT STD(age) FROM user; 
+-- age 모든 값의 표준편차를 구함 
+```
+
+
+# 산술 함수(Mathematical Function)
+* 단순한 산술 연산을 해줌 
+    * 종류 
+        * ABS()  -> 절대값을 구하는 함수
+        * SQRT()  -> 제곱근을 구하는 함수
+        * CEIL()  -> 올림 함수 (정수를 리턴)
+        * FLOOR() -> 내림 함수 (정수를 리턴)
+        * ROUND() -> 반올림 함수 (실수를 리턴하므로 자리수를 넣을 수 있음)
+        * [공식문서](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html)
+
+
 # DATE 데이터 타입 관련 함수
 ## 1. 연도, 월, 일 추출하기
 ```sql
