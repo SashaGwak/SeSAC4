@@ -140,6 +140,17 @@ SELECT * FROM user ORDER BY registration DESC LIMIT 20, 10
 SELECT * FROM user ORDER BY registration DESC LIMIT 30, 10
 ```
 
+### 고유 값만 보기 
+```sql 
+SELECT DISTINCT(gender) FROM user;
+-- 중복값을 제외하고 f, m 두가지만 보여준다 
+
+SELECT DISTINCT(SUBSTRING(address, 1, 2)) FROM user;
+-- SUBSTRING() : 문자열의 일부를 추출하는 함수
+-- 여기서는 첫번째 문자부터 시작해서 총 두개의 문자를 추출하라는 뜻
+-- 주소에서 맨 처음 시작되는 경기, 서울, 경남, 전남 등 고유값들을 추출해줌 !
+```
+
 ## **Update**
 ```sql
 UPDATE user SET name='홍길동' WHERE ID != '';
