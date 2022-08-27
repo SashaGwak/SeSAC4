@@ -97,8 +97,59 @@ SELECT * FROM user WHERE sentence LIKE BINARY '%g%'
 -- LIKE BINARY를 쓰면 대소문자 구분해서 찾아줌(그냥 LIKE는 G, g 모두 찾아줌) 
 ```
 
+### GROUP BY
+```sql
+SELECT 
+    SUBSTRING(address, 1, 2) as region, 
+    COUNT(*)
+FROM user
+GROUP BY SUBSTRING(address, 1, 2); 
+/*
+region count(*)
+ 서울      5
+ 경기      3 
+이런식으로 그룹핑되어 지역별 유저 수가 잘 나옴! 
+*/
 
-### 데이터 정렬
+
+-- 여러 컬럼을 기준으로 그룹핑하기 
+SELECT 
+    SUBSTRING(address, 1, 2) as region, 
+    gender, 
+    COUNT(*)
+FROM user
+GROUP BY SUBSTRING(address, 1, 2), gender; 
+/*
+region gender count(*)
+ 서울      m      5
+ 서울      f      2
+ 경기      m      2
+ 경기      f      1
+이런식으로 그룹핑되어 지역별, 성별에 따른 유저 수가 잘 나옴! 
+*/
+
+-- 조건에 따른 그룹만 보기 
+SELECT 
+    SUBSTRING(address, 1, 2) as region, 
+    gender, 
+    COUNT(*)
+FROM user
+GROUP BY SUBSTRING(address, 1, 2), gender
+HAVING region = '서울';
+/*
+region gender count(*)
+ 서울      m      5
+ 서울      f      2
+region 컬럼의 값이 서울인 두개의 그룹만 조회할 수 있음 ! 
+*/
+-- Where은 테이블에서 맨처음 로우들을 조회할 때 조건을 설정하는 것 
+-- Having은 이미 조회된 로우들이 다시 그룹핑 됬을 때 생성된 그룹들 중에서 다시 필터링 할때 쓰는 것 
+
+```
+
+
+
+### ORDER BY
 ```sql
 SELECT * FROM user
     ORDER BY height ASC;
