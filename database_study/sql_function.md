@@ -48,9 +48,11 @@ SELECT STD(age) FROM user;
         * ROUND() -> 반올림 함수 (실수를 리턴하므로 자리수를 넣을 수 있음)
         * [공식문서](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html)
 
-
-# COALESCE
-* Null 값을 조금 더 일반적인 값으로 바꿔줄 수 있음
+# NULL 변환 함수
+## 1. COALESCE
+* Null 값을 다른 값으로 바꿔줄 수 있음
+* 여러개의 파라미터를 넣을 수 있음
+* 표준 SQL 함수 
 ```sql 
 SELECT 
     COALESCE(height, '####'),
@@ -63,6 +65,73 @@ height 등 첫번째 컬럼의 값을 살펴본 다음에 Null이 아닌 값이 
 그러니까 height 칼럼의 null값이 있는 부분은 #### 바꿔서 출력되게 해줌 
 */
 ```
+
+## 2. IFNULL 
+* IFNULL() 함수는 첫 번째 인자가 NULL인 경우에는, 두 번째 인자를 표시하고 NULL이 아니면 해당 값을 그대로 표현
+* COALESCE과 사용방법 동일하지만 얘는 두개의 파라미터만 넣을 수 있음 
+* mysql 에서만 사용할 수 있음
+
+## 3. IF 
+* 첫번째 인자로 조건식이 오고, 조건식의 결과가 true라면 두번쨰 인자를 리턴하고 false라면 세번째 인자를 리턴 
+```sql
+SELECT IF (height IS NOT NULL, height, 'N/A') FROM user;
+-- Null 값은 N/A로 표현 
+-- Null 값이 아닌 애들은 원래 값으로 표현 
+```
+
+
+## COUCAT 
+* 인자값들을 이어서 하나의 컬럼으로 만들어줌
+```sql 
+SELECT 
+    email, 
+    COUCAT(height, 'cm', ', ', weight, 'kg') AS '키와 몸무게', 
+    weight / ((height/100) * (height/100)) AS BMI 
+FROM user;
+/*
+따라서 키와 몸무게 컬럼은
+165.7cm, 67.3kg 
+이런식으로 출력되게 된다! 
+*/
+```
+
+## CASE 문 
+* 기본 형식 
+```sql 
+CASE 
+    WHEN 조건
+    THEN '반환값' 
+    WHEN 조건
+    THEN '반환값' 
+    ELSE 'WHEN 조건에 해당 안되는 경우 반환 값'
+END 
+```
+    * 사용법
+        * WHEN과 THEN은 한쌍
+        * WHEN과 THEN은 다중 존재 가능 
+        * ELSE는 모든 조건에 해당하지 않는 경우에 반환 값을 설정
+        * ELSE가 존재하지 않고, 조건에 맞지 않아서 반환 값이 없으면 NULL를 반환
+
+* 예제 쿼리 
+```sql
+SELECT 
+    email, 
+    COUCAT(height, 'cm', ', ', weight, 'kg') AS '키와 몸무게', 
+    weight / ((height/100) * (height/100)) AS BMI 
+(CASE 
+    WHEN weight IS NULL OR height is NULL THEN '비만 여부 알 수 없음'
+    WHEN weight / ((height/100) * (height/100)) >= 25 THEN '과체중 또는 비만'
+    WHEN weight / ((height/100) * (height/100)) >= 18.5 
+        AND weight / ((height/100) * (height/100)) < 25
+        THEN '정상'
+    ELSE '저체중'
+    -- 만약 원래 체중 값을 보여주고 싶은 경우 ELSE weight 이런식으로 적어주기 
+END) AS obesity_check 
+
+FROM user;
+-- BMI에 따른 판정 결과를 보여주는 obesity_check 컬럼 완성 ! 
+```
+
 
 # DATE 데이터 타입 관련 함수
 ## 1. 연도, 월, 일 추출하기
