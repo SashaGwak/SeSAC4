@@ -49,6 +49,8 @@ SELECT STD(age) FROM user;
         * [공식문서](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html)
 
 
+# COALESCE
+
 # DATE 데이터 타입 관련 함수
 ## 1. 연도, 월, 일 추출하기
 ```sql
