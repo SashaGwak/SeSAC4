@@ -50,6 +50,19 @@ SELECT STD(age) FROM user;
 
 
 # COALESCE
+* Null 값을 조금 더 일반적인 값으로 바꿔줄 수 있음
+```sql 
+SELECT 
+    COALESCE(height, '####'),
+    COALESCE(weight, '---'),
+    COALESCE(adress, '@@@')
+FROM user;
+/*
+height 등 첫번째 컬럼의 값을 살펴본 다음에 Null이 아닌 값이 등장하면 원래 값을 돌려주고
+만약 Null 값이 등장하면 두번째 인자 값을 들려줌 
+그러니까 height 칼럼의 null값이 있는 부분은 #### 바꿔서 출력되게 해줌 
+*/
+```
 
 # DATE 데이터 타입 관련 함수
 ## 1. 연도, 월, 일 추출하기
