@@ -29,6 +29,37 @@ SELECT name, birthday FROM user;
 -- 내가 보고싶은 name, birthday 컬럼만 가져와서 보여줌
 ```
 
+### 실행 순서 
+```sql 
+-- 1. 작성 순서 
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+LIMIT
+
+-- 2. 실행 순서
+FROM
+WHERE
+GROUP BY
+HAVING
+SELECT
+ORDER BY
+LIMIT
+
+/*
+FROM: 어느 테이블을 대상으로 할 것인지를 먼저 결정
+WHERE: 해당 테이블에서 특정 조건(들)을 만족하는 row들만 선별
+GROUP BY: row들을 그루핑 기준대로 그루핑합니다. 하나의 그룹은 하나의 row로 표현
+HAVING: 그루핑 작업 후 생성된 여러 그룹들 중에서, 특정 조건(들)을 만족하는 그룹들만 선별
+SELECT: 모든 컬럼 또는 특정 컬럼들을 조회. SELECT 절에서 컬럼 이름에 alias를 붙인 게 있다면, 이 이후 단계(ORDER BY, LIMIT)부터는 해당 alias를 사용할 수 있음
+ORDER BY: 각 row를 특정 기준에 따라서 정렬
+LIMIT: 이전 단계까지 조회된 row들 중 일부 row들만을 추림
+*/
+```
+
 ### 여러 조건을 걸 때 주의 할 점 
 * AND와 OR 중에서는 AND가 우선순위가 높다 
 * 괄호는 AND보다 우선순위가 높기 때문에 ‘먼저 실행되기를 원하는 조건’을 괄호로 씌워주는 게 좋음
