@@ -53,5 +53,17 @@
 }
 
 .test {
-    font-size: 20vw; 
+    font-size: 30px; 
+}
+
+@media screen and (min-width: 768px) {
+    .px {
+        width: 700px; 
+        height: 700px; 
+        background-color : pink;
+    }
+    
+    .test {
+        font-size: 10vw; 
+    }
 }
