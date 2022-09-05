@@ -24,5 +24,46 @@
     <div class="box pct-parent">
         <div class="pct-child"></div>
     </div>
+
+    <h2>em</h2>
+    <div class="box">
+        가가 
+        <span class="em">나나 
+            <span class="em">다다</span>
+        </span>
+    </div>
+    <!-- 기본 폰트사이즈가 16셀이고, 나는 상위요소(box)의 2em이기때문에 36px, 다는 또 2배가 중첩되어 64px 사이즈로 바뀜 -->
+
+    <h2>em 주의사항</h2>
+    <div class="box">
+        <div class="case1">
+            여기는 20px
+            <span class="em-3">여기는 3em이므로 60px</span>
+        </div>
+        <div class="case2">
+            여기는 10px
+            <span class="em-3">여기는 3em이므로 30px</span>
+        </div>
+    </div>
+
+    <h2>rem</h2>
+    <div class="box">
+        가가 
+        <span class="rem">나나 
+            <span class="rem">다다</span>
+        </span>
+    </div>
+    <!-- rem은 효과중첩되지 않아서 일정하게 2배인 36px의 크기를 갖게 된다 -->
+
+    <!-- vw -> viewport width -->
+    <!-- vh -> viewport height -->
+    <h2>vw</h2>
+    <div class="box vw"></div>
+
+    <h2>vh</h2>
+    <div class="box vh"></div>
+
+    <h1 class="test">HIHELLOOOOOO</h1>
+
 </body>
 </html>
