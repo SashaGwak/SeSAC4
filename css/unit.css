@@ -1,0 +1,21 @@
+.box {
+    margin-bottom: 100px;
+}
+
+.px {
+    width: 500px; 
+    height: 500px; 
+    background-color : skyblue;
+}
+
+.pct-parent{
+    width: 500px; /* 250px */
+    height: 500px; /* 250px */
+    background-color: plum;
+}
+
+.pct-child{
+    width: 50%;  
+    height: 50%; 
+    background-color: gray;
+}
