@@ -1,7 +1,11 @@
 # SeSAC4
 SeSAC 4기 웹풀스택과정 공부 내용 정리 
 
-
+## CSS 
+* [반응형 CSS](https://github.com/SashaGwak/SeSAC4/blob/main/css/responsive_css.md)
+    * [코드 예시 - px, %, em, rem, vw, vh, media](https://github.com/SashaGwak/SeSAC4/blob/main/css/unit.css)
+    * [코드 예시 - navBar 생성 및 로우 카드 조절하기 실습.html](https://github.com/SashaGwak/SeSAC4/blob/main/css/practiceCSS/problem2.html)
+    * [코드 예시 - navBar 생성 및 로우 카드 조절하기 실습.css](https://github.com/SashaGwak/SeSAC4/blob/main/css/practiceCSS/problem.css)
 ## Node.js
 * Non-blocking I/O
     * [callback](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/callback.js)
