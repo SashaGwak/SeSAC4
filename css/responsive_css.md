@@ -52,14 +52,32 @@
 @media <media type> and (media feature) {
     /* ... */
 }
-/* <media type> : 미디어 유형
-meia feature : 미디어 조건(특성) */
+/* 
+<media type> : 미디어 유형
+    - all : 모든 미디어 장치 
+    - screen : 화면을 출력하는 디스플레이가 있는 기기 
+    - print : 인쇄화면
+meia feature : 미디어 조건(특성) 
+    - width : viewport 너비 
+    - height : viewport 높이 
+    - orientation : 가로/세로 비율 
+        - 가로방향 : landscape 
+        - 세로방향 : portrait
+*/
 ```
 
-
+### 사용예시
 ```css
-```
+/* 미디어 타입이 screen이면 적용한다  */
+@media screen { ... }
 
+/* 미디어 타입이 screen이고, width가 768px 이상이면 적용됨 
+두개 중 하나라도 만족하지 않으면 적용X */
+@media screen and (min-width: 768px){ ... }
 
-```css
+/* width가 768px이상이고 1024 이하일때 적용됨  */
+@media (min-width: 768px) and (max-width: 1024px){ ... }
+
+/* 화면 너비가 1024이하이고, 디바이스가 가로방향일 때 적용됨 */
+@media (min-width: 1024px) and (orientation: landscape){ ... }
 ```
