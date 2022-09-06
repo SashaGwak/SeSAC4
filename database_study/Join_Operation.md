@@ -70,6 +70,54 @@ ON i.id = s.item_id
     - 기준이 되는 테이블이 따로 없음!
 
 
+## 다른 종류의 조인들
+### NATURAL JOIN
+* 두 테이블에서 같은 이름의 컬럼을 찾아서 자동으로 그것들을 조인 조건을 설정하고, INNER JOIN을 해주는 조인(ON 절을 쓸 필요가 없음)
+```sql 
+SELECT p.id p.player_name, p.team_name, t.team_name
+FROM player AS p NATURAL JOIN team AS t; 
+```
+
+### CROSS JOIN
+* 한 테이블의 하나의 row에 다른 테이블의 모든 row들을 매칭하고, 그 다음 row에서도 또, 다른 테이블의 모든 row들을 매칭하는 것을 반복함으로써 두 테이블의 row들의 모든 조합을 보여주는 조인
+```sql 
+SELECT * FROM member CROSS JOIN stock;
+```
+
+### SELF JOIN
+* 테이블이 자기 자신과 조인을 하는 경우. 그냥 서로 별개인 두 테이블을 조인하는 것처럼 생각하면 됨
+* SELF JOIN을 하면 하나의 테이블에 담긴 데이터를 다양한 관점에서 바라볼 수 있게 됨 
+
+### FULL OUTER JOIN
+* 두 테이블의 LEFT OUTER JOIN 결과와 RIGHT OUTER JOIN 결과를 합치는 조인
+```sql 
+SELECT * 
+FROM player AS p LEFT OUTER JOIN team AS t 
+ON p.team_name = t.team_name 
+UNION
+SELECT * 
+FROM player AS p RIGHT OUTER JOIN team AS t 
+ON p.team_name = t.team_name 
+```
+* Oracle에서는 FULL OUTER JOIN을 바로 할 수 있도록 해주는 연산자가 내장
+```sql 
+SELECT * 
+FROM player AS p FULL OUTER JOIN team AS t
+ON p.team_name = t.team_name;
+```
+
+### Non-Equi 조인
+* Equi 조인 : 지금까지 해온 조인 조건에 등호(=)을 사용해서 조인 한것 
+* Non-Equi 조인 예시 
+```sql 
+SELECT * 
+FROM mamber AS m LEFT OUTER JOIN item AS i 
+ON m.sing_up_day < i.registration_date
+ORDER BY m.sign_up_day ASC; 
+```
+
+
+
 # 결합연산과 집합연산 
 * 결합 연산 -> 테이블을 가로 방향으로 합치는 것(조인 등)
 * 집합 연산 -> 테이블을 세로 방향으로 합치는 것
