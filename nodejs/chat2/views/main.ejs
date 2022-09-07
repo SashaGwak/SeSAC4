@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100vw;
+          height: 100vh;
+          text-align: center;
+          /* border: 1px solid red; */
+      }
+      .main_container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 500px;
+          min-height: 500px;
+          margin: auto 25%;
+          background-color : lavender;
+          /* border: 1px solid black; */
+          border-radius: 50%;
+      }
+      #input_box {
+          padding: 2vw;
+      }
+
+      @media screen and (min-width: 992px) {
+          .main_container {
+              width: 30vw;
+              height: 30vw;
+          }
+      }
+    </style>
+    <title>SeSAC Chat 대기실</title>
+</head>
+<body>
+    <div class="main_container">
+      <div class="chat_box">
+        <h1>Hello SeSAC Chat!</h1>
+        <form class="row g-3" action="/chat" method="GET">
+            <div class="col-auto">
+              <input type="text" class="form-control" name='nickname' placeholder="닉네임을 입력해주세요">
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-light mb-3">등록</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</html>
