@@ -16,9 +16,16 @@
 </head>
 <body>
     <h1>Hello World!</h1>
+    <h3>이벤트 하나로 통일해준 버튼</h3>
+    <button type="button" onclick="send('hello');">hello</button>
+    <button type="button" onclick="send('study');">study</button>
+    <button type="button" onclick="send('bye');">bye</button>
+    
+    <h3>이벤트 각각해준 버튼</h3>
     <button type="button" onclick="hello();">hello</button>
     <button type="button" onclick="study();">study</button>
     <button type="button" onclick="bye();">bye</button>
+    
     <div id="showmsg"></div> 
     <script>
         var socket = io.connect();
@@ -26,6 +33,15 @@
         socket.on('connect' , function() {
             console.log('server connected');
         }); 
+
+        // 하나로 통일해준 이벤트 
+        function send(msg) {
+            socket.emit('send', msg);
+        }
+        socket.on('Response', function(data) {
+            console.log('client :', data); 
+            showmsg(data);
+        })
 
         // hello 이벤트 함수
         function hello(){
