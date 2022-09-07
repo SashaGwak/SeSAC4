@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+.main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+    min-height: 500px;
+    margin: auto 25%;
+    background-color : lavender;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+}
+#input_box {
+    padding: 2vw;
+}
+
+@media screen and (min-width: 992px) {
+    .main_container {
+        width: 30vw;
+        height: 30vw;
+    }
+}
