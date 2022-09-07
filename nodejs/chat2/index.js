@@ -5,6 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http); 
 
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     console.log('client'); 
@@ -30,14 +31,21 @@ io.on('connection', function (socket) {
         io.emit('newMessage', data);
     })
     
+
     // 나간 기록 보내기 
-    socket.on('disconnect', function() {
-        socket.on('name', function(name) {
+    socket.on('name', function(name) {
+        socket.on('disconnect', function () {
             io.emit('notice', {name:name , msg:'님이 퇴장하셨습니다.'});
         });
     })
-});
 
+    // 이미 disconnect 되었으니 이 코드는 안되는거지!! 
+    // socket.on('disconnect', function () {
+    //     socket.on('name', function(name) {
+    //         io.emit('notice', {name:name , msg:'님이 퇴장하셨습니다.'});
+    //     });
+    // })
+});
 
 
 http.listen(8000, function(){
