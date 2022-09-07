@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <title>소켓</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <button type="button" onclick="hello();">hello</button>
+    <button type="button" onclick="study();">study</button>
+    <button type="button" onclick="bye();">bye</button>
+    <script>
+        // 소켓 객체 생성
+        var socket = io.connect();
+
+        // socket.on 은 소켓을 받겠다(read 하겠다  )
+        // socket.on('이벤트명', 콜백함수)
+        socket.on('connect' , function() {
+            console.log('server connected');
+        }); 
+
+        // hello 이벤트 함수
+        function hello(){
+            socket.emit('hello', 'Click!!!'); 
+        }
+        socket.on('helloResponse', function(data) {
+            console.log('respnse :', data); 
+        })
+
+
+        // study 이벤트 함수
+        function study(){
+            socket.emit('study', 'Click!!!'); 
+        }
+        socket.on('clickResponse', function(data) {
+            console.log('respnse :', data); 
+        })
+
+        // bye 이벤트 함수
+        function bye(){
+            socket.emit('bye', 'Click!!!'); 
+        }
+        socket.on('clickResponse', function(data) {
+            console.log('respnse :', data); 
+        })
+
+    </script>
+</body>
+</html>
+

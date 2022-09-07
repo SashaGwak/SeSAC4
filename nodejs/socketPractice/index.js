@@ -16,12 +16,6 @@ app.get('/', function (req, res) {
 })
 
 // on = 읽는거 , emit = 보내는 것 
-/* io = socket.io 객체를 불러와서 connection(연결)되면 socket(방개념)생성 되도록 함
-따라서 소켓 사용할 수 있게 되는데 변수명은 달라도 되지만 헷갈리지 않게 socket씀 
-
-html에서 쓴 io.connect()를 받아 connection 되어서 connected 출력되게 됨
-connection은 연결되면 실행되는 그냥 정해진 이름 
-*/
 io.on('connection', function (socket) {
     console.log('connected')
     socket.emit('hello', 'server hello')
