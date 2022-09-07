@@ -13,21 +13,28 @@ app.get('/', function (req, res) {
 
 app.get('/chat', function (req, res) {
     console.log('chating', req.query.nickname); 
-    res.render('chat');
+    res.render('chat', {name: req.query.nickname});
 })
+
 io.on('connection', function (socket) {
     console.log('connected', socket.id);
     socket.emit('info', socket.id);
+
+    // 들어온 기록 받기 
+    socket.on('name', function(name) {
+        io.emit('notice', {name:name , msg:'님이 입장하셨습니다.'});
+    });
     // 아이디 값 보내줌
-    io.emit('notice', socket.id + '님이 입장하셨습니다.');
     socket.on('send', function(data) {
-        // data = {id: ~~~. msg: ~~~~ };
-        console.log('client message : ', data.msg); 
+        // data = {id: ~~~. msg: ~~~~ , name: ~~ };
         io.emit('newMessage', data);
     })
-
-    socket.on('disconnect', function(){
-        io.emit('notice', socket.id +'님이 퇴장하셨습니다.');
+    
+    // 나간 기록 보내기 
+    socket.on('disconnect', function() {
+        socket.on('name', function(name) {
+            io.emit('notice', {name:name , msg:'님이 퇴장하셨습니다.'});
+        });
     })
 });
 
