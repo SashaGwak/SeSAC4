@@ -3,10 +3,13 @@
 * 구조적 질의 언어 
 * 데이터베이스를 제어하고 관리할 수 있는 언어 
 
-## 공통으로 자주쓰는 명령어들
+## 자주쓰는 명령어들
 * show databases; 
 * use 데이터베이스명;
 * show tables;
+* show full tables in 데이터베이스명; 
+    * 데이터베이스 내의 view도 포함하여 테이블 확인 가능 
+    * 테이블들은 BASE TABLE이라고 표시되어 있고, 뷰는 VIEW로 표시되어 있음 
 * DESC 테이블명; 
 
 ## DDL(Data Definition Language)
