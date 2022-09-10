@@ -78,19 +78,44 @@ truncate TABLE user;
 * LONGTEXT : 문자열 데이터 타입 (최대 4294967295byte)
     * 너무 커서 거의 사용하지 않음 
 
-### 2. 숫자형 데이터 형식 
-* TINYINT
+## 2. 숫자형 데이터 형식 
+### 2-1. 정수형
+* TINYINT 
+    * 작은 범위의 정수들을 저장할 때 쓰는 데이터 타입
+    * 최소 -128 ~ 최대 127 까지의 정수를 저장할 수 있는 타입
+    * TINYINT라고만 썼을 때는 SIGNED가 붙은 것으로 자동 해석
+    * TINYINT SIGNED : -128 ~ 127 
+    * TINYINT UNSIGNED : 0 ~ 255
+        * SIGNED는 ‘양수, 0, 음수’를 나타내고, UNSIGNED는 ‘0과 양수’를 나타냄 
 * SMALLINT
+    * TINYINT 보다 좀더 큰 범위의 정수를 나타낼 때 쓰는 데이터 타입
+    * SMALLINT SIGNED : -32768 ~ 32767 
+    * SMALLINT UNSIGNED : 0 ~ 65535
 * MEDIUMINT
+    * MEDIUMINT SIGNED : -8388608 ~ 8388607
+    * MEDIUMINT UNSIGNED : 0 ~ 16777215
 * INT -> 숫자는 길이 거의 고만고만해서 가장 많이 씀 
+    * INT SIGNED : -2147483648 ~ 2147483647
+    * INT UNSIGNED : 0 ~ 4294967295
 * BIGINT
+    * 아주 큰 범위의 정수를 저장하는 데이터 타입
+    * BIGINT SIGNED : -9223372036854775808 ~ 9223372036854775807
+    * BIGINT UNSIGNED : 0 ~ 18446744073709551615
+
+### 2-2. 실수형
+* DECIMAL(=DEC, NUMERIC, FIXED)
+    * 일반적으로 자주 쓰이는 실수형 타입 중 하나로 보통 DECIMAL(M, D)의 형식
+        * M은 최대로 쓸 수 있는 전체 숫자의 자리수이고, D는 최대로 쓸 수 있는 소수점 뒤에 있는 자리의 수
+        * (예시) DECIMAL (5, 2)라면 -999.99 부터 999.99 까지의 실수
+    * M은 최대 65, D는 30까지의 값을 가질 수 있음 
 * FLOAT
-* DECIMAL
-* DOUBLE -> 소수점 
+* DOUBLE 
 
 ### 3. 날짜형 데이터 형식 
 * DATA : 날짜(년도, 월, 일)
 * TIME : 시간(시, 분, 초)
 * DATETIME : 날짜와 시간 형태의 기간 표현
-* TIMESTAMP : 날짜와 시간 형태의 기간 표현 - 시스템 변경시 자동으로 그 날짜와 시간이 저장 
+* TIMESTAMP : 날짜와 시간 형태의 기간 표현 
+    * 시스템 변경시 자동으로 그 날짜와 시간이 저장 
+    * TIMESTAMP 타입은 타임 존(time_zone) 정보도 함께 저장
 * YEAR : 년도 표현 데이터 타입 
