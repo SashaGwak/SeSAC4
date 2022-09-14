@@ -50,19 +50,25 @@
 <body>
     <h1>Hello SeSAC Chat!</h1>
     <div id="chat-list" class="chat-list"></div>
+    <select id="nick-list">
+        <option value="전체">전체</option>
+    </select>
     <input type="text" placeholder="내용" id="message">
     <button type="button" onclick="send();">전송</button>
     <script>
+        var nickname = prompt('닉네임을 입력해주세요.');
         var id = '';
         var socket = io.connect();
+        socket.emit('info2', { nickname })
         socket.on('info', function(data) {id = data;})
         // 아이디 받아줌
 
         function send(){
-            console.log(id);
             let msg = document.getElementById('message').value;
-            // 아이디와 메세지 두개보내줌 
-            socket.emit('send', {id, msg});
+            let nick = document.getElementById('nick-list').value;
+            console.log(nick)
+            socket.emit('send', { to: nick, msg});
+            // socket.emit('send', {id, msg});
             // socket.emit('send', {id: id, msg:msg}) 와 동일한 의미 
             document.getElementById('message').value = '';
         }
@@ -73,13 +79,17 @@
             let div = document.createElement('div');
             // <div></div> 하나 생김 
             let div_chat = document.createElement('div');
+            let span = document.createElement('span');
 
             div_chat.textContent = data.msg; // 박스 안에 메세지 넣어줌 
 
+            if (data.is_dm) div_chat.textContent = "(DM)" + div_chat.textContent; 
             // data.id 메세지 보낸 사람 아이디, id 내 아이디 
-            if (data.id == id) {
+            if (data.nickname == nickname) {
                 div.classList.add('my-chat');
             } else {
+                span.textContent = data.nickname;
+                div.appendChild(span);
                 div.classList.add('other-chat')
             }
             
@@ -95,6 +105,41 @@
             div.classList.add('access')
             chat_list.appendChild(div);
         })
+
+        // 모든 유저정보 받기 
+        socket.on('list', function(list) {
+            // list = {id~~:nickname , id~~: nickname}
+            let nick_list = document.getElementById('nick-list'); 
+            while (nick_list.firstChild) {
+                nick_list.removeChild(nick_list.lastChild); 
+                // 가장끝에 있는 옵션부터 하나씩 지워서 모든 옵션을 지우기(자식요소 없애기)
+            }
+            let option = document.createElement('option'); 
+            option.text = '전체'; 
+            option.value = '전체'; 
+            nick_list.appendChild( option );
+            // 전체 옵션 하나만 생성
+            
+            var a = {
+                key1: '1',
+                key2: '2',
+                key3: '3'
+            }; 
+
+            // 리스트를 분해를 시키면서 포문 도는 것
+            for (let [key, value] of Object.entries(a) ) {
+                // key = 'key1', value='1';
+                // key = 'key2', value='2';
+            }
+
+            for (let [key, value] of Object.entries(list) ) {
+                // key = 'id', value='nickname';
+                let option = document.createElement('option'); 
+                option.text = value; 
+                option.value = value; 
+                nick_list.appendChild( option );
+            }
+        });
     </script>
 </body>
 </html>
