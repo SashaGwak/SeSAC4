@@ -1,14 +1,28 @@
 body {
+    padding: 3vw 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    flex-direction: column; 
     /* border: 2px solid red; */
 }
 .wrap {
     /* border: 2px solid blue; */
     text-align: center;
+    display: flex; 
+    justify-content: space-around; 
+}
+.chatRoom {
+    width: 200px;
+    min-height: 500px;
+    height: 100%;
+    background-color: lavenderblush;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px 0px rgba(0,0,0,0.1);
 }
 .chat-list {
     width: 500px;
@@ -17,7 +31,7 @@ body {
     background-color: lavender;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 2%;
+    border-radius: 5px;
     box-shadow: 0 10px 10px 0px rgba(0,0,0,0.1);
 }
 .chat-list div div{
@@ -30,28 +44,50 @@ body {
 }
 .access {
     text-align: center;
+    color: black; 
+    opacity: 70%; 
+    font-size: 14px;
 }
 .my-chat div {
     background-color: lavenderblush;
     box-shadow: 0 5px 5px 0px rgba(0,0,0,0.1);
-    border-radius: 1%;
+    border-radius: 5px;
 }
 .other-chat div {
     background-color: white;
     box-shadow: 0 5px 5px 0px rgba(0,0,0,0.1);
-    border-radius: 1%;
+    border-radius: 5px;
 }
 .other-chat {
     text-align: left;
 }
+#nick-list{
+    border: .5px solid #ddd;
+    padding: 7px;
+    border-radius: 8px;
+    margin-right: 5px;
+    color: gray;
+}
 #message {
     /* input box */
-    width: 80%;
+    width: 70%;
     border: .5px solid #ddd;
     padding: 7px;
     border-radius: 8px;
     margin-right: 5px;
 }
 .input_box {
-    margin-top: 20px;
+    width: 700px; 
+    margin: 10px;
+    text-align: center;
+}
+.nickname {
+    font-size: 12px; 
+    color: grey;
+    margin: 5px;
+}
+.goHome {
+    position: absolute; 
+    right: 10vw; 
+    bottom: 10vw;
 }
