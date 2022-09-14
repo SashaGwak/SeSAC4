@@ -24,19 +24,22 @@ io.on('connection', function (socket) {
     // 들어온 기록 받기
     socket.on('info2', function(data) {
         list[socket.id] = data.nickname;
+        // list 딕셔너리에 id: nickname 추가
         io.emit('notice', {nickname:data.nickname , msg:'님이 입장하셨습니다.'});
         io.emit('list', list);
+        // 현재 입장리스트 보내주기
     })
 
     // 아이디 값 보내줌
     socket.on('send', function(data) {
         // data = { msg: ~~~~ , to: nickname };
-        console.log('client message : ', data.msg ); 
-        console.log('To message : ', data.to ); 
+        // console.log('client message : ', data.msg ); 
+        // console.log('To message : ', data.to ); 
         data["is_dm"] = false; 
-        // 디엠인지 구분 
+        // 디엠인지 구분하는 내용 데이터에 추가
         data['nickname'] = list[socket.id]; 
         // 소켓 아이디로 저장된 닉네임을 찾아서 닉네임을 data에 추가로 넣어준 것 
+        // data = { msg: ~~~~ , to: nickname, is_dm: false, nickname: 내 닉네임};
         if (data.to == '전체') {
             io.emit('newMessage', data);
         } else {
