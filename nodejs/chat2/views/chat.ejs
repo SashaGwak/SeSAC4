@@ -96,6 +96,7 @@
             let div = document.createElement('div');
             let div_chat = document.createElement('div');
             let span = document.createElement('span');
+            let time = document.createElement('span');
 
             div_chat.textContent = data.msg; // 박스 안에 닉네임 : 메세지 넣어줌 
 
@@ -103,19 +104,21 @@
             if (data.is_dm) span.textContent = span.textContent+ "(DM)";
             // data.id 메세지 보낸 사람 아이디, id 내 아이디 
             if (data.nickname == nickname) {
-                span.textContent = data.to + span.textContent; 
-                span.classList.add('nickname');
+                span.textContent = data.to + span.textContent;
                 div.appendChild(span);
                 div.classList.add('my-chat');
             } else {
                 span.textContent = data.nickname + span.textContent;
-                span.classList.add('nickname');
                 div.appendChild(span);
                 div.classList.add('other-chat');
             }
-            
+
+            time.textContent = time.textContent + ' ' + timeForToday(new Date());
             div.appendChild(div_chat); // append로 챗박스안에 자식요소로 넣어줌
             chat_list.appendChild(div); // append로 챗박스안에 자식요소로 넣어줌
+            div.appendChild(time);
+            time.classList.add('time');
+            span.classList.add('nickname');
         })
 
         // 입&퇴장 알림
@@ -151,6 +154,30 @@
                 nick_list.appendChild( option );
             }
         });
+
+        // 시간 띄워주기 
+        function timeForToday(value) {
+            const today = new Date();
+            const timeValue = new Date(value);
+
+            const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+            if (betweenTime < 1) return '방금전';
+            if (betweenTime < 60) {
+                return `${betweenTime}분전`;
+            }
+
+            const betweenTimeHour = Math.floor(betweenTime / 60);
+            if (betweenTimeHour < 24) {
+                return `${betweenTimeHour}시간전`;
+            }
+
+            const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+            if (betweenTimeDay < 365) {
+                return `${betweenTimeDay}일전`;
+            }
+
+            return `${Math.floor(betweenTimeDay / 365)}년전`;
+        }
     </script>
 </body>
 </html>
