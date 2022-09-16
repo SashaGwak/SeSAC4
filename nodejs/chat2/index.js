@@ -18,6 +18,7 @@ app.get('/chat', function (req, res) {
 })
 
 var list = {};
+var roomData = {};
 io.on('connection', function (socket) {
     console.log('connected', socket.id);
     socket.emit('info', socket.id);
@@ -29,6 +30,17 @@ io.on('connection', function (socket) {
         io.emit('list', list);
         // 현재 입장리스트 보내주기
     })
+
+    /* 방실패... 
+    // 방에 들어가기 
+    socket.on('createRoom', function(data) {
+        // data = { RoomName : ~~, }
+        socket.join(data.RoomName);
+        // 방 정보 및 입장객 정보 넣어주기 
+        roomData[roomId] = data.RoomName; 
+        roomData[members] = [...roomData[members], socket.id];
+    })
+    */
 
     // 아이디 값 보내줌
     socket.on('send', function(data) {
