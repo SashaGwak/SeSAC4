@@ -41,7 +41,12 @@ io.on('connection', function (socket) {
         // 소켓 아이디로 저장된 닉네임을 찾아서 닉네임을 data에 추가로 넣어준 것 
         // data = { msg: ~~~~ , to: nickname, is_dm: false, nickname: 내 닉네임};
         if (data.to == '전체') {
+            // 채팅방 전체에게 메세지 전송하는 경우 
             io.emit('newMessage', data);
+        } else if (data.to == data['nickname']) {
+            // 나에게 메세지 전송하는 경우 
+            let mySocketID = socket.id;
+            io.to(mySocketID).emit('newMessage', data);
         } else {
             data["is_dm"] = true; 
             let socketID = Object.keys(list).find(k => list[k] === data.to );
@@ -61,13 +66,6 @@ io.on('connection', function (socket) {
             delete list[socket.id];
         });
     })
-
-    // 이미 disconnect 되었으니 이 코드는 안되는거지!! 
-    // socket.on('disconnect', function () {
-    //     socket.on('name', function(name) {
-    //         io.emit('notice', {name:name , msg:'님이 퇴장하셨습니다.'});
-    //     });
-    // })
 });
 
 
