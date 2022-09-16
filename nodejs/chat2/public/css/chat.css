@@ -82,9 +82,15 @@
     text-align: center;
 }
 .nickname {
+    font-size: 14px; 
+    color: upset;
+    margin: 5px;
+}
+.time {
     font-size: 12px; 
     color: grey;
     margin: 5px;
+    padding-top
 }
 .goHome {
     position: absolute; 
