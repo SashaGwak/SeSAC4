@@ -113,7 +113,7 @@
                 div.classList.add('other-chat');
             }
 
-            time.textContent = time.textContent + ' ' + timeForToday(new Date());
+            time.textContent = time.textContent + ' ' + timetoStr(new Date());
             div.appendChild(div_chat); // append로 챗박스안에 자식요소로 넣어줌
             chat_list.appendChild(div); // append로 챗박스안에 자식요소로 넣어줌
             div.appendChild(time);
@@ -156,27 +156,12 @@
         });
 
         // 시간 띄워주기 
-        function timeForToday(value) {
-            const today = new Date();
-            const timeValue = new Date(value);
+        function timetostr(value) {
+            var hours = ('0' + value.getHours()).slice(-2); 
+            var minutes = ('0' + value.getMinutes()).slice(-2);
 
-            const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
-            if (betweenTime < 1) return '방금전';
-            if (betweenTime < 60) {
-                return `${betweenTime}분전`;
-            }
-
-            const betweenTimeHour = Math.floor(betweenTime / 60);
-            if (betweenTimeHour < 24) {
-                return `${betweenTimeHour}시간전`;
-            }
-
-            const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-            if (betweenTimeDay < 365) {
-                return `${betweenTimeDay}일전`;
-            }
-
-            return `${Math.floor(betweenTimeDay / 365)}년전`;
+            var timeString = hours + ':' + minutes;
+            return timeString;
         }
     </script>
 </body>
