@@ -81,4 +81,4 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
     * [socket.io 사용방법](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socket/socketIo.md)
         * [코드 예시 - socket이용하여 채팅시스템 만들기 index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socketPractice/index2.js)
         * [코드 예시 - socket이용하여 채팅시스템 만들기 index.html](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socketPractice/index2.html)
-        * [닉네임 추가된 나만의 채팅 시스템 만들어보기](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/chat2)
+        * [나만의 채팅 시스템 만들어보기(DM 시스템 추가)](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/chat2)
