@@ -56,6 +56,10 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
     * [DML](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sqlDML.md)
     * [Key](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sqlKey.md)
     * [function](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/sql_function.md)
+    * [JOIN](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/Join_Operation.md)
+        * [join 실습](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/joinPractice.md)
+    * [Subquery](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/subquery.md)
+    * [view](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/view.md)
 * MySQL
     * [MySQL 설치](https://github.com/SashaGwak/SeSAC4/blob/main/database_study/mysql_install.md)
     * [DB 연결하기](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220808/database2.md)
