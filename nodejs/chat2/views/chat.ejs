@@ -11,33 +11,82 @@
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="./css/chat.css">
-    <title>소켓</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>SeSAC Chat!🌱</title>
 </head>
 <body>
-    <div class="wrap">
-        <h1>SeSAC Chat!🌱</h1>
-        <div id="chat-list" class="chat-list"></div>
-            <div class="input_box">
-                <input type="text" placeholder="내용을 입력해주세요" id="message" onKeypress="javascript:if(event.keyCode==13){send();}">
-                <button type="button" onclick="send();" class="btn btn-light w-auto">전송</button>
+    <!-- Navbar -->
+    <div class="nav_box">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="http://localhost:8000/">🌱</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="http://localhost:8000/">Home</a>
+                    <!-- <a class="nav-link" onclick="creatRoom();">CreateRoom</a> -->
+                </div>
+              </div>
             </div>
-        <div style="display: none;" id="name"><%=name %></div>
+        </nav>
+    </div>
+    <div class="chat_box">
+        <h1>SeSAC Chat!🌱</h1>
+        <div class="wrap">
+            <!-- <div class="chatRoom">
+                채팅방 리스트 
+            </div> -->
+            <div id="chat-list" class="chat-list"></div>
+            <div style="display: none;" id="name"><%=name %></div>
+            
+            <!-- 홈버튼 -->
+            <!-- <div class="goHome">
+                <button class="btn btn-secondary w-auto" type="button" onclick="goHome()">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+            </div> -->
+        </div>
+        <div class="input_box">
+            <select id="nick-list">
+                <option value="전체">전체</option>
+            </select>
+            <input type="text" placeholder="내용을 입력해주세요" id="message" onKeypress="javascript:if(event.keyCode==13){send();}">
+            <button type="button" onclick="send();" class="btn btn-light w-auto">전송</button>
+        </div>
     </div>
     <script>
+        function creatRoom() {
+            // 채팅방 이름 받기
+            let RoomName = prompt('채팅방 이름을 입력해주세요!🖊');
+            
+            socket.emit('createRoom', {RoomName});
+        }
+
+        // 홈 이동 버튼
+        function goHome() {
+            document.location.href="http://localhost:8000/";
+        };
+
         var id = '';
-        var name = document.getElementById('name').innerText;
+        var nickname = document.getElementById('name').innerText;
         var socket = io.connect();
         socket.on('info', function(data) {id = data;})
+        socket.emit('info2', { nickname })
         // 아이디 받아줌
 
         function send(){
             console.log(id);
             let msg = document.getElementById('message').value;
-            // 아이디와 메세지, 닉네임 값 보내줌
-            socket.emit('send', {id, msg, name});
+            let nick = document.getElementById('nick-list').value;
+            // 메세지, 닉네임 값 보내줌
+            socket.emit('send', {msg, to : nick});
             document.getElementById('message').value = '';
         }
 
@@ -46,32 +95,74 @@
             let chat_list = document.getElementById('chat-list'); 
             let div = document.createElement('div');
             let div_chat = document.createElement('div');
+            let span = document.createElement('span');
+            let time = document.createElement('span');
 
-            div_chat.textContent = data.name +' : '+data.msg; // 박스 안에 닉네임 : 메세지 넣어줌 
+            div_chat.textContent = data.msg; // 박스 안에 닉네임 : 메세지 넣어줌 
 
+            console.log(data);
+            if (data.is_dm) span.textContent = span.textContent+ "(DM)";
             // data.id 메세지 보낸 사람 아이디, id 내 아이디 
-            if (data.id == id) {
+            if (data.nickname == nickname) {
+                span.textContent = data.to + span.textContent;
+                div.appendChild(span);
                 div.classList.add('my-chat');
             } else {
-                div.classList.add('other-chat')
+                span.textContent = data.nickname + span.textContent;
+                div.appendChild(span);
+                div.classList.add('other-chat');
             }
-            
+
+            time.textContent = time.textContent + ' ' + timetoStr(new Date());
             div.appendChild(div_chat); // append로 챗박스안에 자식요소로 넣어줌
             chat_list.appendChild(div); // append로 챗박스안에 자식요소로 넣어줌
+            div.appendChild(time);
+            time.classList.add('time');
+            span.classList.add('nickname');
         })
 
-        // 닉네임 보내기 
-        socket.emit('name', name); 
-
+        // 입&퇴장 알림
         socket.on('notice', function(data) {
-            // data = {name:name , msg:'님이 입장or 퇴장하셨습니다.'}
+            // data = {nickname: nickname , msg:'님이 입장or 퇴장하셨습니다.'}
             let chat_list = document.getElementById('chat-list'); 
             let div = document.createElement('div');
-            div.textContent = data.name + data.msg;
+            div.textContent = data.nickname + data.msg;
 
             div.classList.add('access')
             chat_list.appendChild(div);
         })
+
+        // 모든 유저정보 받기 
+        socket.on('list', function(list) {
+            // list = {id~~:nickname , id~~: nickname}
+            let nick_list = document.getElementById('nick-list'); 
+            while (nick_list.firstChild) {
+                nick_list.removeChild(nick_list.lastChild); 
+                // 가장끝에 있는 옵션부터 하나씩 지워서 모든 옵션을 지우기(자식요소 없애기)
+            }
+            let option = document.createElement('option'); 
+            option.text = '전체'; 
+            option.value = '전체'; 
+            nick_list.appendChild( option );
+            // 전체 옵션 하나만 생성
+        
+            for (let [key, value] of Object.entries(list) ) {
+                // key = 'id', value='nickname';
+                let option = document.createElement('option'); 
+                option.text = value; 
+                option.value = value; 
+                nick_list.appendChild( option );
+            }
+        });
+
+        // 시간 띄워주기 
+        function timetoStr(value) {
+            var hours = ('0' + value.getHours()).slice(-2); 
+            var minutes = ('0' + value.getMinutes()).slice(-2);
+
+            var timeString = hours + ':' + minutes;
+            return timeString;
+        }
     </script>
 </body>
 </html>
