@@ -88,6 +88,7 @@
             // 메세지, 닉네임 값 보내줌
             socket.emit('send', {msg, to : nick});
             document.getElementById('message').value = '';
+
         }
 
         socket.on('newMessage', function(data) {
@@ -119,6 +120,9 @@
             div.appendChild(time);
             time.classList.add('time');
             span.classList.add('nickname');
+
+            // 채팅창 하단 위치고정
+            $('#chat-list').scrollTop($('#chat-list')[0].scrollHeight);
         })
 
         // 입&퇴장 알림
@@ -130,6 +134,7 @@
 
             div.classList.add('access')
             chat_list.appendChild(div);
+
         })
 
         // 모든 유저정보 받기 
