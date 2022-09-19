@@ -72,7 +72,7 @@
 }
 #message {
     /* input box */
-    width: 70%;
+    width: 50%;
     border: .5px solid #ddd;
     padding: 7px;
     border-radius: 8px;
@@ -107,6 +107,17 @@
 
     .input_box {
         width: 50%; 
+        margin: 50px;
+        text-align: center;
+    }
+}
+@media screen and (min-width: 1140px) {
+    .chat-list {
+        width: 40%;
+    }
+
+    .input_box {
+        width: 40%; 
         margin: 50px;
         text-align: center;
     }
