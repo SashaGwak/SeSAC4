@@ -11,11 +11,6 @@ function App() {
   if (flag) name = 'SeSAC'; 
   else name = '문래';
 
-  const style = {
-    backgroundColor: 'yellow', 
-    color:'blue'
-  };
-
   let cat = '뚠뚜니';
   let animal = '고양이'; 
 
@@ -59,7 +54,7 @@ function App() {
       삼항연산자로 쓰는 방법 
       조건? 참인 경우 실행문: 거짓일 경우 실행문 */}
       { flag ? (<h1>True</h1>): <h2>False</h2> }
-      { 3 + 5 == 8 ? (<h1>정답입니다!</h1>): <h1>오답입니다!</h1>}
+      { 3 + 5 === 8 ? (<h1>정답입니다!</h1>): <h1>오답입니다!</h1>}
       { a > b ? (<h1>a가 b보다 큽니다!</h1>): <h1>a가 b보다 작습니다!!</h1>}
     </div>
     </div>

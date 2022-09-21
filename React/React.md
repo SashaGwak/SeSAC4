@@ -42,3 +42,8 @@
 ### 5.JSX
 * React에서 JSX 사용이 필수는 아니지만 많이 사용된다 
 * JSX = javascript + XML
+
+## Component
+    * React의 꽃이라 불리는 핵심 
+    * MVC view를 독립적으로 구성해 재사용 할 수 있고, 새로운 컴포넌트도 만들 수 있다
+    * 데이터(props)를 입력받아 View(state) 상태에 따라 

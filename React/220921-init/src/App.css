@@ -64,3 +64,14 @@ input {
     height: 400px; 
     background-color: purple;
 }
+
+.books{
+    padding: 5vw; 
+    width: 500px; 
+    text-align: center; 
+    background-color: lavender; 
+}
+
+.books > p {
+    text-align: left; 
+}
