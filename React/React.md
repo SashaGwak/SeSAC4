@@ -1,7 +1,13 @@
+## Angular JS
+* 구글에서 만든 javascript기반의 오픈소스 프레임워크 
+* 양방향 데이터 바인딩으로 양방향 웹 애플리케이션에 적합
+* 2016년도 이후 점유율 하락 중 
+* ex) 유투브, 페이팔, 구글, 텔레그램 등 
+
 ## React JS
 * 동적 사용자 인터페이스를 만들기 위해 2011 페이스북에서 만든 오픈소스 JavaScript 라이브러리 
 * 데이터 변경이 잦은 복잡하고, 규모가 큰 라이브러리에 적합 
-* Angular 보다 배우기 쉽ㄱ다고 이야기 됨 
+* Angular 보다 배우기 쉽다고 이야기 됨 
 * ex) 페이스북, 인스타그램, 넷플릭스, 야후, 드롭박스 등등
 
 ## Veu.js 
@@ -46,4 +52,44 @@
 ## Component
     * React의 꽃이라 불리는 핵심 
     * MVC view를 독립적으로 구성해 재사용 할 수 있고, 새로운 컴포넌트도 만들 수 있다
-    * 데이터(props)를 입력받아 View(state) 상태에 따라 
+    * 데이터(props)를 입력받아 View(state) 상태에 따라 DOM Node를 호출한다 
+    * UI를 재사용 가능한 개별적인 여러조각으로 나누고, 각 조각을 개별적으로 나누어 코딩 가능 
+    * 종류 
+        * 함수형 Component 
+            * 짧고 직관적
+            * Vanila JS와 같은 기본적인 function 구조를 이용해 더 직관적이며 추상적 
+            * 메모리 자원을 덜 사용한다 
+
+        ```js
+        import React, {Component} from 'react'; 
+        
+        class ClassComponent extends Component {
+            render() {
+                return(
+                    <h1>Class Component</h1>
+                )
+            }
+        }
+        ```
+        * 클래스형 Component 
+            * state와 라이프 사이클 기능 이용가능 
+            * render 함수 필수 
+
+        ```js 
+        import React from 'react'; 
+
+        const FuctionComponent = () => {
+            return <div>새로운 MyComponent</div>
+        }; 
+
+        export default FunctionComponent;
+        ```
+
+## props 
+* properties를 줄인 표현으로 컴포넌트 속성을 설정할 때 사용하는 요소 
+* props는 컴포넌트끼리 값을 전달하는 수단 
+
+### propType 
+* 컴포넌트의 필수 props를 지정하거나 props의 타입을 지정할 때 사용
+* JavaScript의 “유연한 특성” 을 해결하기 위해 권장되는 기능
+* 정해진 타입이 아닌 다른 타입으로 정보가 전달될 시, 제대로 동작은 하지만 console에 오류가 나온다.
