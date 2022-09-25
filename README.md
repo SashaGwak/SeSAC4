@@ -84,5 +84,8 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [나만의 채팅 시스템 만들어보기(DM 시스템 추가)](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/chat2)
 
 ## React 
-* [React 기본개념 및 다른 라이브러리 설명](https://github.com/SashaGwak/SeSAC4/blob/main/React/React.md)
-* [프로젝트 생성 및 jsx문법, Component, props, image, function](https://github.com/SashaGwak/SeSAC4/blob/main/React/Reactproject.md)
+* [React 기본개념 및 다른 라이브러리 설명](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/React.md)
+* [프로젝트 생성 및 jsx문법, Component, props, image, function](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/Reactproject.md)
+* State, Event Handling
+    * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
+    * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
