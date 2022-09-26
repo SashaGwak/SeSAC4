@@ -6,21 +6,44 @@
     * callbackFunction : 새로운 배열의 요소를 생성하는 함수로, currentValue, index, array 3개의 인수를 가질 수 있다
     * [this.Arg] 는 생략 가능한 것으로 callbackFunction 에서 사용 가능한 this 객체
 
+### map 
 ```js 
-let list = ['a', 'b', 'c']; 
-// map((값, 인덱스, 원래배열))
-let items = list.map((value, id, arr) => {
-    console.log("value : ", txt)
-    console.log("id : ", txt)
-    console.log("arr : ", txt)
-    return txt + id;
-}); 
-console.log(items);
-// <변수명 변경 가능> 
-// value : list 를 순서대로 돌면서 나오는 값
-// id : 방금 나온 값(txt)의 인덱스
-// arr : 현재 반복을 돌고 있는 배열
-// items : “return txt + id;” 로 만들어진 배열
+function App() {
+    let list = ['a', 'b', 'c']; 
+    // map((값, 인덱스, 원래배열))
+    let items = list.map((value, id, arr) => {
+        console.log("value : ", txt)
+        console.log("id : ", txt)
+        console.log("arr : ", txt)
+        return txt + id;
+    }); 
+    console.log(items);
+    // <변수명 변경 가능> 
+    // value : list 를 순서대로 돌면서 나오는 값
+    // id : 방금 나온 값(txt)의 인덱스
+    // arr : 현재 반복을 돌고 있는 배열
+    // items : “return txt + id;” 로 만들어진 배열
+
+    return (
+        <div>
+        <ul>
+            {list.map((name, i) => {
+            return <li key={i}>{i}. {name}</li>; 
+            // 인덱스. 값 형태로 출력됨
+            // map() 함수를 이용해 컴포넌트를 생성할 때 “key”사용을 권장
+            // Key를 index 값으로 설정할 시, 리스트의 순서가 변경되면 모든 key가 변경되므로 key는 index 가 아닌 고유한 값으로 설정해야 한다
+            })}
+        </ul>
+        <button onClick={addElement}>추가</button>
+
+        <ul>
+            {list.filter((name) => {
+            return name.includes("a");
+            })}
+        </ul>
+        </div>
+    );
+}
 ```
 
 ## filter()
