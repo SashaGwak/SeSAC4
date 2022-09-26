@@ -15,6 +15,8 @@ function Practice59() {
 
         setList([...list, newList]);
         // list = [{writer:~~~, title:~~~}, {writer:~~~, title:~~~}, {writer:~~~, title:~~~}]
+        form.writer.value = '';
+        form.title.value = '';
     }
 
     // 검색 기능
@@ -27,7 +29,21 @@ function Practice59() {
             return result[form.type.value].includes(form.search.value);
         }); 
         setResult(newList);
+        form.search.value = '';
     }
+
+    // 엔터키 기능
+    const onKeyPress = (e) => {
+        if (e.key === "Enter") {
+            writeList();
+        }
+    };
+    const onKeyPress2 = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            searchList();
+        }
+    };
 
     return (
         <div>
@@ -41,7 +57,8 @@ function Practice59() {
                 <input 
                     type='text'
                     name='title'
-                    placeholder="제목" />
+                    placeholder="제목" 
+                    onKeyPress={onKeyPress}/>
                 <button type='button' onClick={writeList}>작성</button>
             </form>
 
@@ -54,7 +71,8 @@ function Practice59() {
                 <input 
                     type='text'
                     name='search'
-                    placeholder="검색어" />
+                    placeholder="검색어"
+                    onKeyPress={onKeyPress2}/>
                 <button type='button' onClick={searchList}>검색</button>
             </form>
 
