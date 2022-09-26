@@ -90,4 +90,3 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
     * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
     * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
     * [map, filter 함수](https://github.com/SashaGwak/SeSAC4/blob/main/React/220926/mapFilter.md)
-        * [코드 예시 - form태그 이용하여 받은 정보들 map, filter활용하여 간단 테이블  추가 및 검색기능 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/React/220926/src/Practice59.js)
