@@ -10,6 +10,8 @@ class Ref extends Component{
         console.log(this.input.value);
     }
 
+    // ref 사용방법 2 -> 내장함수 createRef사용하기
+    // 사용할 때는 this.변수명.current 를 이용
     input3 = createRef();
     event3 = () => {
         console.log(this.input3.current.value);
@@ -24,6 +26,7 @@ class Ref extends Component{
                 <button onClick={this.event1}>버튼1</button>
             </div>
             <div>
+                {/* ref 사용방법 1 콜백함수 사용하기 */}
                 <input type="text" ref={(ref) => {this.input = ref} } />
                 {/* ref가 의미하는게 그 태그를 의미함. 여기서는 input을 의미하는 것. 그 input을 this.input에 넣어준 것 -> 왜냐? 다른 곳에서 이벤트 지정할때도 써야하니까!! */}
                 <button onClick={this.event2}>버튼2</button>
