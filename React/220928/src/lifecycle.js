@@ -17,7 +17,7 @@ class LifeCycle extends Component {
     console.log( "props : ", props );
     console.log( "State : ", state );
     console.log( "this.state : ", this.state );
-    if ( state.age != this.state.age ) {
+    if ( state.age !== this.state.age ) {
         console.log( "age change" );
     }
   }
