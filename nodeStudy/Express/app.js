@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const adminRoutes = require('./routes/admin');
@@ -7,15 +8,14 @@ const app = express();
 const port = 8000;
 
 app.use(bodyParser.urlencoded({extended: false}));
-// 비표준 대상의 분석이 가능한지를 나타냅니다. 
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-
 /* 404 에러처리 */
 app.use((req, res, next) => {
-    res.status(404).send('<h1>Page not found</h1>');
+    res.status(404).sendFile(path.join(__dirname, './', 'views', '404.html'));
     // 전송 전에 항상 status나 setHeader를 호출 할 수 있음
     // 여기서 status를 호출하면 상태코드 설정 가능
 })
