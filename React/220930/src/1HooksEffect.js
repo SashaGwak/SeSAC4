@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const Hook = () => {
     const [name, setName] = useState(''); 
@@ -37,15 +37,17 @@ const Hook = () => {
     // 뒷정리함수를 이용해서 업데이트 하기 직전 값을 확인할 수 있음 
 
     return(
-        <>
-        <div>
-            <input value={name} onChange={changeName}/>
-            <button onClick={changeCnt}>+1</button>
+        <div class='1HoockEffect'>
+            <div class='box'>
+                <input value={name} onChange={changeName}/>
+                <button onClick={changeCnt}>+1</button>
+            </div>
+                <h3>이름 : {name}</h3>
+                <h4>횟수 : {cnt}</h4>
         </div>
-            <h3>이름 : {name}</h3>
-            <h4>횟수 : {cnt}</h4>
-        </>
     )
 }
+
+// .1HoockEffect .box {}
 
 export default Hook;

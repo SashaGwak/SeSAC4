@@ -1,4 +1,4 @@
-import {useReducer} from 'react';
+import React, {useReducer} from 'react';
 
 // useReducer에서 사용함으로서 함수형 바깥에서 state를 사용할 수 있게 됨!!(컴포넌트 업데이트 로직을 바깥으로 뺄수 있게됨)
 function reducer(state, action){
