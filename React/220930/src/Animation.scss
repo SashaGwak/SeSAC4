@@ -2,7 +2,7 @@
 
 .animation-box {
     width: 500px;
-    height: 1000px;
+    height: 650px;
 
     .ball {
         &.pink{
@@ -13,7 +13,7 @@
             background-color: pink;
             position: relative;
             animation-duration: 3s;
-            animation-iteration-count: 6;
+            animation-iteration-count: infinite;
         }
         &.yellow{
             @include animation(2, my_anim2);
@@ -23,7 +23,7 @@
             background-color: yellow;
             position: relative;
             animation-duration: 3s;
-            animation-iteration-count: 6;
+            animation-iteration-count: infinite;
         }
         &.green{
             @include animation(3, my_anim3);
@@ -33,7 +33,7 @@
             background-color: green;
             position: relative;
             animation-duration: 3s;
-            animation-iteration-count: 6;
+            animation-iteration-count: infinite;
         }
     }
     
