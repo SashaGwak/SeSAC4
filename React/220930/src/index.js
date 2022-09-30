@@ -7,10 +7,15 @@ import Origin from './4Origin';
 import UseSass from './5UseSacc';
 import CSSModule from './6CSSModule';
 import StyledComponent from './7StyledComponent';
+import Worm from './larva';
+import Animation from './Animation';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
+    <Animation />
+    <Worm />
+    <hr />
     <Effect />
     <Reducer />
     <Memo />
