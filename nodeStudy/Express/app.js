@@ -1,11 +1,19 @@
 const path = require('path');
+
 const express = require('express');
 const bodyParser = require('body-parser');
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
+
+const errorController = require('./controllers/error');
 
 const app = express();
 const port = 8000;
+
+app.set('view engine', 'ejs');
+app.set('views', 'views'); 
+// view engine 저장 폴더 알려주는데 사실 views는 기본값이라 안알려줘도 되긴함
+
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -13,16 +21,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-/* 404 에러처리 */
+app.use(errorController.get404);
+
+app.listen(port, () => {
+    console.log('Server start : ', port);
+});
+
+
+/* 404 에러처리 
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, './', 'views', '404.html'));
     // 전송 전에 항상 status나 setHeader를 호출 할 수 있음
     // 여기서 status를 호출하면 상태코드 설정 가능
 })
-
-app.listen(port, () => {
-    console.log('Server start : ', port);
-});
+*/
 
 
 /* 미들웨어 사용법
