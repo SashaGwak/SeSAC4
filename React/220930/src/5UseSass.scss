@@ -1,7 +1,15 @@
 @import './util.scss';
+@import '~include-media/dist/include-media';
+// @import '../node_modules/include-media/dist/include-media'; 와 같은 의미!! 
+@import '~open-color/open-color';
 
 .UseSass {
     display: flex;
+    background: $oc-gray-2;
+
+    @include media('<768px') {
+        background: $oc-gray-9;
+    }
 
     .box {
         width: 100px;
