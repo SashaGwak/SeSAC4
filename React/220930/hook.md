@@ -20,3 +20,15 @@
 * 클래스형 컴포넌트에서의 State
 
 ## useEffect()
+* sideEffect 를 수행(mount / unmount / update)
+* 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate 가 합쳐진 형태
+* 사용예시
+    ```js
+        useEffect(() => {
+            console.log('useEffect');
+            console.log('name : ', name );
+        }, [name]);
+        // useEffect(mount때 할 작업, [update시 작업 관리하는것(배열로 보내주기!)])
+        // useEffect(하나만) 쓰면 mount, update 때 모두 발생
+        // update cycle 에 조건을 줄수 있는 것이 장점!! 
+    ```
