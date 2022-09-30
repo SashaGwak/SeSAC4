@@ -1,6 +1,6 @@
 import {useReducer} from 'react';
 
-// useReducer에서 사용함으로서 함수형 바깥에서 state를 사용할 수 있게 됨!!
+// useReducer에서 사용함으로서 함수형 바깥에서 state를 사용할 수 있게 됨!!(컴포넌트 업데이트 로직을 바깥으로 뺄수 있게됨)
 function reducer(state, action){
     // state가 {value:0}이 된다(현재 상태가 계속 전달되게 됨)
     // action은 내가 전달한 액션값(여기서는 type)
