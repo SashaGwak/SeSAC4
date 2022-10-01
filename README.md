@@ -3,6 +3,7 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
 
 ## JavaScript
 * [inheritance](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/inheritance.md)
+* [map, filter 함수](https://github.com/SashaGwak/SeSAC4/blob/main/React/220926/mapFilter.md)
 ## CSS 
 * [반응형 CSS](https://github.com/SashaGwak/SeSAC4/blob/main/css/responsive_css.md)
     * [코드 예시 - px, %, em, rem, vw, vh, media](https://github.com/SashaGwak/SeSAC4/blob/main/css/unit.css)
@@ -88,11 +89,11 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
 
 ## React 
 * [React 기본개념 및 다른 라이브러리 설명](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/React.md)
-* [프로젝트 생성 및 jsx문법, Component, props, image, function](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/Reactproject.md)
-* useState, Event Handling
-    * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
-    * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
-    * [map, filter 함수](https://github.com/SashaGwak/SeSAC4/blob/main/React/220926/mapFilter.md)
-* [Ref](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/ref.md)
+* 주요개념 
+    * [프로젝트 생성 및 jsx문법, Component, props, image, function](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/Reactproject.md)
+    * [Ref](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/ref.md)
 * [Lifecycle](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/lifeCycle.md)
 * [Hook](https://github.com/SashaGwak/SeSAC4/blob/main/React/220930/hook.md)
+    * useState, Event Handling
+        * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
+        * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
