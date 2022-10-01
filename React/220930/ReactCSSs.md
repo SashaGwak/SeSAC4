@@ -250,4 +250,3 @@ import Names from 'classnames';
 </div>
 // 위와 비슷하지만 이런식으로 써주기! 
 ```
-}
