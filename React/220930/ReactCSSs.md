@@ -142,7 +142,7 @@ npm install node-sass
 
 
 
-## styled components
+# styled components
 * 컴포넌트 내에서 style 다뤄줄 수 있음
 * 사용예시 
 ```js 
