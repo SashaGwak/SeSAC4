@@ -1,32 +1,33 @@
 const path = require('path');
-
-const express = require('express');
 const bodyParser = require('body-parser');
 
-const errorController = require('./controllers/error');
-
+const express = require('express');
 const app = express();
 const port = 8000;
 
+/* 정적경로 지정 */
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', 'views'); 
 // view engine 저장 폴더 알려주는데 사실 views는 기본값이라 안알려줘도 되긴함
 
+/* Routes 가져오기 */
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
-
+/* 경로 지정 */ 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
+/* 404 에러처리 */
+const errorController = require('./controllers/error');
 app.use(errorController.get404);
+
 
 app.listen(port, () => {
     console.log('Server start : ', port);
 });
-
 
 /* 404 에러처리 
 app.use((req, res, next) => {
