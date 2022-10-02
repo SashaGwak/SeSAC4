@@ -1,5 +1,6 @@
-const products = [];
+const Product = require('../models/product');
 
+// 상품 검색 페이지 
 exports.getAddProduct = (req, res, next) => {
   res.render('add-product', {
     pageTitle: 'Add Product',
@@ -10,13 +11,16 @@ exports.getAddProduct = (req, res, next) => {
   });
 };
 
+// 검색 기능
 exports.postAddProduct = (req, res, next) => {
-  products.push({ title: req.body.title });
+  const product = new Product(req.body.title);
+  product.save();
   res.redirect('/');
 };
 
+// 검색 후 상품 보여주기
 exports.getProducts = (req, res, next) => {
-  // 두번째 메소드로 view에 추가 되어야하는 데이터를 보낼 수 있음
+  const products = Product.fetchAll();
   res.render('shop', {
     prods: products,
     pageTitle: 'Shop',
