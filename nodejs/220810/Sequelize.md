@@ -103,6 +103,7 @@ module.exports = Visitor;
 
 ## 3. 모델 동기화 
 * app.js 파일에 동기화 처리 진행 
+* sequelize가 알아서 Table 생성 및 관계처리 진행해줌
 ```js
 // app.js
 const Sequelize = require('./util/database');
