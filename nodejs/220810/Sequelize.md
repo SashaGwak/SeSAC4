@@ -101,7 +101,30 @@ module.exports = Visitor;
 ```
 
 
-## 3. sequelize 사용
+## 3. 모델 동기화 
+* app.js 파일에 동기화 처리 진행 
+```js
+// app.js
+const Sequelize = require('./util/database');
+
+/* DB */
+Sequelize
+    .sync()
+    // sync -> 모델을 데이터베이스로 동기화해 해당하는 테이블을 생성하고 관계가 있다면 관계도 생성
+    .then(result => {
+        // console.log(result);  // Sequelize 객체 출력
+        app.listen(port, () => {
+            console.log('Server start : ', port);
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+```
+
+
+## 4. sequelize 사용
 ## 1) 테이블명.findAll() = select * from 테이블명;
 ```js
 // controller/VisitorController.js
