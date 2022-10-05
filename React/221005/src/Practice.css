@@ -1,0 +1,29 @@
+.ReactPractice {
+    display: flex; 
+    align-items: center;
+}
+
+.main {
+    background-color : antiquewhite;
+    border: 1px solid black;
+}
+
+.Link {
+    margin: 50px;
+}
+
+span {
+    margin: 10px; 
+}
+
+button {
+    margin: 10px; 
+}
+
+.names {
+    color: green;
+}
+
+.red {
+    color: red;
+}
