@@ -1,5 +1,5 @@
 # SeSAC4
-SeSAC 4기 웹풀스택과정 공부 내용 정리 
+SeSAC 4기 웹풀스택과정 공부 내용 정리 📝
 
 ## JavaScript
 * [inheritance](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/inheritance.md)
@@ -19,8 +19,8 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드 예시 - 동일한 로직 여러가지 방법으로 다뤄보기 2. promise](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220718/promise_hell.js)
         * [코드 예시 - 동일한 로직 여러가지 방법으로 다뤄보기 3. async_await ](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/async_await.js)
 * module
-    * [fs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/fs.js)
-        * [코드 예시 - fs 비동기 실행]()
+    * fs
+        * [코드 예시 - fs 비동기 실행](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/fs.js)
     * [http, server 객체](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/http_server.js)
         * [http reply](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220720/http_reply.md)
 * npm 
@@ -77,15 +77,15 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
 ### HTTP 
 * Cookie와 Session 
     * [Cookie와 Session 사용방법 및 설명](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220812/SessionCookie.md)
-        * [코드 예시 - cookie이용하여 모달창 하루동안 꺼지게 만들기 index.ejg](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220812/views/index.ejs)
+        * [코드 예시 - cookie이용하여 모달창 하루동안 꺼지게 만들기 index.ejs](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/220812/views/index.ejs)
 
 ### Socket
 * Socket 
     * [socket 이란?](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socket/socket.md)
     * [socket.io 사용방법](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socket/socketIo.md)
         * [코드 예시 - socket이용하여 채팅시스템 만들기 index.js](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socketPractice/index2.js)
-        * [코드 예시 - socket이용하여 채팅시스템 만들기 index.html](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socketPractice/index2.html)
-        * [나만의 채팅 시스템 만들어보기(DM 시스템 추가)](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/chat2)
+        * [코드 예시 - socket이용하여 채팅시스템 만들기 index.html](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socketPractice/index.html)
+        * [나만의 채팅 시스템 만들어보기(DM 시스템 추가)](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/chat(server))
 
 ### Rendering 
 * [Rendering](https://github.com/SashaGwak/SeSAC4/blob/main/React/221005/rendring.md)
@@ -96,10 +96,10 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
     * [프로젝트 생성 및 jsx문법, Component, props, image, function](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/Reactproject.md)
     * [Ref](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/ref.md)
 * [Lifecycle](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/lifeCycle.md)
-* [Hook](https://github.com/SashaGwak/SeSAC4/blob/main/React/220930/hook.md)
-    * useState, Event Handling
-        * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
-        * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
+* [Hook-useState, useEffect, useReducer, useMemo,useCallback. useRef](https://github.com/SashaGwak/SeSAC4/blob/main/React/220930/hook.md)
+* useState, Event Handling 활용
+    * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
+    * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
 * Router
     * [ReactRouter-BrowerRouter, Router, Route, Link](https://github.com/SashaGwak/SeSAC4/blob/main/React/221005/reactRouter.md)
     * [useParams, useLocation, useNavigate, searchParams](https://github.com/SashaGwak/SeSAC4/blob/main/React/221005/URLparameter.md)
