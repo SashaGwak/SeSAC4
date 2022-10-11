@@ -1,10 +1,54 @@
 # SeSAC4
 SeSAC 4기 웹풀스택과정 공부 내용 정리 📝
 
+## HTML,CSS, jquery, bootstrap
+* HTML 
+    * [tag](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0629.html)
+        * [실습 - 나만의 메뉴판 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/cafe0629.html)
+    * [table](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0629_table.html)
+        * [실습 - 나만의 시간표 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0629_table_case1.html)
+* CSS
+    * [CSS](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0629.css.html)
+    * [position](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0629_position.css.html)
+    * [display](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_diyplay.css.html)
+    * [transform](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_trasnform.css.html)
+    * animation
+        * [방법 1](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_animation_case.html)
+        * [방법 2](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_animation_case2.html)
+        * [실습 - 원 활용 애니메이션 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_css_animation.html)
+* Jquery
+    * [remove, prepend, before, append, after, html, text](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0705_jQuery2.html)
+    * [val, attr](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0706_jQuery.html)
+    * [parent, next, children, remove, empty](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0706_jQuery2.html)
+    * [css 추가](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0705_jQuery.html)
+    * [addClass, removeClass, switchClass, hasClass](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0705_jQuery_class.html)
+    * 실습 
+        * [과일 골라보세요 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0706_jQuery_case.html)
+        * [jquery이용하여 애니메이션처럼 만들어보기](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0706_jquery_case2.html)
+* [bootstrap](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0708_bootstrap.html)
+    * [grid](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0708_bootstrap_grid.html)
+    * [실습 - 부트스트랩 이용 웹사이트 만들어보기](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0708_webpage_case.html)
+
+
 ## JavaScript
+* [array](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0704_js_arry_type.html)
+* [for, while](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_js_for_while.html)
+    * [실습 - 구구단 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/1st%20week/0701_js_gugudan.html)
+* [this](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0707_js_this.html)
+* [DOM](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0704_js_DOM.html)
+    * [getElementsByTagName, getElementById, querySelector](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0704_js_document.html)
+    * [createElement, innerText, appendChild, getElementsByClassName, removeChild](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0704_js_document2.html)
+    * [setAttribute](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0705_jQuery.html)
+    * 실습
+        * [계산기 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0704_js_calcu_case.html)
+        * [방명록 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0706_js_guestbook2.html)
+        * [네이버 캘린더처럼 일정넣을 수 있는 캘린더 만들기](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0706_jquery_schedule.html)
+* 객체 
+    * [date 객체, math 객체](https://github.com/SashaGwak/SeSAC4/blob/main/2nd%20week/0704_js_object.html)
 * [inheritance](https://github.com/SashaGwak/SeSAC4/blob/main/React/220928/inheritance.md)
 * [map, filter 함수](https://github.com/SashaGwak/SeSAC4/blob/main/React/220926/mapFilter.md)
-## CSS 
+
+## 반응형 CSS 
 * [반응형 CSS](https://github.com/SashaGwak/SeSAC4/blob/main/css/responsive_css.md)
     * [코드 예시 - px, %, em, rem, vw, vh, media](https://github.com/SashaGwak/SeSAC4/blob/main/css/unit.css)
     * [코드 예시 - navBar 생성 및 로우 카드 조절하기 실습.html](https://github.com/SashaGwak/SeSAC4/blob/main/css/practiceCSS/problem2.html)
