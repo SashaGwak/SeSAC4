@@ -87,6 +87,9 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
         * [코드 예시 - socket이용하여 채팅시스템 만들기 index.html](https://github.com/SashaGwak/SeSAC4/blob/main/nodejs/socketPractice/index2.html)
         * [나만의 채팅 시스템 만들어보기(DM 시스템 추가)](https://github.com/SashaGwak/SeSAC4/tree/main/nodejs/chat2)
 
+### Rendering 
+* [Rendering](https://github.com/SashaGwak/SeSAC4/blob/main/React/221005/rendring.md)
+
 ## React 
 * [React 기본개념 및 다른 라이브러리 설명](https://github.com/SashaGwak/SeSAC4/blob/main/React/220921-init/React.md)
 * 주요개념 
@@ -97,3 +100,6 @@ SeSAC 4기 웹풀스택과정 공부 내용 정리
     * useState, Event Handling
         * [Class Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventClass.md)
         * [Function Component](https://github.com/SashaGwak/SeSAC4/blob/main/React/220923/EventFunction.md)
+* Router
+    * [ReactRouter-BrowerRouter, Router, Route, Link](https://github.com/SashaGwak/SeSAC4/blob/main/React/221005/reactRouter.md)
+    * [useParams, useLocation, useNavigate, searchParams](https://github.com/SashaGwak/SeSAC4/blob/main/React/221005/URLparameter.md)
