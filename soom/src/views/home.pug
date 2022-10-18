@@ -10,5 +10,11 @@ html(lang="en")
         header 
             h1 Soom
         main 
-            h2 Welcom to Soom
+            form#nick
+                input(type='text', placeholer='choose a nickname', required)
+                button Save
+            ul
+            form#message
+                input(type='text', placeholer='write a msg', required)
+                button Send
         script(src="/public/js/app.js")
