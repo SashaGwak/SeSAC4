@@ -3,7 +3,7 @@ const socket = io();
 const myFace = document.getElementById('myFace');
 const muteBtn = document.getElementById('mute');
 const carmeraBtn = document.getElementById('camera');
-const cameraSelect = document.getElementById('cameras');
+const camerasSelect = document.getElementById('cameras');
 const call = document.getElementById('call');
 
 call.hidden = true;
@@ -13,6 +13,7 @@ let muted = false;
 let cameraOff = false;
 let roomName; 
 let myPeerConnection;
+let myDataChannel;
 
 async function getCameras() {
   try {
@@ -28,7 +29,7 @@ async function getCameras() {
       if (currentCamera.label == camera.label) {
         option.selected = true;
       }
-      cameraSelect.appendChild(option);
+      camerasSelect.appendChild(option);
     }); 
   } catch(e) {
     console.log(e); 
@@ -86,12 +87,20 @@ function handleCameraClick () {
 }
 
 async function handleCameraChange () {
-  getMedia(cameraSelect.value);
+  await getMedia(camerasSelect.value);
+  if(myPeerConnection) {
+    // 새로운 비디오 트랙 stream에 넣어주기 
+    const videoTrack = myStream.getVideoTracks()[0]
+    const videoSender = myPeerConnection
+      .getSenders()
+      .find((sender) => sender.track.kind === 'video');
+    videoSender.replaceTrack(videoTrack);
+  } 
 }
 
 muteBtn.addEventListener("click", handleMuteClick);
 carmeraBtn.addEventListener("click", handleCameraClick);
-cameraSelect.addEventListener("input", handleCameraChange);
+camerasSelect.addEventListener("input", handleCameraChange);
 
 // Welcome Form (방 입장)
 const welcome = document.getElementById('welcome');
@@ -117,7 +126,10 @@ welcomeForm.addEventListener("submit", handleWelcomeSubmit);
 
 // Socket Code
 socket.on('welcome', async() => {
-  // 방생성 후 시작되는 부분
+  // 방생성 후 시작되는 부분(peer A)
+  myDataChannel = myPeerConnection.createDataChannel('chat');
+  myDataChannel.addEventListener('message', console.log);
+  console.log('made data channel');
   const offer = await myPeerConnection.createOffer();
   // console.log(offer);
   myPeerConnection.setLocalDescription(offer); 
@@ -128,6 +140,10 @@ socket.on('welcome', async() => {
 });
 
 socket.on('offer', async(offer) => {
+  myPeerConnection.addEventListener('datachannel', (event) => {
+    myDataChannel = event.channel;
+    myDataChannel.addEventListener('message', console.log);
+  });
   console.log('recevied the offer');
   myPeerConnection.setRemoteDescription(offer);
   const answer = await myPeerConnection.createAnswer();
