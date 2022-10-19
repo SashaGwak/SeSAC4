@@ -1,6 +1,8 @@
 import http from 'http';
-import SocketIO from 'socket.io';
+// import SocketIO from 'socket.io';
+import { Server } from 'socket.io';
 import express from 'express';
+import {instrument} from '@socket.io/admin-ui';
 
 const app = express();
 
@@ -14,7 +16,18 @@ app.get('/*', (req, res ) => res.redirect('/'));
 const handleListen = () => console.log(`Listening on http://localhost:3000`);
 
 const httpServer = http.createServer(app);
-const wsServer = SocketIO(httpServer);
+// const wsServer = SocketIO(httpServer);
+// admin 쓰는 경우 아래와 같이 만들어줌
+const wsServer = new Server(httpServer, {
+  cors: {
+    origin: ["https://admin.socket.io"], // demo 
+    credentials: true,
+  },
+});
+
+instrument(wsServer, {
+  auth: false, 
+}); 
 
 // 개인룸, 공개룸 가져오기
 function publicRooms() {
@@ -32,6 +45,10 @@ function publicRooms() {
     }
   });
   return publicRooms;
+}; 
+
+function countRoom(roomName) {
+  return wsServer.sockets.adapter.rooms.get(roomName)?.size;
 }
 
 wsServer.on('connection', (socket) => {
@@ -44,7 +61,7 @@ wsServer.on('connection', (socket) => {
     socket.join(roomName); // 방만들기 
     done();
     // 룸에만 보내는 메세지
-    socket.to(roomName).emit('welcome', socket.nickname);
+    socket.to(roomName).emit('welcome', socket.nickname, countRoom(roomName));
     // 전체 사람들에게 보내는 메세지
     wsServer.sockets.emit('room_change', publicRooms());
     /* 공부한 내용 */
@@ -58,7 +75,8 @@ wsServer.on('connection', (socket) => {
     // }, 5000)
   });
   socket.on('disconnecting', () => {
-    socket.rooms.forEach(room => socket.to(room).emit('bye', socket.nickname)); 
+    socket.rooms.forEach(room => socket.to(room).emit('bye', socket.nickname, countRoom(room - 1)));
+    // 방 카운트할 때, 떠나는 중이라 우리 연결도 아직 끊어지지 않아서 -1해줌  
   }); 
   socket.on('disconnect', () => {
     wsServer.sockets.emit('room_change', publicRooms());
