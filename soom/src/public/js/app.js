@@ -1,44 +1,89 @@
-const messageList = document.querySelector('ul');
-const nickForm = document.querySelector('#nick');
-const messageForm = document.querySelector('#message');
-const socket = new WebSocket(`ws://${window.location.host}`);
+const socket = io(); // 연결 끝~ so goooood
 
-function makeMessage(type, payload) {
-  // Object 만들기 
-  const msg = { type , payload }; 
-  // string으로 바꾸기! (js object를 보내지말고 string으로 보내줄거라서! )
-  // 웹 소켓이 브라우저에 있는 api 이기 때문에 백엔드에서는 다양한 프로그래밍언어를 사용할 수 있기 때문에 api에서 판단을 하면 안됨 백엔드에서 알아서 쓰도록 스트링으로 고고 
-  return JSON.stringify(msg);
+const welcome = document.getElementById('welcome');
+const form = welcome.querySelector('form');
+const room  = document.getElementById('room');
+
+room.hidden = true;
+
+let roomName; 
+
+function handleMessageSubmit(event) {
+  event.preventDefault();
+  const input = room.querySelector('#msg input');
+  const value = input.value;
+  socket.emit('new_message', input.value, roomName, () => {
+    addMessage(`You : ${value}`);
+  });
+  input.value = '';
 }
 
-socket.addEventListener('open', () => {
-  console.log('Connected to Server ✅');
-});
+function handleNicknameSubmit(event) {
+  event.preventDefault();
+  const input = room.querySelector('#name input');
+  const value = input.value;
+  socket.emit('nickname', value);
+  input.value = '';
+}
 
-socket.addEventListener('message', (message) => {
+function showRoom() {
+  welcome.hidden = true; 
+  room.hidden = false;
+  const h3 = room.querySelector('h3');
+  h3.innerText = `Room ${roomName}`; 
+  const msgForm = room.querySelector('#msg');
+  const nameForm = room.querySelector('#name');
+  msgForm.addEventListener('submit', handleMessageSubmit);
+  nameForm.addEventListener('submit', handleNicknameSubmit);
+}
+
+function handleRoomSubmit(event) {
+  event.preventDefault();
+  const input = form.querySelector('input');
+  socket.emit("enter_room", input.value, showRoom);
+  roomName = input.value;
+  input.value = "";
+
+  /* 공부한 내용 */
+  // function backendDone(msg) {
+  //   console.log(`The Server say : ${msg}`);
+  // }
+  // socket.emit("enter_room", input.value, backendDone);
+  // socket.emit(event 이름, 보내고 싶은 payload, 서버에서 호출하는 function)
+  // 여러형태의 정보를 다수의 파라미터로 계속해서 정보 보내줄 수 있지만 마지막으로 실행되는 function을 넣으려면 꼭 마지막에 넣어줘야함 
+  // 서버에서 함수를 실행하는게 아니라 서버에서 신호를 줘서 프론트에서 함수실행한다는 것 이해하세여
+  input.value = '';
+}
+
+form.addEventListener('submit', handleRoomSubmit)
+
+function addMessage(message) {
+  const ul = room.querySelector('ul'); 
   const li = document.createElement('li');
-  li.innerText = message.data;
-  messageList.append(li);
-  // console.log('New message : ', message.data);
+  li.innerText = message;
+  ul.appendChild(li);
+}
+
+socket.on('welcome', (user) => {
+  addMessage(`${user} joined!`);
+}); 
+
+socket.on('bye', (left) => {
+  addMessage(`${left} left ㅜㅜ !`);
+}); 
+
+socket.on('new_message', addMessage); 
+// socket.on('new_message', (msg) => addMessage(msg)); 과 동일
+
+socket.on('room_change', (rooms) => {
+  const roomList = welcome.querySelector('ul');
+  roomList.innerText = '';
+  if (rooms.length === 0 ) {
+    return;
+  }
+  rooms.forEach((room) => {
+    const li = document.createElement('li');
+    li.innerText = room;
+    roomList.append(li);
+  });
 });
-
-socket.addEventListener('close', () => {
-  console.log('Disconnected to Server ❌');
-});
-
-function handleSubmit(event) {
-  event.preventDefault();
-  const input = messageForm.querySelector('input');
-  socket.send(makeMessage('new_message', input.value));
-  input.value = '';
-};
-
-function handleNickSubmit(event) {
-  event.preventDefault();
-  const input = nickForm.querySelector('input');
-  socket.send(makeMessage('nickname', input.value));
-  input.value = '';
-};
-
-messageForm.addEventListener('submit', handleSubmit);
-nickForm.addEventListener('submit', handleNickSubmit);
